@@ -1,12 +1,66 @@
-@@include('./partial/head.html', {
-	"title": "One Page Parallax Front End Theme", 
-	"bodyAttr": "data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'",
-	"css": [
-	]}
-)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Color Admin | One Page Parallax Front End Theme</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
+	<link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
+	<!-- ================== END core-css ================== -->
+</head>
+<body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'>
 	<!-- begin #page-container -->
 	<div id="page-container" class="fade">
-		@@include('./partial/header.html', {"headerTheme": "inverse"})
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+			<!-- begin container -->
+			<div class="container">
+				<!-- begin navbar-brand -->
+				<a href="index.html" class="navbar-brand">
+					<span class="brand-logo"></span>
+					<span class="brand-text">
+						<span class="text-theme">Color</span> Admin
+					</span>
+				</a>
+				<!-- end navbar-brand -->
+				<!-- begin navbar-toggle -->
+				<button type="button" class="navbar-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#header-navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- end navbar-header -->
+				<!-- begin navbar-collapse -->
+				<div class="collapse navbar-collapse" id="header-navbar">
+					<ul class="nav navbar-nav navbar-end">
+						<li class="nav-item dropdown">
+							<a class="nav-link active" href="#home" data-click="scroll-to-target" data-scroll-target="#home">HOME <b class="caret"></b></a>
+							<div class="dropdown-menu dropdown-menu-left animate__animated animate__fadeInDown">
+								<a class="dropdown-item" href="index.html">Page with Transparent Header</a>
+								<a class="dropdown-item" href="index_inverse_header.html">Page with Inverse Header</a>
+								<a class="dropdown-item" href="index_default_header.html">Page with White Header</a>
+								<a class="dropdown-item" href="extra_element.html">Extra Element</a>
+							</div>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
+						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a></li>
+						<li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
+						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
+						<li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
+						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
+					</ul>
+				</div>
+				<!-- end navbar-collapse -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #header -->
 		
 		<!-- begin #home -->
 		<div id="home" class="content has-bg home">
@@ -19,10 +73,10 @@
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container home-content">
-				<h1>Welcome to Color Admin</h1>
-				<h3>Multipurpose One Page Theme</h3>
+				<h1>Jorge Alonso</h1>
+				<h3>Futbolista Inversor</h3>
 				<p>
-					We have created a multi-purpose theme that take the form of One-Page or Multi-Page Version.<br />
+					Entrena tu dinero para que pueda competir.<br />
 					Use our <a href="#">theme panel</a> to select your favorite theme color.
 				</p>
 				<a href="#" class="btn btn-theme btn-primary">Explore More</a> <a href="#" class="btn btn-theme btn-outline-white">Purchase Now</a><br />
@@ -133,11 +187,7 @@
 		<!-- begin #milestone -->
 		<div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-milestone.jpg)"
-				data-paroller="true" 
-				data-paroller-factor="0.5"
-				data-paroller-factor-md="0.01"
-				data-paroller-factor-xs="0.01"></div>
+			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-milestone.jpg)"></div>
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container">
@@ -783,12 +833,71 @@
 		</div>
 		<!-- end #contact -->
 		
-		@@include('./partial/footer.html')
-		@@include('./partial/theme-panel.html')
+		<!-- begin #footer -->
+		<div id="footer" class="footer">
+			<div class="container">
+				<div class="footer-brand">
+					<div class="footer-brand-logo"></div>
+					Color Admin
+				</div>
+				<p>
+					&copy; Copyright Color Admin 2025 <br />
+					An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a>
+				</p>
+				<p class="social-list">
+					<a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
+					<a href="#"><i class="fab fa-instagram fa-fw"></i></a>
+					<a href="#"><i class="fab fa-twitter fa-fw"></i></a>
+					<a href="#"><i class="fab fa-google-plus-g fa-fw"></i></a>
+					<a href="#"><i class="fab fa-dribbble fa-fw"></i></a>
+				</p>
+			</div>
+		</div>
+		<!-- end #footer -->
+		<!-- BEGIN theme-panel -->
+	<div class="theme-panel">
+		<a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+		<div class="theme-panel-content">
+			<div class="theme-list clearfix">
+				<div class="theme-list-item"><a href="javascript:;" class="bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-orange" data-theme-class="theme-orange" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item active"><a href="javascript:;" class="bg-teal" data-theme-class="" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Aqua" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="javascript:;" class="bg-gray-500" data-theme-class="theme-gray-500" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Gray" data-original-title="" title="">&nbsp;</a></div>
+			</div>
+			<hr class="mb-0" />
+			<div class="row mt-10px pt-3px">
+				<div class="col-9 control-label text-dark fw-bold">
+					<div>Dark Mode <span class="badge bg-primary ms-1 position-relative py-4px px-6px" style="top: -1px">NEW</span></div>
+					<div class="lh-14 fs-13px">
+						<small class="text-dark opacity-50">
+							Adjust the appearance to reduce glare and give your eyes a break.
+						</small>
+					</div>
+				</div>
+				<div class="col-3 d-flex">
+					<div class="form-check form-switch ms-auto mb-0 mt-2px">
+						<input type="checkbox" class="form-check-input" name="app-theme-dark-mode" id="appThemeDarkMode" value="1" />
+						<label class="form-check-label" for="appThemeDarkMode">&nbsp;</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END theme-panel -->
 	</div>
 	<!-- end #page-container -->
 	
-@@include('./partial/script.html', {
-	"script": [
-	]}
-)
+<!-- ================== BEGIN BASE JS ================== -->
+	<script src="../assets/js/vendor.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
+	
+</body>
+</html>
