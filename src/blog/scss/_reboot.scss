@@ -1,7 +1,0 @@
-body {
-	letter-spacing: $body-letter-spacing;
-	
-	@if $enable-rtl {
-		direction: rtl;
-	}
-}

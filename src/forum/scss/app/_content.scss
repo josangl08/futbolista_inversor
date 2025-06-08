@@ -1,8 +1,0 @@
-.content {
-	margin: rem(60px) 0 rem(60px);
-	padding-top: rem(64px);
-	
-	@include media-breakpoint-down(md) {
-		padding-top: rem(30px);
-	}
-}
