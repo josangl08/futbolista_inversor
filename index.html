@@ -9,9 +9,30 @@
 	
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="../assets/css/one-page-parallax/vendor.min.css" rel="stylesheet" />
-	<link href="../assets/css/one-page-parallax/app.min.css" rel="stylesheet" />
-	<!-- ================== END core-css ================== -->
+	<link href="assets/css/one-page-parallax/vendor.min.css?v=2" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.css?v=2" rel="stylesheet" />
+	<style>
+		.header.navbar {
+			background-color: #22282d !important;
+		}
+		.navbar-brand {
+			padding: 0 !important;
+			min-height: 0 !important;
+		}
+		.navbar-brand img {
+			height: 50px; /* Ajusta la altura para que quepa en el header */
+			width: auto;  /* El ancho se ajustará automáticamente para mantener la proporción */
+		}
+		.navbar-nav .nav-link {
+			color: rgb(54, 227, 160) !important;
+		}
+		.pricing-table {
+			display: flex;
+			justify-content: center;
+			list-style: none;
+			padding: 0;
+		}
+	</style>
 </head>
 <body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'>
 	<!-- begin #page-container -->
@@ -22,10 +43,7 @@
 			<div class="container">
 				<!-- begin navbar-brand -->
 				<a href="index.html" class="navbar-brand">
-					<span class="brand-logo"></span>
-					<span class="brand-text">
-						<span class="text-theme">Color</span> Admin
-					</span>
+					<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" />
 				</a>
 				<!-- end navbar-brand -->
 				<!-- begin navbar-toggle -->
@@ -65,7 +83,7 @@
 		<!-- begin #home -->
 		<div id="home" class="content has-bg home">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-home.jpg);" 
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-home.jpg);" 
 				data-paroller="true" 
 				data-paroller-type="foreground" 
 				data-paroller-factor="-0.25">
@@ -73,10 +91,11 @@
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container home-content">
-				<h1>Jorge Alonso</h1>
-				<h3>Futbolista Inversor</h3>
+				<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" style="height: 100px; width: auto; display: block; margin: 0 auto 20px;" />
+				<h3 class="mt-5">Tu Puerta de Entrada al Mundo de las Inversiones</h3>
+				
 				<p>
-					Entrena tu dinero para que pueda competir.<br />
+					We have created a multi-purpose theme that take the form of One-Page or Multi-Page Version.<br />
 					Use our <a href="#">theme panel</a> to select your favorite theme color.
 				</p>
 				<a href="#" class="btn btn-theme btn-primary">Explore More</a> <a href="#" class="btn btn-theme btn-outline-white">Purchase Now</a><br />
@@ -91,10 +110,9 @@
 		<div id="about" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
-				<h2 class="content-title">About Us</h2>
+				<h2 class="content-title">La Estrategia Ganadora</h2>
 				<p class="content-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-					sed bibendum turpis luctus eget
+					Una carrera en el fútbol es corta. Tu seguridad financiera no tiene por qué serlo.
 				</p>
 				<!-- begin row -->
 				<div class="row">
@@ -102,20 +120,12 @@
 					<div class="col-lg-4">
 						<!-- begin about -->
 						<div class="about">
-							<h3 class="mb-3">Our Story</h3>
+							<h3 class="mb-3">Nuestra Misión</h3>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-								Vestibulum posuere augue eget ante porttitor fringilla. 
-								Aliquam laoreet, sem eu dapibus congue, velit justo ullamcorper urna, 
-								non rutrum dolor risus non sapien. Vivamus vel tincidunt quam. 
-								Donec ultrices nisl ipsum, sed elementum ex dictum nec. 
+								Iníciate en el mundo de la inversión, aprende los conocimientos básicos para cuidar tu dinero de forma <strong>accesible</strong> y con un lenguaje <strong>sencillo</strong> que no te costará comprender. No cometas los mismos errores que otros deportistas, ellos <strong>perdieron su dinero por no tener cultura financiera</strong>.
 							</p>
 							<p>
-								In non libero at orci rutrum viverra at ac felis. 
-								Curabitur a efficitur libero, eu finibus quam. 
-								Pellentesque pretium ante vitae est molestie, ut faucibus tortor commodo. 
-								Donec gravida, eros ac pretium cursus, est erat dapibus quam, 
-								sit amet dapibus nisl magna sit amet orci. 
+								Te damos la formación y las herramientas para que tomes el control de tus finanzas con la misma <strong>disciplina y estrategia</strong> que aplicas en el campo. Tu esfuerzo te ha llevado a la élite; nosotros te ayudamos a que tu dinero también <strong>juegue en primera división</strong>.
 							</p>
 						</div>
 						<!-- end about -->
@@ -123,17 +133,17 @@
 					<!-- end col-4 -->
 					<!-- begin col-4 -->
 					<div class="col-lg-4">
-						<h3 class="mb-3">Our Philosophy</h3>
+						<h3 class="mb-3">Nuestra Filosofía</h3>
 						<!-- begin about-author -->
 						<div class="about-author">
 							<div class="quote">
 								<i class="fa fa-quote-left"></i>
-								<h3>We work harder,<br /><span>to let our user keep simple</span></h3>
+								<h3>Entrena tu dinero para que pueda competir</h3>
 								<i class="fa fa-quote-right"></i>
 							</div>
 							<div class="author">
 								<div class="image">
-									<img src="../assets/img/user/user-1.jpg" alt="Sean Ngu" />
+									<img src="assets/img/user/user-1.jpg" alt="Sean Ngu" />
 								</div>
 								<div class="info">
 									Sean Ngu
@@ -146,33 +156,16 @@
 					<!-- end col-4 -->
 					<!-- begin col-4 -->
 					<div class="col-lg-4">
-						<h3 class="mb-3">Our Experience</h3>
+						<h3 class="mb-3">Qué conseguirás con este curso?</h3>
 						<!-- begin skills -->
 						<div class="skills">
-							<div class="skills-name">Front End</div>
-							<div class="progress mb-3">
-								<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 95%">
-									<span class="progress-number">95%</span>
-								</div>
-							</div>
-							<div class="skills-name">Programming</div>
-							<div class="progress mb-3">
-								<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 90%">
-									<span class="progress-number">90%</span>
-								</div>
-							</div>
-							<div class="skills-name">Database Design</div>
-							<div class="progress mb-3">
-								<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 85%">
-									<span class="progress-number">85%</span>
-								</div>
-							</div>
-							<div class="skills-name">Wordpress</div>
-							<div class="progress mb-3">
-								<div class="progress-bar progress-bar-striped progress-bar-animated bg-theme" style="width: 80%">
-									<span class="progress-number">80%</span>
-								</div>
-							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Aprender a <strong>ahorrar de forma inteligente</strong> y efectiva.</li>
+								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Identificar tu perfil y <strong>conocer tus objetivos como inversor</strong>.</li>
+								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Comprender el <strong>funcionamiento de los mercados financieros</strong>.</li>
+								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Estrategias para <strong>cuidar y hacer crecer tu dinero</strong>.</li>
+								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Diferenciar una <strong>buena inversión</strong> de una mala y <strong>minimizar pérdidas</strong>.</li>
+							</ul>
 						</div>
 						<!-- end skills -->
 					</div>
@@ -187,7 +180,7 @@
 		<!-- begin #milestone -->
 		<div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-milestone.jpg)"></div>
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-milestone.jpg)"></div>
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container">
@@ -196,32 +189,32 @@
 					<!-- begin col-3 -->
 					<div class="col-lg-3 milestone-col">
 						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
-							<div class="title">Themes & Template</div>
+							<div class="number" data-animation="true" data-animation-type="number" data-final-number="500">500</div>
+							<div class="title">Jugadores Formados</div>
 						</div>
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
 					<div class="col-lg-3 milestone-col">
 						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
-							<div class="title">Registered Members</div>
+							<div class="number" data-animation="true" data-animation-type="number" data-final-number="100">100%</div>
+							<div class="title">Patrimonio Protegido</div>
 						</div>
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
 					<div class="col-lg-3 milestone-col">
 						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
-							<div class="title">Items Sold</div>
+							<div class="number" data-animation="true" data-animation-type="number" data-final-number="95">95%</div>
+							<div class="title">Inversiones Exitosas</div>
 						</div>
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
 					<div class="col-lg-3 milestone-col">
 						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
-							<div class="title">Theme Authors</div>
+							<div class="number" data-animation="true" data-animation-type="number" data-final-number="10">10</div>
+							<div class="title">Años de Experiencia</div>
 						</div>
 					</div>
 					<!-- end col-3 -->
@@ -236,66 +229,23 @@
 		<div id="team" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
-				<h2 class="content-title">Our Team</h2>
+				<h2 class="content-title">Tu Entrenador Financiero</h2>
 				<p class="content-desc">
-					Phasellus suscipit nisi hendrerit metus pharetra dignissim. Nullam nunc ante, viverra quis<br /> 
-					ex non, porttitor iaculis nisi.
+					Conoce a la persona que te guiará en este camino. Un profesional del fútbol que, tras su carrera, dominó el mundo de las finanzas para asegurar su futuro y ahora te enseñará a hacer lo mismo.
 				</p>
 				<!-- begin row -->
 				<div class="row">
 					<!-- begin col-4 -->
-					<div class="col-lg-4">
+					<div class="col-lg-8 offset-lg-2">
 						<!-- begin team -->
 						<div class="team">
 							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
-								<img src="../assets/img/user/user-1.jpg" alt="Ryan Teller" />
+								<img src="assets/img/user/user-1.jpg" alt="Jorge Alonso" />
 							</div>
 							<div class="info">
-								<h3 class="name">Ryan Teller</h3>
-								<div class="title text-theme">FOUNDER</div>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-								<div class="social">
-									<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-								</div>
-							</div>
-						</div>
-						<!-- end team -->
-					</div>
-					<!-- end col-4 -->
-					<!-- begin col-4 -->
-					<div class="col-lg-4">
-						<!-- begin team -->
-						<div class="team">
-							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
-								<img src="../assets/img/user/user-2.jpg" alt="Jonny Cash" />
-							</div>
-							<div class="info">
-								<h3 class="name">Johnny Cash</h3>
-								<div class="title text-theme">WEB DEVELOPER</div>
-								<p>Donec quam felis, ultricies nec, pellentesque eu sem. Nulla consequat massa vierra quis enim.</p>
-								<div class="social">
-									<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
-								</div>
-							</div>
-						</div>
-						<!-- end team -->
-					</div>
-					<!-- end col-4 -->
-					<!-- begin col-4 -->
-					<div class="col-lg-4">
-						<!-- begin team -->
-						<div class="team">
-							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
-								<img src="../assets/img/user/user-3.jpg" alt="Mia Donovan" />
-							</div>
-							<div class="info">
-								<h3 class="name">Mia Donovan</h3>
-								<div class="title text-theme">WEB DESIGNER</div>
-								<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean ligula imperdiet. </p>
+								<h3 class="name">Jorge Alonso</h3>
+								<div class="title text-theme">Instructor Principal</div>
+								<p>Ex futbolista profesional que ha transformado su experiencia en el campo en éxito financiero, y ahora comparte sus estrategias para que tú también ganes el partido de tu vida.</p>
 								<div class="social">
 									<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
 									<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
@@ -316,7 +266,7 @@
 		<!-- begin #quote -->
 		<div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-quote.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-quote.jpg)"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -428,7 +378,7 @@
 		<!-- beign #action-box -->
 		<div id="action-box" class="content has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-action.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-action.jpg)"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -477,7 +427,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-1.jpg" alt="Work 1" /></a>
+								<a href="#"><img src="assets/img/work/work-img-1.jpg" alt="Work 1" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Aliquam molestie</span>
@@ -492,7 +442,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-2.jpg" alt="Work 2" /></a>
+								<a href="#"><img src="assets/img/work/work-img-2.jpg" alt="Work 2" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Quisque at pulvinar lacus</span>
@@ -507,7 +457,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-3.jpg" alt="Work 3" /></a>
+								<a href="#"><img src="assets/img/work/work-img-3.jpg" alt="Work 3" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Vestibulum et erat ornare</span>
@@ -522,7 +472,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-4.jpg" alt="Work 4" /></a>
+								<a href="#"><img src="assets/img/work/work-img-4.jpg" alt="Work 4" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Sed vitae mollis magna</span>
@@ -537,7 +487,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-5.jpg" alt="Work 5" /></a>
+								<a href="#"><img src="assets/img/work/work-img-5.jpg" alt="Work 5" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Suspendisse at mattis odio</span>
@@ -552,7 +502,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-6.jpg" alt="Work 6" /></a>
+								<a href="#"><img src="assets/img/work/work-img-6.jpg" alt="Work 6" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Aliquam vitae commodo diam</span>
@@ -567,7 +517,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-7.jpg" alt="Work 7" /></a>
+								<a href="#"><img src="assets/img/work/work-img-7.jpg" alt="Work 7" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Phasellus eu vehicula lorem</span>
@@ -582,7 +532,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="../assets/img/work/work-img-8.jpg" alt="Work 8" /></a>
+								<a href="#"><img src="assets/img/work/work-img-8.jpg" alt="Work 8" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Morbi bibendum pellentesque</span>
@@ -602,7 +552,7 @@
 		<!-- begin #client -->
 		<div id="client" class="content has-bg bg-green" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(../assets/img/bg/bg-client.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-client.jpg)"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -610,7 +560,7 @@
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container" data-animation="true" data-animation-type="animate__fadeInUp">
-				<h2 class="content-title">Our Client Testimonials</h2>
+				<h2 class="content-title">Lo que dicen nuestros alumnos</h2>
 				<!-- begin carousel -->
 				<div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
 					<!-- begin carousel-inner -->
@@ -619,33 +569,30 @@
 						<div class="carousel-item active">
 							<blockquote>
 								<i class="fa fa-quote-left"></i>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra, nulla ut interdum fringilla,<br />
-								urna massa cursus lectus, eget rutrum lectus neque non ex.
+								"Gracias a este curso, he aprendido a gestionar mis ingresos de forma inteligente. ¡Ahora mi futuro financiero está tan asegurado como mis goles!"
 								<i class="fa fa-quote-right"></i>
 							</blockquote>
-							<div class="name"> — <span class="text-theme">Mark Doe</span>, Designer</div>
+							<div class="name"> — <span class="text-theme">Marco V.</span>, Delantero Profesional</div>
 						</div>
 						<!-- end item -->
 						<!-- begin item -->
 						<div class="carousel-item">
 							<blockquote>
 								<i class="fa fa-quote-left"></i>
-								Donec cursus ligula at ante vulputate laoreet. Nulla egestas sit amet lorem non bibendum.<br />
-								Nulla eget risus velit. Pellentesque tincidunt velit vitae tincidunt finibus.
+								"Pensaba que solo con el balón podía asegurar mi vida, pero este curso me abrió los ojos. ¡Invertir es el mejor regate financiero!"
 								<i class="fa fa-quote-right"></i>
 							</blockquote>
-							<div class="name"> — <span class="text-theme">Joe Smith</span>, Developer</div>
+							<div class="name"> — <span class="text-theme">Sofía R.</span>, Centrocampista</div>
 						</div>
 						<!-- end item -->
 						<!-- begin item -->
 						<div class="carousel-item">
 							<blockquote>
 								<i class="fa fa-quote-left"></i>
-								Sed tincidunt quis est sed ultrices. Sed feugiat auctor ipsum, sit amet accumsan elit vestibulum<br />
-								fringilla. In sollicitudin ac ligula eget vestibulum.
+								"La educación financiera es tan importante como el entrenamiento físico. Este curso es un 'must' para cualquier deportista que quiera proteger su patrimonio."
 								<i class="fa fa-quote-right"></i>
 							</blockquote>
-							<div class="name"> — <span class="text-theme">Linda Adams</span>, Programmer</div>
+							<div class="name"> — <span class="text-theme">Carlos G.</span>, Defensa Central</div>
 						</div>
 						<!-- end item -->
 					</div>
@@ -658,6 +605,8 @@
 					</div>
 					<!-- end carousel-indicators -->
 				</div>
+					<!-- end carousel-indicators -->
+				</div>
 				<!-- end carousel -->
 			</div>
 			<!-- end containter -->
@@ -668,53 +617,31 @@
 		<div id="pricing" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
-				<h2 class="content-title">Our Price</h2>
+				<h2 class="content-title">Accede a tu Futuro</h2>
 				<p class="content-desc">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
 					sed bibendum turpis luctus eget
 				</p>
 				<!-- begin pricing-table -->
-				<ul class="pricing-table pricing-col-4">
+				<ul class="pricing-table pricing-col-3">
 					<li data-animation="true" data-animation-type="animate__fadeInUp">
 						<div class="pricing-container">
-							<h3>Starter</h3>
+							<h3>Básico</h3>
 							<div class="price">
 								<div class="price-figure">
-									<span class="price-number">FREE</span>
+									<span class="price-number">495 €</span>
 								</div>
 							</div>
 							<ul class="features">
-								<li>1GB Storage</li>
-								<li>2 Clients</li>
-								<li>5 Active Projects</li>
-								<li>5 Colors</li>
-								<li>Free Goodies</li>
-								<li>24/7 Email support</li>
+								<li>Acceso al material didáctico</li>
+								<li>Soporte</li>
+								<li>Clases en directo</li>
+								<li>Certificado</li>
+								<li>Clases en directo</li>
+								<li>Certificado</li>
 							</ul>
 							<div class="footer">
-								<a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
-							</div>
-						</div>
-					</li>
-					<li data-animation="true" data-animation-type="animate__fadeInUp">
-						<div class="pricing-container">
-							<h3>Basic</h3>
-							<div class="price">
-								<div class="price-figure">
-									<span class="price-number">$9.99</span>
-									<span class="price-tenure">per month</span>
-								</div>
-							</div>
-							<ul class="features">
-								<li>2GB Storage</li>
-								<li>5 Clients</li>
-								<li>10 Active Projects</li>
-								<li>10 Colors</li>
-								<li>Free Goodies</li>
-								<li>24/7 Email support</li>
-							</ul>
-							<div class="footer">
-								<a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
+								<a href="#" class="btn btn-inverse btn-theme btn-block">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -723,41 +650,19 @@
 							<h3>Premium</h3>
 							<div class="price">
 								<div class="price-figure">
-									<span class="price-number">$19.99</span>
-									<span class="price-tenure">per month</span>
+									<span class="price-number">895 €</span>
 								</div>
 							</div>
 							<ul class="features">
-								<li>5GB Storage</li>
-								<li>10 Clients</li>
-								<li>20 Active Projects</li>
-								<li>20 Colors</li>
-								<li>Free Goodies</li>
-								<li>24/7 Email support</li>
+								<li>Acceso al material didáctico</li>
+								<li>Soporte</li>
+								<li>Clases en directo</li>
+								<li>6 Mentorias Individuales</li>
+								<li>Acompañamiento Personalizado</li>
+								<li>Certificado</li>
 							</ul>
 							<div class="footer">
-								<a href="#" class="btn btn-primary btn-theme btn-block">Buy Now</a>
-							</div>
-						</div>
-					</li>
-					<li data-animation="true" data-animation-type="animate__fadeInUp">
-						<div class="pricing-container">
-							<h3>Lifetime</h3>
-							<div class="price">
-								<div class="price-figure">
-									<span class="price-number">$999</span>
-								</div>
-							</div>
-							<ul class="features">
-								<li>Unlimited Storage</li>
-								<li>Unlimited Clients</li>
-								<li>Unlimited Projects</li>
-								<li>Unlimited Colors</li>
-								<li>Free Goodies</li>
-								<li>24/7 Email support</li>
-							</ul>
-							<div class="footer">
-								<a href="#" class="btn btn-inverse btn-theme btn-block">Buy Now</a>
+								<a href="#" class="btn btn-inverse btn-theme btn-block">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -771,28 +676,20 @@
 		<div id="contact" class="content bg-light" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
-				<h2 class="content-title">Contact Us</h2>
+				<h2 class="content-title">Contacto</h2>
 				<p class="content-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-					sed bibendum turpis luctus eget
+					Si tienes cualquier duda, rellena el formulario y te responderemos personalmente.
 				</p>
 				<!-- begin row -->
 				<div class="row">
 					<!-- begin col-6 -->
 					<div class="col-lg-6" data-animation="true" data-animation-type="animate__fadeInLeft">
-						<h3>If you have a project you would like to discuss, get in touch with us.</h3>
-						<p>
-							Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
+						<h3>¿Preguntas? Escríbenos.</h3>
+						<p style="color: #555;">
+							Nuestro equipo está disponible para resolver cualquier consulta sobre el contenido del curso o el proceso de inscripción.
 						</p>
 						<p>
-							<strong>SeanTheme Studio, Inc</strong><br />
-							795 Folsom Ave, Suite 600<br />
-							San Francisco, CA 94107<br />
-							P: (123) 456-7890<br />
-						</p>
-						<p>
-							<span class="phone">+11 (0) 123 456 78</span><br />
-							<a href="mailto:hello@emailaddress.com" class="text-theme">seanthemes@support.com</a>
+							<a href="mailto:info@futbolistainversor.com" class="text-theme">info@futbolistainversor.com</a>
 						</p>
 					</div>
 					<!-- end col-6 -->
@@ -800,7 +697,7 @@
 					<div class="col-lg-6 form-col" data-animation="true" data-animation-type="animate__fadeInRight">
 						<form class="form-horizontal">
 							<div class="row mb-3">
-								<label class="col-form-label col-lg-3 text-lg-right">Name <span class="text-theme">*</span></label>
+								<label class="col-form-label col-lg-3 text-lg-right">Nombre <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
 									<input type="text" class="form-control" />
 								</div>
@@ -812,7 +709,7 @@
 								</div>
 							</div>
 							<div class="row mb-3">
-								<label class="col-form-label col-lg-3 text-lg-right">Message <span class="text-theme">*</span></label>
+								<label class="col-form-label col-lg-3 text-lg-right">Mensaje <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
 									<textarea class="form-control" rows="10"></textarea>
 								</div>
@@ -820,7 +717,7 @@
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right"></label>
 								<div class="col-lg-9 text-left">
-									<button type="submit" class="btn btn-theme btn-primary btn-block">Send Message</button>
+									<button type="submit" class="btn btn-theme btn-primary btn-block">Enviar Mensaje</button>
 								</div>
 							</div>
 						</form>
@@ -865,7 +762,7 @@
 				<div class="theme-list-item"><a href="javascript:;" class="bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a></div>
 				<div class="theme-list-item"><a href="javascript:;" class="bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime" data-original-title="" title="">&nbsp;</a></div>
 				<div class="theme-list-item"><a href="javascript:;" class="bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item active"><a href="javascript:;" class="bg-teal" data-theme-class="" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item active"><a href="javascript:;" class="bg-corporate-green" data-theme-class="theme-corporate-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Corporate Green" title="">&nbsp;</a></div>
 				<div class="theme-list-item"><a href="javascript:;" class="bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Aqua" data-original-title="" title="">&nbsp;</a></div>
 				<div class="theme-list-item"><a href="javascript:;" class="bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue" data-original-title="" title="">&nbsp;</a></div>
 				<div class="theme-list-item"><a href="javascript:;" class="bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a></div>
@@ -875,8 +772,8 @@
 			<hr class="mb-0" />
 			<div class="row mt-10px pt-3px">
 				<div class="col-9 control-label text-dark fw-bold">
-					<div>Dark Mode <span class="badge bg-primary ms-1 position-relative py-4px px-6px" style="top: -1px">NEW</span></div>
-					<div class="lh-14 fs-13px">
+					<div class="d-flex">Dark Mode <span class="badge bg-primary ms-2 position-relative py-4px px-6px d-flex align-items-center rounded-1">NEW</span></div>
+					<div class="lh-sm fs-12px">
 						<small class="text-dark opacity-50">
 							Adjust the appearance to reduce glare and give your eyes a break.
 						</small>
@@ -885,7 +782,24 @@
 				<div class="col-3 d-flex">
 					<div class="form-check form-switch ms-auto mb-0 mt-2px">
 						<input type="checkbox" class="form-check-input" name="app-theme-dark-mode" id="appThemeDarkMode" value="1" />
-						<label class="form-check-label" for="appThemeDarkMode">&nbsp;</label>
+						<label class="form-check-label" for="appThemeDarkMode"></label>
+					</div>
+				</div>
+			</div>
+			<hr class="mb-0" />
+			<div class="row mt-10px pt-3px">
+				<div class="col-9 control-label text-dark fw-bold">
+					<div class="d-flex">RTL Mode <span class="badge bg-primary ms-2 position-relative py-4px px-6px d-flex align-items-center rounded-1">NEW</span></div>
+					<div class="lh-sm fs-12px">
+						<small class="text-dark opacity-50">
+							Flip the layout direction to support right-to-left languages.
+						</small>
+					</div>
+				</div>
+				<div class="col-3 d-flex">
+					<div class="form-check form-switch ms-auto mb-0 mt-2px">
+						<input type="checkbox" class="form-check-input" name="app-theme-rtl-mode" id="appThemeRtlMode" value="1" />
+						<label class="form-check-label" for="appThemeRtlMode"></label>
 					</div>
 				</div>
 			</div>
@@ -896,8 +810,8 @@
 	<!-- end #page-container -->
 	
 <!-- ================== BEGIN BASE JS ================== -->
-	<script src="../assets/js/vendor.min.js"></script>
-	<script src="../assets/js/app.min.js"></script>
+	<script src="assets/js/vendor.min.js"></script>
+	<script src="assets/js/app.min.js"></script>
 	
 </body>
 </html>
