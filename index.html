@@ -32,9 +32,32 @@
 			list-style: none;
 			padding: 0;
 		}
+	  .pace .pace-progress {
+	    background: rgb(54, 227, 160) !important;
+	  }
+		.pace .pace-activity {
+			border-top-color: rgb(54, 227, 160) !important;
+			border-left-color: rgb(54, 227, 160) !important;
+		}
+		#home .btn-primary,
+		#pricing .btn-inverse,
+		#contact .btn-primary {
+			color: #22282d !important;
+		}
+		#home .btn-outline-white {
+			color: #22282d !important;
+			border-color: #22282d !important;
+		}
+		#home .btn-outline-white:hover {
+			background: #22282d !important;
+			color: #fff !important;
+		}
+		.theme-panel {
+			display: none !important;
+		}
 	</style>
 </head>
-<body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51'>
+<body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51' class="theme-corporate-green">
 	<!-- begin #page-container -->
 	<div id="page-container" class="fade">
 		<!-- begin #header -->
@@ -56,22 +79,14 @@
 				<!-- begin navbar-collapse -->
 				<div class="collapse navbar-collapse" id="header-navbar">
 					<ul class="nav navbar-nav navbar-end">
-						<li class="nav-item dropdown">
-							<a class="nav-link active" href="#home" data-click="scroll-to-target" data-scroll-target="#home">HOME <b class="caret"></b></a>
-							<div class="dropdown-menu dropdown-menu-left animate__animated animate__fadeInDown">
-								<a class="dropdown-item" href="index.html">Page with Transparent Header</a>
-								<a class="dropdown-item" href="index_inverse_header.html">Page with Inverse Header</a>
-								<a class="dropdown-item" href="index_default_header.html">Page with White Header</a>
-								<a class="dropdown-item" href="extra_element.html">Extra Element</a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
-						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">TEAM</a></li>
-						<li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">SERVICES</a></li>
-						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">WORK</a></li>
-						<li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">CLIENT</a></li>
-						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRICING</a></li>
-						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
+						<li class="nav-item"><a class="nav-link active" href="#home" data-click="scroll-to-target">INICIO</a></li>
+						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ESTRATEGIA</a></li>
+						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">ENTRENADOR</a></li>
+						<li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">BENEFICIOS</a></li>
+						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">TEMARIO</a></li>
+						<li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">TESTIMONIOS</a></li>
+						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRECIOS</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACTO</a></li>
 					</ul>
 				</div>
 				<!-- end navbar-collapse -->
@@ -94,13 +109,9 @@
 				<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" style="height: 100px; width: auto; display: block; margin: 0 auto 20px;" />
 				<h3 class="mt-5">Tu Puerta de Entrada al Mundo de las Inversiones</h3>
 				
-				<p>
-					We have created a multi-purpose theme that take the form of One-Page or Multi-Page Version.<br />
-					Use our <a href="#">theme panel</a> to select your favorite theme color.
-				</p>
-				<a href="#" class="btn btn-theme btn-primary">Explore More</a> <a href="#" class="btn btn-theme btn-outline-white">Purchase Now</a><br />
+				<a href="#team" class="btn btn-theme btn-primary">Presentación</a> <a href="#pricing" class="btn btn-theme btn-outline-white">Únete Ahora</a><br />
 				<br />
-				or <a href="#">subscribe</a> newsletter
+				
 			</div>
 			<!-- end container -->
 		</div>
@@ -116,8 +127,8 @@
 				</p>
 				<!-- begin row -->
 				<div class="row">
-					<!-- begin col-4 -->
-					<div class="col-lg-4">
+					<!-- begin col-6 -->
+					<div class="col-lg-6">
 						<!-- begin about -->
 						<div class="about">
 							<h3 class="mb-3">Nuestra Misión</h3>
@@ -130,9 +141,9 @@
 						</div>
 						<!-- end about -->
 					</div>
-					<!-- end col-4 -->
-					<!-- begin col-4 -->
-					<div class="col-lg-4">
+					<!-- end col-6 -->
+					<!-- begin col-6 -->
+					<div class="col-lg-6">
 						<h3 class="mb-3">Nuestra Filosofía</h3>
 						<!-- begin about-author -->
 						<div class="about-author">
@@ -143,33 +154,17 @@
 							</div>
 							<div class="author">
 								<div class="image">
-									<img src="assets/img/user/user-1.jpg" alt="Sean Ngu" />
+									<img src="assets/img/user/user-1.jpg" alt="Jorge Alonso" />
 								</div>
 								<div class="info">
-									Sean Ngu
-									<small>Front End Developer</small>
+									Jorge Alonso
+									<small>Ex-futbolista e Inversor</small>
 								</div>
 							</div>
 						</div>
 						<!-- end about-author -->
 					</div>
-					<!-- end col-4 -->
-					<!-- begin col-4 -->
-					<div class="col-lg-4">
-						<h3 class="mb-3">Qué conseguirás con este curso?</h3>
-						<!-- begin skills -->
-						<div class="skills">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Aprender a <strong>ahorrar de forma inteligente</strong> y efectiva.</li>
-								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Identificar tu perfil y <strong>conocer tus objetivos como inversor</strong>.</li>
-								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Comprender el <strong>funcionamiento de los mercados financieros</strong>.</li>
-								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Estrategias para <strong>cuidar y hacer crecer tu dinero</strong>.</li>
-								<li class="list-group-item bg-transparent"><i class="fa fa-check-circle text-theme me-2"></i>Diferenciar una <strong>buena inversión</strong> de una mala y <strong>minimizar pérdidas</strong>.</li>
-							</ul>
-						</div>
-						<!-- end skills -->
-					</div>
-					<!-- end col-4 -->
+					<!-- end col-6 -->
 				</div>
 				<!-- end row -->
 			</div>
@@ -236,7 +231,7 @@
 				<!-- begin row -->
 				<div class="row">
 					<!-- begin col-4 -->
-					<div class="col-lg-8 offset-lg-2">
+					<div class="col-lg-4">
 						<!-- begin team -->
 						<div class="team">
 							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
@@ -244,7 +239,7 @@
 							</div>
 							<div class="info">
 								<h3 class="name">Jorge Alonso</h3>
-								<div class="title text-theme">Instructor Principal</div>
+								<div class="title text-theme">Ex-futbolista e Inversor</div>
 								<p>Ex futbolista profesional que ha transformado su experiencia en el campo en éxito financiero, y ahora comparte sus estrategias para que tú también ganes el partido de tu vida.</p>
 								<div class="social">
 									<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
@@ -256,6 +251,14 @@
 						<!-- end team -->
 					</div>
 					<!-- end col-4 -->
+					<!-- begin col-8 -->
+					<div class="col-lg-8">
+						<video controls style="width: 100%;">
+							<source src="assets/img/VIDEO-2025-07-14-21-24-00.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+					<!-- end col-8 -->
 				</div>
 				<!-- end row -->
 			</div>
@@ -278,10 +281,9 @@
 				<div class="row">
 					<!-- begin col-12 -->
 					<div class="col-lg-12 quote">
-						<i class="fa fa-quote-left"></i> Passion leads to design, design leads to performance, <br />
-						performance leads to <span class="text-theme">success</span>!  
+						<i class="fa fa-quote-left"></i> En el campo buscas el gol. En tus finanzas, la libertad. <br /> La estrategia es la misma: disciplina, visión y el <span class="text-theme">equipo correcto</span>.  
 						<i class="fa fa-quote-right"></i>
-						<small>Sean Themes, Developer Teams in Malaysia</small>
+						<small>Jorge Alonso, Fundador de Futbolista Inversor</small>
 					</div>
 					<!-- end col-12 -->
 				</div>
@@ -295,20 +297,18 @@
 		<div id="service" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
-				<h2 class="content-title">Our Services</h2>
+				<h2 class="content-title">Qué conseguirás con este curso</h2>
 				<p class="content-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-					sed bibendum turpis luctus eget
 				</p>
 				<!-- begin row -->
 				<div class="row">
 					<!-- begin col-4 -->
 					<div class="col-lg-4 col-md-6">
 						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-cog"></i></div>
+							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-piggy-bank"></i></div>
 							<div class="info">
-								<h4 class="title">Easy to Customize</h4>
-								<p class="desc">Duis in lorem placerat, iaculis nisi vitae, ultrices tortor. Vestibulum molestie ipsum nulla. Maecenas nec hendrerit eros, sit amet maximus leo.</p>
+								<h4 class="title">Ahorro</h4>
+								<p class="desc">Aprende a ahorrar de forma inteligente y efectiva.</p>
 							</div>
 						</div>
 					</div>
@@ -316,10 +316,10 @@
 					<!-- begin col-4 -->
 					<div class="col-lg-4 col-md-6">
 						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-paint-brush"></i></div>
+							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-bullseye"></i></div>
 							<div class="info">
-								<h4 class="title">Clean & Careful Design</h4>
-								<p class="desc">Etiam nulla turpis, gravida et orci ac, viverra commodo ipsum. Donec nec mauris faucibus, congue nisi sit amet, lobortis arcu.</p>
+								<h4 class="title">Objetivos</h4>
+								<p class="desc">Identifica tu perfil y conoce tus objetivos como inversor.</p>
 							</div>
 						</div>
 					</div>
@@ -327,10 +327,10 @@
 					<!-- begin col-4 -->
 					<div class="col-lg-4 col-md-6">
 						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-file"></i></div>
+							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-chart-line"></i></div>
 							<div class="info">
-								<h4 class="title">Well Documented</h4>
-								<p class="desc">Ut vel laoreet tortor. Donec venenatis ex velit, eget bibendum purus accumsan cursus. Curabitur pulvinar iaculis diam.</p>
+								<h4 class="title">Mercados</h4>
+								<p class="desc">Comprende el funcionamiento de los mercados financieros.</p>
 							</div>
 						</div>
 					</div>
@@ -338,10 +338,10 @@
 					<!-- begin col-4 -->
 					<div class="col-lg-4 col-md-6">
 						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-code"></i></div>
+							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-money-bill-trend-up"></i></div>
 							<div class="info">
-								<h4 class="title">Re-usable Code</h4>
-								<p class="desc">Aenean et elementum dui. Aenean massa enim, suscipit ut molestie quis, pretium sed orci. Ut faucibus egestas mattis.</p>
+								<h4 class="title">Estrategia</h4>
+								<p class="desc">Aprende estrategias para cuidar y hacer crecer tu dinero.</p>
 							</div>
 						</div>
 					</div>
@@ -349,21 +349,10 @@
 					<!-- begin col-4 -->
 					<div class="col-lg-4 col-md-6">
 						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-shopping-cart"></i></div>
+							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-balance-scale"></i></div>
 							<div class="info">
-								<h4 class="title">Online Shop</h4>
-								<p class="desc">Quisque gravida metus in sollicitudin feugiat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-							</div>
-						</div>
-					</div>
-					<!-- end col-4 -->
-					<!-- begin col-4 -->
-					<div class="col-lg-4 col-md-6">
-						<div class="service">
-							<div class="icon" data-animation="true" data-animation-type="animate__bounceIn"><i class="fa fa-heart"></i></div>
-							<div class="info">
-								<h4 class="title">Free Support</h4>
-								<p class="desc">Integer consectetur, massa id mattis tincidunt, sapien erat malesuada turpis, nec vehicula lacus felis nec libero. Fusce non lorem nisl.</p>
+								<h4 class="title">Análisis</h4>
+								<p class="desc">Diferencia una buena inversión de una mala y minimiza pérdidas.</p>
 							</div>
 						</div>
 					</div>
@@ -391,17 +380,17 @@
 					<!-- begin col-9 -->
 					<div class="col-lg-9">
 						<div class="icon-large text-theme">
-							<i class="fa fa-binoculars"></i>
+							<i class="fa fa-futbol"></i>
 						</div>
-						<h3>CHECK OUT OUR ADMIN THEME!</h3>
+						<h3>¿LISTO PARA SALTAR AL CAMPO?</h3>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus faucibus magna eu lacinia eleifend.
+							Toma el control de tu futuro financiero hoy mismo. La mejor inversión eres tú.
 						</p>
 					</div>
 					<!-- end col-9 -->
 					<!-- begin col-3 -->
 					<div class="col-lg-3">
-						<a href="#" class="btn btn-outline-white btn-theme btn-block">Live Preview</a>
+						<a href="#pricing" class="btn btn-outline-white btn-theme btn-block" data-click="scroll-to-target">¡QUIERO INSCRIBIRME!</a>
 					</div>
 					<!-- end col-3 -->
 				</div>
@@ -415,128 +404,194 @@
 		<div id="work" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
-				<h2 class="content-title">Our Latest Work</h2>
+				<h2 class="content-title">Temario del Curso</h2>
 				<p class="content-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-					sed bibendum turpis luctus eget
 				</p>
 				<!-- begin row -->
 				<div class="row row-space-10">
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-1.jpg" alt="Work 1" /></a>
+								<a href="#"><img src="assets/img/work/tema-1.jpg" alt="Tema 1" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Aliquam molestie</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 1: Calentamiento</span>
+								<span class="desc-text">Presentación del curso</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-2.jpg" alt="Work 2" /></a>
+								<a href="#"><img src="assets/img/work/tema-2.jpg" alt="Tema 2" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Quisque at pulvinar lacus</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 2: Pretemporada</span>
+								<span class="desc-text">Conocernos como Inversores</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-3.jpg" alt="Work 3" /></a>
+								<a href="#"><img src="assets/img/work/tema-3.jpg" alt="Tema 3" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Vestibulum et erat ornare</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 3: Entrenamiento Invisible</span>
+								<span class="desc-text">Inversión</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-4.jpg" alt="Work 4" /></a>
+								<a href="#"><img src="assets/img/work/tema-4.jpg" alt="Tema 4" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Sed vitae mollis magna</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 4: "El Fútbol es así"</span>
+								<span class="desc-text">Negocios</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+				</div>
+				<!-- end row -->
+				<!-- begin row -->
+				<div class="row row-space-10">
+					<!-- begin col-3 -->
+					<div class="col-lg-3 col-md-6 col-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/tema-5.jpg" alt="Tema 5" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Tema 5: Xavi Hernández</span>
+								<span class="desc-text">Inmobiliario</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-5.jpg" alt="Work 5" /></a>
+								<a href="#"><img src="assets/img/work/tema-6.jpg" alt="Tema 6" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Suspendisse at mattis odio</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 6: Mercado de Fichajes</span>
+								<span class="desc-text">Mercados Financieros</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-6.jpg" alt="Work 6" /></a>
+								<a href="#"><img src="assets/img/work/tema-7.jpg" alt="Tema 7" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Aliquam vitae commodo diam</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 7: Sistema de Juego</span>
+								<span class="desc-text">Renta Variable vs Renta Fija</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-7.jpg" alt="Work 7" /></a>
+								<a href="#"><img src="assets/img/work/tema-8.jpg" alt="Tema 8" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Phasellus eu vehicula lorem</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 8: Dirección Deportiva</span>
+								<span class="desc-text">¿Como invertir?</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+				</div>
+				<!-- end row -->
+				<!-- begin row -->
+				<div class="row row-space-10">
+					<!-- begin col-3 -->
+					<div class="col-lg-3 col-md-6 col-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/tema-9.jpg" alt="Tema 9" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Tema 9: La Liga</span>
+								<span class="desc-text">Invertir en Acciones</span>
 							</div>
 						</div>
 						<!-- end work -->
 					</div>
 					<!-- end col-3 -->
 					<!-- begin col-3 -->
-					<div class="col-lg-3 col-md-4">
+					<div class="col-lg-3 col-md-6 col-6">
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="#"><img src="assets/img/work/work-img-8.jpg" alt="Work 8" /></a>
+								<a href="#"><img src="assets/img/work/tema-10.jpg" alt="Tema 10" /></a>
 							</div>
 							<div class="desc">
-								<span class="desc-title">Morbi bibendum pellentesque</span>
-								<span class="desc-text">Lorem ipsum dolor sit amet</span>
+								<span class="desc-title">Tema 10: Penaltis</span>
+								<span class="desc-text">Criptomonedas</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+					<!-- begin col-3 -->
+					<div class="col-lg-3 col-md-6 col-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/tema-11.jpg" alt="Tema 11" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Tema 11: Alineación</span>
+								<span class="desc-text">Construcción de Cartera</span>
+							</div>
+						</div>
+						<!-- end work -->
+					</div>
+					<!-- end col-3 -->
+					<!-- begin col-3 -->
+					<div class="col-lg-3 col-md-6 col-6">
+						<!-- begin work -->
+						<div class="work">
+							<div class="image">
+								<a href="#"><img src="assets/img/work/tema-12.jpg" alt="Tema 12" class="img-fluid" /></a>
+							</div>
+							<div class="desc">
+								<span class="desc-title">Tema 12: Rueda de Prensa</span>
+								<span class="desc-text">Conclusiones</span>
 							</div>
 						</div>
 						<!-- end work -->
@@ -711,7 +766,7 @@
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right">Mensaje <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
-									<textarea class="form-control" rows="10"></textarea>
+									<textarea class="form-control" rows="5"></textarea>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -734,19 +789,16 @@
 		<div id="footer" class="footer">
 			<div class="container">
 				<div class="footer-brand">
-					<div class="footer-brand-logo"></div>
-					Color Admin
+					<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" style="height: 40px;" />
 				</div>
 				<p>
-					&copy; Copyright Color Admin 2025 <br />
-					An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a>
+					&copy; Copyright Futbolista Inversor 2025 <br />
+					Todos los derechos reservados.
 				</p>
 				<p class="social-list">
 					<a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
 					<a href="#"><i class="fab fa-instagram fa-fw"></i></a>
 					<a href="#"><i class="fab fa-twitter fa-fw"></i></a>
-					<a href="#"><i class="fab fa-google-plus-g fa-fw"></i></a>
-					<a href="#"><i class="fab fa-dribbble fa-fw"></i></a>
 				</p>
 			</div>
 		</div>
