@@ -1,0 +1,79 @@
+{
+  "brand_name": "Futbolista Inversor",
+  "visual_identity": {
+    "description": "Identidad visual moderna y profesional centrada en el deporte, los datos y la inversión. Combina estética deportiva con análisis financiero, manteniendo un equilibrio entre energía, tecnología y claridad visual.",
+    "style_keywords": [
+      "minimalista",
+      "deportivo",
+      "financiero",
+      "analítico",
+      "profesional",
+      "limpio",
+      "dinámico",
+      "tecnológico"
+    ],
+    "color_palette": {
+      "primary": {
+        "name": "Verde Inversor",
+        "rgb": "rgb(54, 227, 160)",
+        "hex": "#36E3A0",
+        "usage": "Color principal para resaltar métricas, crecimiento, resultados positivos y botones de acción."
+      },
+      "secondary": {
+        "name": "Azul Profundo",
+        "rgb": "rgb(19, 45, 75)",
+        "hex": "#132D4B",
+        "usage": "Color base para fondos, texto principal y elementos estructurales. Representa confianza y solidez."
+      },
+      "background": {
+        "name": "Blanco",
+        "hex": "#FFFFFF",
+        "usage": "Fondo principal para mantener limpieza y contraste."
+      },
+      "accent": {
+        "name": "Gris Oscuro",
+        "hex": "#22282D",
+        "usage": "Texto secundario, iconos y fondos neutros."
+      }
+    },
+    "typography": {
+      "primary_font": "Inter, Poppins o Montserrat",
+      "style": "Sans-serif moderna, ligera y de líneas limpias",
+      "usage": "Titulares y etiquetas con Inter Bold; texto descriptivo con Inter Regular o Medium"
+    },
+    "iconography": {
+      "style": "Iconos lineales con rellenos parciales en verde y azul. Bordes redondeados, grosor medio, sin degradados.",
+      "themes": [
+        "rendimiento deportivo",
+        "estadísticas de fútbol",
+        "inversión y crecimiento financiero",
+        "análisis de datos",
+        "tácticas deportivas",
+        "entrenamiento y gestión"
+      ],
+      "composition": "Iconos simples sobre fondo blanco o azul, combinando elementos deportivos (balones, botas, pizarras) con símbolos de datos (gráficas, flechas, euros)."
+    },
+    "layout": {
+      "background_style": "Limpio, con amplios márgenes y uso equilibrado del espacio negativo.",
+      "shape_language": "Curvas suaves, esquinas redondeadas, coherencia entre iconos y contenedores.",
+      "shadow": "Sombras suaves y sutiles para dar sensación de profundidad sin sobrecargar."
+    },
+    "imagery": {
+      "preferred_style": "Ilustraciones vectoriales o renderizados planos 2D con énfasis en claridad y consistencia de color.",
+      "avoid": [
+        "fotografías reales",
+        "degradados fuertes",
+        "efectos 3D excesivos",
+        "colores saturados fuera de la paleta"
+      ]
+    },
+    "tone": {
+      "mood": "Optimista, profesional, confiable y orientado al progreso.",
+      "keywords": ["crecimiento", "rendimiento", "precisión", "análisis", "innovación"]
+    },
+    "usage_examples": {
+      "icon_template_prompt": "Crea un icono vectorial plano con estilo minimalista y colores verde #36E3A0 y azul #132D4B. El icono debe representar [concepto deportivo o financiero] con estética limpia y profesional.",
+      "dashboard_visual_prompt": "Diseña una interfaz o plantilla para análisis deportivo con tonos azul profundo y verde inversor, tipografía moderna y gráficos limpios, sobre fondo blanco o gris oscuro."
+    }
+  }
+}
