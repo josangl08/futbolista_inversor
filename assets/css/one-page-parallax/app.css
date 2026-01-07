@@ -21210,7 +21210,6 @@ p {
     font-size: 1.53125rem;
     color: #fff;
     font-weight: 300;
-    margin-bottom: 30px;
 }
 .footer .social-list {
     margin: 0;
@@ -23807,11 +23806,10 @@ p {
     overflow: hidden;
     background: #20252a;
     border-radius: 0.6rem;
-    box-shadow: 0 3px var(--bs-light);
 }
 .pricing-table .h3,
 .pricing-table h3 {
-    background: #171b1e;
+    background: #1b2c4d;
     margin: 0;
     color: #fff;
     font-size: 0.875rem;
@@ -23820,7 +23818,7 @@ p {
 }
 .dark-mode .pricing-table .h3,
 .dark-mode .pricing-table h3 {
-    background: #20252a;
+    background: #1b2c4d;
 }
 .pricing-table .features {
     list-style-type: none;
@@ -23858,8 +23856,9 @@ p {
     margin-top: -5px;
 }
 .pricing-table .footer {
-    background: #101315;
+    background: #1b2c4d;
     padding: 15px 20px;
+    box-shadow: none;
 }
 .pricing-table .highlight {
     padding: 0;

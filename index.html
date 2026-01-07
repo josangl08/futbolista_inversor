@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Color Admin | One Page Parallax Front End Theme</title>
+	<title>Futbolista Inversor</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -26,6 +26,14 @@
 		.navbar-nav .nav-link {
 			color: rgb(54, 227, 160) !important;
 		}
+		.navbar-nav .nav-link.active {
+			color: rgb(54, 227, 160) !important;
+		}
+		#header .navbar-nav .nav-link:hover,
+		#header .navbar-nav .nav-link:focus,
+		#header .navbar-nav .nav-link.active:hover {
+			color: #fff !important;
+		}
 		.pricing-table {
 			display: flex;
 			justify-content: center;
@@ -44,16 +52,220 @@
 		#contact .btn-primary {
 			color: #22282d !important;
 		}
-		#home .btn-outline-white {
+		#home .btn-outline-white,
+		#action-box .btn-outline-white,
+		#contact .btn-outline-white,
+		#pricing .btn-inverse {
 			color: #22282d !important;
-			border-color: #22282d !important;
+			border: none !important;
 		}
-		#home .btn-outline-white:hover {
+		#home .btn-outline-white:hover,
+		#action-box .btn-outline-white:hover,
+		#contact .btn-outline-white:hover,
+		#pricing .btn-inverse:hover {
+			background: #22282d !important;
+			color: #fff !important;
+		}
+		#contact .btn-primary:hover {
 			background: #22282d !important;
 			color: #fff !important;
 		}
 		.theme-panel {
 			display: none !important;
+		}
+		.about-author .author .image {
+			background-color: var(--bs-light) !important;
+			border-radius: 50%;
+			padding: 10px;
+			overflow: hidden;
+		}
+		.about-author .author .image img {
+			transform: scale(1.3);
+			object-fit: cover;
+		}
+		#team .team .image {
+			background-color: var(--bs-light) !important;
+			border-radius: 50%;
+		}
+		#team .team .info .title {
+			color: #1b2c4d !important;
+		}
+		#team .team .social a i {
+			color: rgb(54, 227, 160) !important;
+		}
+		#team .team .social a:hover i {
+			color: #1b2c4d !important;
+			transition: color 0.3s ease;
+		}
+		.content.has-bg .content-bg:before {
+			opacity: 0.7 !important;
+		}
+		.home-content h3 {
+			font-weight: bold !important;
+		}
+		#work .work .image {
+			max-height: 200px;
+			overflow: hidden;
+			padding: 0 50px;
+			margin: 50px 0;
+		}
+		#work .work .image img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+		#pricing .pricing-table .price-number {
+			color: rgb(54, 227, 160) !important;
+		}
+		#footer .social-list a {
+			color: rgb(54, 227, 160) !important;
+		}
+		#contact a[href^="mailto:"] {
+			color: #1b2c4d !important;
+		}
+		/* Checkbox del formulario de contacto */
+		#contact .form-check-input:checked {
+			background-color: #1b2c4d !important;
+			border-color: #1b2c4d !important;
+		}
+		#contact .form-check-input:focus {
+			border-color: #1b2c4d !important;
+			box-shadow: 0 0 0 0.25rem rgba(27, 44, 77, 0.25) !important;
+		}
+		#contact .form-check-label a {
+			color: rgb(54, 227, 160) !important;
+			text-decoration: none;
+		}
+		#contact .form-check-label a:hover {
+			text-decoration: underline;
+		}
+		#action-box {
+			position: relative;
+			z-index: 10;
+		}
+		#work {
+			position: relative;
+			z-index: 1;
+		}
+		.footer-links {
+			margin-top: 15px;
+			font-size: 0.9rem;
+		}
+		.footer-links a {
+			color: #6c757d;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+		.footer-links a:hover {
+			color: rgb(54, 227, 160);
+			text-decoration: underline;
+		}
+		/* Footer Moderno - Dos Niveles */
+		#footer {
+			padding: 40px 0 20px;
+		}
+		#footer .footer-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 25px;
+			padding-bottom: 25px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+		#footer .footer-brand {
+			display: flex;
+			align-items: center;
+		}
+		#footer .footer-brand img {
+			height: 35px;
+		}
+		#footer .footer-social {
+			display: flex;
+			gap: 15px;
+		}
+		#footer .footer-social a {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: rgb(54, 227, 160);
+			transition: all 0.3s ease;
+		}
+		#footer .footer-social a:hover {
+			background: var(--bs-body-bg);
+			transform: translateY(-3px);
+		}
+		#footer .footer-social a i {
+			color: #fff;
+			transition: color 0.3s ease;
+		}
+		#footer .footer-social a:hover i {
+			color: rgb(54, 227, 160);
+		}
+		#footer .footer-middle {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		#footer .footer-links {
+			margin: 0;
+			font-size: 0.85rem;
+		}
+		#footer .footer-links a {
+			color: rgba(255, 255, 255, 0.7);
+			text-decoration: none;
+			transition: color 0.3s;
+			margin: 0 8px;
+		}
+		#footer .footer-links a:hover {
+			color: rgb(54, 227, 160);
+			text-decoration: none;
+		}
+		#footer .footer-separator {
+			color: rgba(255, 255, 255, 0.3);
+			margin: 0 5px;
+		}
+		#footer .footer-bottom {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 0.8rem;
+			color: rgba(255, 255, 255, 0.5);
+			padding-top: 15px;
+			border-top: 1px solid rgba(255, 255, 255, 0.05);
+		}
+		#footer .footer-copyright {
+			margin: 0;
+		}
+		#footer .footer-teachable {
+			margin: 0;
+			text-align: right;
+		}
+		/* Responsive */
+		@media (max-width: 768px) {
+			#footer .footer-top {
+				flex-direction: column;
+				gap: 20px;
+			}
+			#footer .footer-brand {
+				text-align: center;
+			}
+			#footer .footer-social {
+				justify-content: center;
+			}
+			#footer .footer-bottom {
+				flex-direction: column;
+				gap: 10px;
+				text-align: center;
+			}
+			#footer .footer-teachable {
+				text-align: center;
+			}
+			#footer .footer-links a {
+				display: inline-block;
+				margin: 5px 8px;
+			}
 		}
 	</style>
 </head>
@@ -80,11 +292,8 @@
 				<div class="collapse navbar-collapse" id="header-navbar">
 					<ul class="nav navbar-nav navbar-end">
 						<li class="nav-item"><a class="nav-link active" href="#home" data-click="scroll-to-target">INICIO</a></li>
-						<li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ESTRATEGIA</a></li>
 						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">ENTRENADOR</a></li>
-						<li class="nav-item"><a class="nav-link" href="#service" data-click="scroll-to-target">BENEFICIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">TEMARIO</a></li>
-						<li class="nav-item"><a class="nav-link" href="#client" data-click="scroll-to-target">TESTIMONIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRECIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACTO</a></li>
 					</ul>
@@ -109,7 +318,7 @@
 				<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" style="height: 70px; width: auto; display: block; margin: 0 auto 20px;" />
 				<h3 class="mt-5">Tu Puerta de Entrada al Mundo de las Inversiones</h3>
 				
-				<a href="#team" class="btn btn-theme btn-primary">Presentación</a> <a href="#pricing" class="btn btn-theme btn-outline-white">Únete Ahora</a><br />
+				<a href="#team" class="btn btn-theme btn-outline-white">Presentación</a> <a href="#pricing" class="btn btn-theme btn-outline-white">Únete Ahora</a><br />
 				<br />
 				
 			</div>
@@ -154,7 +363,7 @@
 							</div>
 							<div class="author">
 								<div class="image">
-									<img src="assets/img/user/user-1.jpg" alt="Jorge Alonso" />
+									<img src="assets/img/user/jorge_profile.png" alt="Jorge Alonso" />
 								</div>
 								<div class="info">
 									Jorge Alonso
@@ -175,7 +384,7 @@
 		<!-- begin #milestone -->
 		<div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(assets/img/bg/bg-milestone.jpg)"></div>
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-botas.jpg)"></div>
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container">
@@ -235,16 +444,17 @@
 						<!-- begin team -->
 						<div class="team">
 							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
-								<img src="assets/img/user/user-1.jpg" alt="Jorge Alonso" />
+								<img src="assets/img/user/jorge_profile_medium.png" alt="Jorge Alonso" />
 							</div>
 							<div class="info">
 								<h3 class="name">Jorge Alonso</h3>
 								<div class="title text-theme">Ex-futbolista e Inversor</div>
 								<p>Ex futbolista profesional que ha transformado su experiencia en el campo en éxito financiero, y ahora comparte sus estrategias para que tú también ganes el partido de tu vida.</p>
 								<div class="social">
-									<a href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-									<a href="#"><i class="fab fa-google-plus-g fa-lg fa-fw"></i></a>
+									<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+									<a href="https://www.instagram.com/futbolistainversor/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+									<!-- <a href="#"><i class="fab fa-x-twitter fa-lg fa-fw"></i></a> -->
+									<!-- <a href="#"><i class="fab fa-linkedin fa-lg fa-fw"></i></a> -->
 								</div>
 							</div>
 						</div>
@@ -253,8 +463,9 @@
 					<!-- end col-4 -->
 					<!-- begin col-8 -->
 					<div class="col-lg-8">
-						<video controls style="width: 100%;">
-							<source src="assets/img/VIDEO-2025-07-14-21-24-00.mp4" type="video/mp4">
+						<video controls poster= "assets/img/educacion_financiera.jpg"
+						style="width: 100%;">
+							<source src="assets/img/presentacion.mp4" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
 					</div>
@@ -269,7 +480,7 @@
 		<!-- begin #quote -->
 		<div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(assets/img/bg/bg-quote.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-linea2.jpg); background-position: center 30%;"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -367,7 +578,7 @@
 		<!-- beign #action-box -->
 		<div id="action-box" class="content has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(assets/img/bg/bg-action.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-balon.jpg)"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -607,7 +818,7 @@
 		<!-- begin #client -->
 		<div id="client" class="content has-bg bg-green" data-scrollview="true">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(assets/img/bg/bg-client.jpg)"
+			<div class="content-bg" style="background-image: url(assets/img/bg/bg-campo_pano.jpeg)"
 				data-paroller-factor="0.5"
 				data-paroller-factor-md="0.01"
 				data-paroller-factor-xs="0.01">
@@ -674,14 +885,13 @@
 			<div class="container">
 				<h2 class="content-title">Accede a tu Futuro</h2>
 				<p class="content-desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-					sed bibendum turpis luctus eget
+					
 				</p>
 				<!-- begin pricing-table -->
 				<ul class="pricing-table pricing-col-3">
 					<li data-animation="true" data-animation-type="animate__fadeInUp">
 						<div class="pricing-container">
-							<h3>Básico</h3>
+							<h3>Basic</h3>
 							<div class="price">
 								<div class="price-figure">
 									<span class="price-number">495 €</span>
@@ -690,9 +900,7 @@
 							<ul class="features">
 								<li>Acceso al material didáctico</li>
 								<li>Soporte</li>
-								<li>Clases en directo</li>
-								<li>Certificado</li>
-								<li>Clases en directo</li>
+								<li>Clases en directo X2</li>
 								<li>Certificado</li>
 							</ul>
 							<div class="footer">
@@ -700,7 +908,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="highlight" data-animation="true" data-animation-type="animate__fadeInUp">
+					<li data-animation="true" data-animation-type="animate__fadeInUp">
 						<div class="pricing-container">
 							<h3>Premium</h3>
 							<div class="price">
@@ -711,9 +919,31 @@
 							<ul class="features">
 								<li>Acceso al material didáctico</li>
 								<li>Soporte</li>
-								<li>Clases en directo</li>
+								<li>Clases en directo X2</li>
 								<li>6 Mentorias Individuales</li>
 								<li>Acompañamiento Personalizado</li>
+								<li>Certificado</li>
+							</ul>
+							<div class="footer">
+								<a href="#" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+							</div>
+						</div>
+					</li>
+					<li data-animation="true" data-animation-type="animate__fadeInUp">
+						<div class="pricing-container">
+							<h3>Deluxe</h3>
+							<div class="price">
+								<div class="price-figure">
+									<span class="price-number">1295 €</span>
+								</div>
+							</div>
+							<ul class="features">
+								<li>Acceso al material didáctico</li>
+								<li>Soporte</li>
+								<li>Clases en directo X2</li>
+								<li>12 Mentorias Individuales</li>
+								<li>Acompañamiento Personalizado</li>
+								<li>Acceso a mi cartera personal</li>
 								<li>Certificado</li>
 							</ul>
 							<div class="footer">
@@ -771,8 +1001,22 @@
 							</div>
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right"></label>
+								<div class="col-lg-9">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="consentPrivacidad" required>
+										<label class="form-check-label" for="consentPrivacidad">
+											He leído y acepto la
+											<a href="#" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">
+												Política de Privacidad
+											</a>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<label class="col-form-label col-lg-3 text-lg-right"></label>
 								<div class="col-lg-9 text-left">
-									<button type="submit" class="btn btn-theme btn-primary btn-block">Enviar Mensaje</button>
+									<button type="submit" class="btn btn-theme btn-outline-white">Enviar Mensaje</button>
 								</div>
 							</div>
 						</form>
@@ -788,18 +1032,44 @@
 		<!-- begin #footer -->
 		<div id="footer" class="footer">
 			<div class="container">
+			<!-- Nivel 1: Logo + Redes Sociales -->
+			<div class="footer-top">
 				<div class="footer-brand">
-					<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" style="height: 40px;" />
+					<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" />
 				</div>
-				<p>
-					&copy; Copyright Futbolista Inversor 2025 <br />
-					Todos los derechos reservados.
+				<div class="footer-social">
+					<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" aria-label="Facebook">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://www.instagram.com/futbolistainversor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</div>
+			</div>
+
+			<!-- Nivel 2: Enlaces Legales -->
+			<div class="footer-middle">
+				<div class="footer-links">
+					<a href="#" data-bs-toggle="modal" data-bs-target="#modalAvisoLegal">Aviso Legal</a>
+					<span class="footer-separator">·</span>
+					<a href="#" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">Política de Privacidad</a>
+					<span class="footer-separator">·</span>
+					<a href="#" data-bs-toggle="modal" data-bs-target="#modalCookies">Política de Cookies</a>
+					<span class="footer-separator">·</span>
+					<a href="#" data-bs-toggle="modal" data-bs-target="#modalTerminos">Términos y Condiciones</a>
+				</div>
+			</div>
+
+			<!-- Nivel 3: Copyright + Teachable -->
+			<div class="footer-bottom">
+				<p class="footer-copyright">
+					&copy; 2025 Futbolista Inversor. Todos los derechos reservados.
 				</p>
-				<p class="social-list">
-					<a href="#"><i class="fab fa-facebook-f fa-fw"></i></a>
-					<a href="#"><i class="fab fa-instagram fa-fw"></i></a>
-					<a href="#"><i class="fab fa-twitter fa-fw"></i></a>
+				<p class="footer-teachable">
+					Cursos gestionados por <a href="https://teachable.com" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Teachable</a>
 				</p>
+			</div>
+
 			</div>
 		</div>
 		<!-- end #footer -->
@@ -860,10 +1130,294 @@
 	<!-- END theme-panel -->
 	</div>
 	<!-- end #page-container -->
-	
+
+	<!-- BEGIN LEGAL MODALS -->
+
+	<!-- Modal Aviso Legal -->
+	<div class="modal fade" id="modalAvisoLegal" tabindex="-1" aria-labelledby="avisoLegalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="avisoLegalLabel">Aviso Legal</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>1. DATOS IDENTIFICATIVOS</h6>
+					<p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:</p>
+					<ul>
+						<li><strong>Titular:</strong> Jorge Alonso Martin</li>
+						<li><strong>NIF:</strong> 70882038V</li>
+						<li><strong>Domicilio:</strong> C/ Prados de poo, 177, Bajo C, 39310 Miengo, Santander, España</li>
+						<li><strong>Email:</strong> info@futbolistainversor.com</li>
+					</ul>
+
+					<h6>2. OBJETO</h6>
+					<p>El titular pone a disposición de los usuarios el presente sitio web, con el propósito de facilitar información sobre los cursos de formación en inversión y finanzas personales ofrecidos bajo la marca "Futbolista Inversor".</p>
+
+					<h6>3. CONDICIONES DE USO</h6>
+					<p>El acceso y uso de este sitio web confiere la condición de usuario y supone la aceptación plena de las presentes condiciones. El usuario se compromete a:</p>
+					<ul>
+						<li>Hacer un uso adecuado y lícito del sitio web</li>
+						<li>No utilizar el sitio con fines o efectos ilícitos, contrarios a la buena fe y al orden público</li>
+						<li>No difundir contenidos que sean discriminatorios, difamatorios o que atenten contra los derechos de terceros</li>
+					</ul>
+
+					<h6>4. PROPIEDAD INTELECTUAL E INDUSTRIAL</h6>
+					<p>Todos los contenidos del sitio web (textos, imágenes, logotipos, iconos, fotografías, software, diseño gráfico, código fuente, etc.) son propiedad de [NOMBRE COMPLETO DEL AUTÓNOMO] o se utilizan bajo la correspondiente autorización, y están protegidos por las leyes españolas e internacionales sobre propiedad intelectual e industrial.</p>
+					<p>Queda prohibida la reproducción, distribución, comunicación pública y transformación de cualquier contenido sin autorización expresa del titular.</p>
+
+					<h6>5. EXCLUSIÓN DE GARANTÍAS Y RESPONSABILIDAD</h6>
+					<p>El titular no se hace responsable de:</p>
+					<ul>
+						<li>La continuidad, disponibilidad y utilidad del sitio web</li>
+						<li>Los daños causados en los equipos informáticos de los usuarios durante el acceso al sitio web</li>
+						<li>Los contenidos enlazados desde este sitio a sitios web de terceros</li>
+					</ul>
+					<p><strong>IMPORTANTE:</strong> Los contenidos educativos sobre inversión ofrecidos en este sitio tienen carácter formativo y no constituyen asesoramiento financiero personalizado. Las decisiones de inversión son responsabilidad exclusiva del usuario.</p>
+
+					<h6>6. LEGISLACIÓN APLICABLE Y JURISDICCIÓN</h6>
+					<p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia las partes se someten a los Juzgados y Tribunales del domicilio del usuario consumidor.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Política de Privacidad -->
+	<div class="modal fade" id="modalPrivacidad" tabindex="-1" aria-labelledby="privacidadLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="privacidadLabel">Política de Privacidad</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>1. RESPONSABLE DEL TRATAMIENTO</h6>
+					<p>En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 (RGPD) y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), se informa:</p>
+					<ul>
+						<li><strong>Responsable:</strong> Jorge Alonso Martin</li>
+						<li><strong>NIF:</strong> 70882038V</li>
+						<li><strong>Domicilio:</strong> C/ Prados de poo, 177, Bajo C, 39310 Miengo, Santander, España</li>
+						<li><strong>Email:</strong> info@futbolistainversor.com</li>
+					</ul>
+
+					<h6>2. DATOS RECOGIDOS Y FINALIDAD</h6>
+					<p>A través del formulario de contacto, se recogen los siguientes datos personales:</p>
+					<ul>
+						<li><strong>Nombre:</strong> Para personalizar la comunicación</li>
+						<li><strong>Email:</strong> Para responder a la consulta realizada</li>
+						<li><strong>Mensaje:</strong> Contenido de la consulta o solicitud de información</li>
+					</ul>
+					<p><strong>Finalidad:</strong> Gestionar y responder a las consultas recibidas sobre los cursos de formación ofrecidos.</p>
+
+					<h6>3. BASE LEGAL DEL TRATAMIENTO</h6>
+					<p>La base legal para el tratamiento de sus datos es el <strong>consentimiento del interesado</strong> (artículo 6.1.a del RGPD), otorgado mediante la marcación del checkbox del formulario de contacto.</p>
+
+					<h6>4. PLAZO DE CONSERVACIÓN</h6>
+					<p>Los datos personales se conservarán durante el tiempo necesario para gestionar la consulta y, posteriormente, durante el plazo legalmente establecido para atender posibles responsabilidades derivadas del tratamiento.</p>
+
+					<h6>5. DESTINATARIOS DE LOS DATOS</h6>
+					<p>Sus datos no serán cedidos a terceros, salvo obligación legal. Los datos podrán ser comunicados a proveedores de servicios de hosting necesarios para el funcionamiento del sitio web, quienes actuarán como encargados del tratamiento.</p>
+
+					<h6>6. DERECHOS DE LOS INTERESADOS</h6>
+					<p>Como titular de los datos, usted tiene derecho a:</p>
+					<ul>
+						<li><strong>Acceso:</strong> Conocer qué datos personales están siendo tratados</li>
+						<li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos</li>
+						<li><strong>Supresión:</strong> Solicitar la eliminación de sus datos ("derecho al olvido")</li>
+						<li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos</li>
+						<li><strong>Limitación:</strong> Solicitar la limitación del tratamiento</li>
+						<li><strong>Portabilidad:</strong> Recibir sus datos en formato estructurado</li>
+					</ul>
+					<p><strong>¿Cómo ejercer estos derechos?</strong></p>
+					<p>Puede ejercer sus derechos mediante comunicación escrita dirigida a <strong>info@futbolistainversor.com</strong>, adjuntando copia de su DNI o documento identificativo equivalente.</p>
+
+					<h6>7. DERECHO A RECLAMACIÓN</h6>
+					<p>Si considera que el tratamiento de sus datos personales vulnera la normativa, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD):</p>
+					<ul>
+						<li><strong>Sede electrónica:</strong> www.aepd.es</li>
+						<li><strong>Dirección:</strong> C/ Jorge Juan, 6, 28001 - Madrid</li>
+					</ul>
+
+					<h6>8. SEGURIDAD DE LOS DATOS</h6>
+					<p>El responsable ha adoptado medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad adecuado al riesgo del tratamiento de datos personales.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Política de Cookies -->
+	<div class="modal fade" id="modalCookies" tabindex="-1" aria-labelledby="cookiesLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="cookiesLabel">Política de Cookies</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>1. ¿QUÉ SON LAS COOKIES?</h6>
+					<p>Las cookies son pequeños archivos de texto que se almacenan en su navegador cuando visita un sitio web. Permiten que el sitio recuerde sus preferencias y mejoren su experiencia de navegación.</p>
+
+					<h6>2. COOKIES UTILIZADAS EN ESTE SITIO WEB</h6>
+					<p>Este sitio web utiliza únicamente cookies técnicas y de personalización para mejorar la experiencia del usuario:</p>
+
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Cookie</th>
+								<th>Finalidad</th>
+								<th>Duración</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>theme-panel-expand</code></td>
+								<td>Recordar si el panel de temas está expandido</td>
+								<td>10 horas</td>
+							</tr>
+							<tr>
+								<td><code>app-theme</code></td>
+								<td>Guardar el tema de color seleccionado por el usuario</td>
+								<td>10 horas</td>
+							</tr>
+							<tr>
+								<td><code>app-theme-dark-mode</code></td>
+								<td>Recordar la preferencia de modo oscuro del usuario</td>
+								<td>10 horas</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h6>3. TIPO DE COOKIES</h6>
+					<p>Las cookies utilizadas son:</p>
+					<ul>
+						<li><strong>Cookies técnicas:</strong> Imprescindibles para el funcionamiento del sitio web</li>
+						<li><strong>Cookies de preferencias:</strong> Permiten recordar las opciones de personalización del usuario (tema, modo oscuro)</li>
+					</ul>
+					<p><strong>IMPORTANTE:</strong> Este sitio web NO utiliza cookies de análisis, publicidad, ni seguimiento de terceros (como Google Analytics, Facebook Pixel, etc.).</p>
+
+					<h6>4. BASE LEGAL</h6>
+					<p>De conformidad con el artículo 22.2 de la LSSI-CE, las cookies técnicas y de preferencias están exceptuadas de requerir consentimiento previo del usuario.</p>
+
+					<h6>5. CÓMO DESACTIVAR LAS COOKIES</h6>
+					<p>Puede configurar su navegador para rechazar cookies o eliminar las existentes. Tenga en cuenta que desactivar las cookies puede afectar a la funcionalidad del sitio web.</p>
+					<p><strong>Instrucciones por navegador:</strong></p>
+					<ul>
+						<li><strong>Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios</li>
+						<li><strong>Firefox:</strong> Opciones > Privacidad y seguridad > Cookies y datos del sitio</li>
+						<li><strong>Safari:</strong> Preferencias > Privacidad > Gestión de cookies</li>
+						<li><strong>Edge:</strong> Configuración > Cookies y permisos del sitio</li>
+					</ul>
+
+					<h6>6. ACTUALIZACIÓN DE LA POLÍTICA DE COOKIES</h6>
+					<p>Esta política puede ser modificada cuando lo exija la legislación vigente o si se añaden nuevas cookies. Se recomienda revisar esta página periódicamente.</p>
+
+					<p class="mt-3"><small><strong>Última actualización:</strong> Enero 2025</small></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Términos y Condiciones -->
+	<div class="modal fade" id="modalTerminos" tabindex="-1" aria-labelledby="terminosLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="terminosLabel">Términos y Condiciones de Uso</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>1. OBJETO Y ÁMBITO DE APLICACIÓN</h6>
+					<p>Los presentes Términos y Condiciones regulan el acceso y uso del sitio web www.futbolistainversor.com (en adelante, "el Sitio"), propiedad de Jorge Alonso Martin.</p>
+					<p>El acceso al Sitio implica la aceptación íntegra de estos Términos y Condiciones.</p>
+
+					<h6>2. CONDICIONES DE ACCESO Y USO</h6>
+					<p>El acceso al Sitio es gratuito. El usuario se compromete a:</p>
+					<ul>
+						<li>Utilizar el Sitio de conformidad con la legislación vigente y estos Términos</li>
+						<li>No realizar actividades ilícitas, fraudulentas o que vulneren derechos de terceros</li>
+						<li>No introducir virus, malware o cualquier código malicioso</li>
+						<li>No realizar ingeniería inversa, descompilación o intentos de acceso no autorizado</li>
+					</ul>
+
+					<h6>3. PROPIEDAD INTELECTUAL E INDUSTRIAL</h6>
+					<p>Todos los contenidos del Sitio (textos, imágenes, logotipos, marcas, diseño, código fuente, etc.) son propiedad exclusiva de Jorge Alonso Martin o se utilizan bajo licencia.</p>
+					<p><strong>Queda expresamente prohibido:</strong></p>
+					<ul>
+						<li>Reproducir, copiar, distribuir o comunicar públicamente los contenidos sin autorización</li>
+						<li>Modificar, transformar o crear obras derivadas</li>
+						<li>Utilizar los contenidos con fines comerciales sin consentimiento previo</li>
+						<li>Extraer, reutilizar o explotar de cualquier forma los contenidos</li>
+					</ul>
+
+					<h6>4. CONTENIDOS EDUCATIVOS - EXCLUSIÓN DE ASESORAMIENTO FINANCIERO</h6>
+					<p><strong>ADVERTENCIA IMPORTANTE:</strong></p>
+					<p>Los contenidos sobre inversión y finanzas publicados en este Sitio tienen <strong>carácter exclusivamente educativo y formativo</strong>. NO constituyen:</p>
+					<ul>
+						<li>Asesoramiento financiero personalizado</li>
+						<li>Recomendaciones de inversión específicas</li>
+						<li>Garantía de rentabilidad o resultados</li>
+					</ul>
+					<p>Toda decisión de inversión es responsabilidad exclusiva del usuario, quien debe consultar con asesores profesionales antes de tomar decisiones financieras.</p>
+					<p>El titular no se responsabiliza de las pérdidas o daños derivados de decisiones de inversión tomadas por los usuarios.</p>
+
+					<h6>5. EXCLUSIÓN DE GARANTÍAS Y LIMITACIÓN DE RESPONSABILIDAD</h6>
+					<p>El titular no garantiza:</p>
+					<ul>
+						<li>La disponibilidad continua e ininterrumpida del Sitio</li>
+						<li>La ausencia de errores en los contenidos</li>
+						<li>La ausencia de virus u otros elementos dañinos</li>
+					</ul>
+					<p>El titular no será responsable de:</p>
+					<ul>
+						<li>Interrupciones del servicio por causas técnicas o de fuerza mayor</li>
+						<li>Daños en equipos informáticos causados durante el acceso al Sitio</li>
+						<li>Contenidos de sitios web de terceros enlazados desde este Sitio</li>
+					</ul>
+
+					<h6>6. ENLACES A TERCEROS</h6>
+					<p>El Sitio puede contener enlaces a sitios web de terceros. El titular no se responsabiliza de los contenidos, políticas de privacidad o prácticas de dichos sitios externos.</p>
+
+					<h6>7. MODIFICACIONES</h6>
+					<p>El titular se reserva el derecho a modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán efectivas desde su publicación en el Sitio.</p>
+					<p>Se recomienda revisar periódicamente estos Términos para estar informado de posibles cambios.</p>
+
+					<h6>8. DURACIÓN Y TERMINACIÓN</h6>
+					<p>El titular se reserva el derecho a suspender, limitar o restringir el acceso al Sitio, total o parcialmente, de forma temporal o definitiva, sin previo aviso.</p>
+
+					<h6>9. LEY APLICABLE Y JURISDICCIÓN</h6>
+					<p>Los presentes Términos y Condiciones se rigen por la legislación española.</p>
+					<p>Para la resolución de cualquier controversia derivada del acceso o uso del Sitio, las partes se someten a los Juzgados y Tribunales del domicilio del usuario consumidor, renunciando expresamente a cualquier otro fuero que pudiera corresponderles.</p>
+
+					<h6>10. CONTACTO</h6>
+					<p>Para cualquier consulta sobre estos Términos y Condiciones, puede contactar con nosotros en:</p>
+					<ul>
+						<li><strong>Email:</strong> info@futbolistainversor.com</li>
+						<li><strong>Dirección:</strong> C/ Prados de poo, 177, Bajo C, 39310 Miengo, Santander, España</li>
+					</ul>
+
+					<p class="mt-3"><small><strong>Última actualización:</strong> Enero 2025</small></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- END LEGAL MODALS -->
+
 <!-- ================== BEGIN BASE JS ================== -->
 	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	
+	<script src="assets/js/app.min.js?v=4"></script>
+
 </body>
 </html>

@@ -192,3 +192,19 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Large video files (use CDN or external hosting)
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
+*.webm
+
+# Other large media files
+*.psd
+*.ai
+*.sketch
