@@ -141,6 +141,9 @@ form_errors.log
 rate_limit.json
 vendor/
 
+# CSS - Solo subir versión minificada
+assets/css/one-page-parallax/app.css
+
 # Spyder project settings
 .spyderproject
 .spyproject
