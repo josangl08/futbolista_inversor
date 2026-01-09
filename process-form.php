@@ -166,11 +166,15 @@ if (!empty($errors)) {
 // Opción 1: Usar PHPMailer (RECOMENDADO)
 // IMPORTANTE: Debes instalar PHPMailer primero en Hostinger
 // Tutorial: https://www.hostinger.com/es/tutoriales/enviar-emails-usando-php-mail
-/*
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
-require 'vendor/autoload.php'; // O la ruta donde instalaste PHPMailer
+// Cargar PHPMailer manualmente (instalación sin Composer)
+require 'vendor/phpmailer/PHPMailer-master/src/Exception.php';
+require 'vendor/phpmailer/PHPMailer-master/src/PHPMailer.php';
+require 'vendor/phpmailer/PHPMailer-master/src/SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -237,13 +241,12 @@ try {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Error al enviar el mensaje']);
 }
-*/
 
 // ===========================================================================
 // Opción 2: Usar mail() de PHP (NO RECOMENDADO - solo para pruebas)
 // Usando variables de entorno desde .env
 // ===========================================================================
-
+/*
 $to = CONTACT_EMAIL; // Desde .env
 $subject = 'Nuevo mensaje de contacto - ' . $nombre;
 $headers = "MIME-Version: 1.0\r\n";
@@ -289,5 +292,6 @@ if (mail($to, $subject, $body, $headers)) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Error al enviar el mensaje']);
 }
+*/
 
 ?>
