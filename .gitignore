@@ -206,7 +206,7 @@ cython_debug/
 
 # Carpetas de diseño y marketing (no necesarias en producción)
 Instagram Templates/
-LOGO/
+LOGOS/
 
 # Documentación interna y archivos de diseño (no necesarios en producción)
 PROJECT_CONTEXT.md
