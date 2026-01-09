@@ -8,7 +8,7 @@
 	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN core-css ================== -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
 	<link href="assets/css/one-page-parallax/vendor.min.css?v=2" rel="stylesheet" />
 	<link href="assets/css/one-page-parallax/app.css?v=2" rel="stylesheet" />
 	<style>
@@ -451,8 +451,8 @@
 								<div class="title text-theme">Ex-futbolista e Inversor</div>
 								<p>Ex futbolista profesional que ha transformado su experiencia en el campo en éxito financiero, y ahora comparte sus estrategias para que tú también ganes el partido de tu vida.</p>
 								<div class="social">
-									<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-									<a href="https://www.instagram.com/futbolistainversor/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+									<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+									<a href="https://www.instagram.com/futbolistainversor/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
 									<!-- <a href="#"><i class="fab fa-x-twitter fa-lg fa-fw"></i></a> -->
 									<!-- <a href="#"><i class="fab fa-linkedin fa-lg fa-fw"></i></a> -->
 								</div>
@@ -462,13 +462,17 @@
 					</div>
 					<!-- end col-4 -->
 					<!-- begin col-8 -->
+					
 					<div class="col-lg-8">
-						<video controls poster= "assets/img/educacion_financiera.jpg"
+						<iframe src="https://player.vimeo.com/video/1152328573?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width=100% height="500" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="presentacion"></iframe>
+						<!-- <video controls poster= "assets/img/educacion_financiera.jpg"
 						style="width: 100%;">
 							<source src="assets/img/presentacion.mp4" type="video/mp4">
 							Your browser does not support the video tag.
-						</video>
+						</video> -->
 					</div>
+					
+					
 					<!-- end col-8 -->
 				</div>
 				<!-- end row -->
@@ -904,7 +908,7 @@
 								<li>Certificado</li>
 							</ul>
 							<div class="footer">
-								<a href="#" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6589884" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -980,23 +984,23 @@
 					<!-- end col-6 -->
 					<!-- begin col-6 -->
 					<div class="col-lg-6 form-col" data-animation="true" data-animation-type="animate__fadeInRight">
-						<form class="form-horizontal">
+						<form class="form-horizontal" action="process-form.php" method="POST">
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right">Nombre <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
-									<input type="text" class="form-control" />
+									<input type="text" name="nombre" class="form-control" required />
 								</div>
 							</div>
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right">Email <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
-									<input type="text" class="form-control" />
+									<input type="email" name="email" class="form-control" required />
 								</div>
 							</div>
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right">Mensaje <span class="text-theme">*</span></label>
 								<div class="col-lg-9">
-									<textarea class="form-control" rows="5"></textarea>
+									<textarea name="mensaje" class="form-control" rows="5" required></textarea>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -1038,7 +1042,7 @@
 					<img src="assets/img/LOGO/Diseño_Logo-7_copia-removebg-preview.png" alt="Futbolista Inversor Logo" />
 				</div>
 				<div class="footer-social">
-					<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" aria-label="Facebook">
+					<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
 						<i class="fab fa-facebook-f"></i>
 					</a>
 					<a href="https://www.instagram.com/futbolistainversor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -1075,21 +1079,21 @@
 		<!-- end #footer -->
 		<!-- BEGIN theme-panel -->
 	<div class="theme-panel">
-		<a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+		<a href="#" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
 		<div class="theme-panel-content">
 			<div class="theme-list clearfix">
-				<div class="theme-list-item"><a href="javascript:;" class="bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-orange" data-theme-class="theme-orange" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item active"><a href="javascript:;" class="bg-corporate-green" data-theme-class="theme-corporate-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Corporate Green" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Aqua" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo" data-original-title="" title="">&nbsp;</a></div>
-				<div class="theme-list-item"><a href="javascript:;" class="bg-gray-500" data-theme-class="theme-gray-500" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Gray" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-orange" data-theme-class="theme-orange" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item active"><a href="#" class="bg-corporate-green" data-theme-class="theme-corporate-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Corporate Green" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Aqua" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo" data-original-title="" title="">&nbsp;</a></div>
+				<div class="theme-list-item"><a href="#" class="bg-gray-500" data-theme-class="theme-gray-500" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Gray" data-original-title="" title="">&nbsp;</a></div>
 			</div>
 			<hr class="mb-0" />
 			<div class="row mt-10px pt-3px">

@@ -1,0 +1,24 @@
+# robots.txt para Futbolista Inversor
+# Configuración para motores de búsqueda
+
+# Permitir todos los crawlers principales
+User-agent: *
+
+# Bloquear acceso a directorios administrativos y técnicos
+Disallow: /assets/plugins/
+Disallow: /.git/
+Disallow: /.venv_FI/
+Disallow: /.well-known/
+Disallow: /process-form.php
+
+# Permitir acceso al resto del sitio
+Allow: /
+Allow: /assets/img/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Sitemap (actualizar con la URL real cuando el sitio esté en producción)
+Sitemap: https://futbolistainversor.com/sitemap.xml
+
+# Información adicional
+# Para más información sobre este archivo: https://www.robotstxt.org/

@@ -136,6 +136,11 @@ ENV/
 env.bak/
 venv.bak/
 
+# PHP - Archivos generados y logs del formulario
+form_errors.log
+rate_limit.json
+vendor/
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -195,6 +200,14 @@ cython_debug/
 # macOS system files
 .DS_Store
 **/.DS_Store
+
+# Carpetas de diseño y marketing (no necesarias en producción)
+Instagram Templates/
+LOGO/
+
+# Documentación interna y archivos de diseño (no necesarios en producción)
+PROJECT_CONTEXT.md
+visual_identity.json
 
 # Large video files (use CDN or external hosting)
 *.mp4

@@ -1,0 +1,13 @@
+# security.txt - RFC 9116
+# Información de contacto para divulgación responsable de vulnerabilidades
+
+Contact: mailto:info@futbolistainversor.com
+Preferred-Languages: es, en
+Canonical: https://futbolistainversor.com/.well-known/security.txt
+Expires: 2026-12-31T23:59:59z
+
+# Acerca de este archivo:
+# Este archivo proporciona información de contacto para que los investigadores de seguridad
+# puedan informar de vulnerabilidades de forma responsable.
+#
+# Más información: https://securitytxt.org/
