@@ -211,6 +211,7 @@ LOGO/
 # Documentación interna y archivos de diseño (no necesarios en producción)
 PROJECT_CONTEXT.md
 visual_identity.json
+INSTRUCCIONES_DESPLIEGUE.md
 
 # Large video files (use CDN or external hosting)
 *.mp4
