@@ -13,7 +13,10 @@
 function loadEnv($path = '.env') {
     if (!file_exists($path)) {
         error_log("ERROR: Archivo .env no encontrado en: " . $path);
-        die('Error de configuración del servidor. Contacta al administrador.');
+        header('Content-Type: application/json');
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'Error de configuración del servidor. Contacta al administrador.']);
+        exit;
     }
 
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -47,7 +50,8 @@ ini_set('display_errors', 0); // Cambiar a 0 en producción
 ini_set('log_errors', 1);
 ini_set('error_log', 'form_errors.log');
 
-// Headers de seguridad
+// Headers de seguridad y JSON
+header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
 header('X-XSS-Protection: 1; mode=block');
@@ -112,7 +116,8 @@ function checkRateLimit($ip) {
 // Verificar que sea POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    die('Método no permitido');
+    echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+    exit;
 }
 
 // Obtener IP del cliente
@@ -121,7 +126,8 @@ $clientIP = $_SERVER['REMOTE_ADDR'];
 // Verificar rate limiting
 if (!checkRateLimit($clientIP)) {
     http_response_code(429);
-    die('Demasiados intentos. Por favor, espera 15 minutos.');
+    echo json_encode(['success' => false, 'message' => 'Demasiados intentos. Por favor, espera 15 minutos.']);
+    exit;
 }
 
 // Validar CSRF token (descomentar cuando implementes sesiones)
@@ -141,21 +147,21 @@ $mensaje = isset($_POST['mensaje']) ? sanitizeInput($_POST['mensaje']) : '';
 $errors = [];
 
 if (empty($nombre) || strlen($nombre) < 2) {
-    $errors[] = 'El nombre debe tener al menos 2 caracteres';
+    $errors['nombre'] = 'El nombre debe tener al menos 2 caracteres';
 }
 
 if (empty($email) || !validateEmail($email)) {
-    $errors[] = 'Email inválido';
+    $errors['email'] = 'Email inválido';
 }
 
 if (empty($mensaje) || strlen($mensaje) < 10) {
-    $errors[] = 'El mensaje debe tener al menos 10 caracteres';
+    $errors['mensaje'] = 'El mensaje debe tener al menos 10 caracteres';
 }
 
 // Si hay errores, retornar
 if (!empty($errors)) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'errors' => $errors]);
+    echo json_encode(['success' => false, 'errors' => $errors, 'message' => 'Por favor, corrige los errores en el formulario']);
     exit;
 }
 
@@ -233,7 +239,6 @@ try {
     error_log("Formulario enviado exitosamente desde {$email}");
 
     // Respuesta exitosa
-    header('Content-Type: application/json');
     echo json_encode(['success' => true, 'message' => 'Mensaje enviado correctamente']);
 
 } catch (Exception $e) {
