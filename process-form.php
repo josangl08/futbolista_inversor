@@ -14,7 +14,7 @@ function loadEnv($path = '.env') {
     if (!file_exists($path)) {
         error_log("ERROR: Archivo .env no encontrado en: " . $path);
         header('Content-Type: application/json');
-        http_response_code(500);
+        http_response_code(200);
         echo json_encode(['success' => false, 'message' => 'Error de configuración del servidor. Contacta al administrador.']);
         exit;
     }
@@ -125,8 +125,8 @@ $clientIP = $_SERVER['REMOTE_ADDR'];
 
 // Verificar rate limiting
 if (!checkRateLimit($clientIP)) {
-    http_response_code(429);
-    echo json_encode(['success' => false, 'message' => 'Demasiados intentos. Por favor, espera 15 minutos.']);
+    http_response_code(200);
+    echo json_encode(['success' => false, 'message' => 'Demasiados intentos. Por favor, espera 15 minutos.', 'rateLimit' => true]);
     exit;
 }
 
@@ -158,9 +158,9 @@ if (empty($mensaje) || strlen($mensaje) < 10) {
     $errors['mensaje'] = 'El mensaje debe tener al menos 10 caracteres';
 }
 
-// Si hay errores, retornar
+// Si hay errores, retornar (con código 200 para que AJAX lo procese como success)
 if (!empty($errors)) {
-    http_response_code(400);
+    http_response_code(200);
     echo json_encode(['success' => false, 'errors' => $errors, 'message' => 'Por favor, corrige los errores en el formulario']);
     exit;
 }
@@ -243,8 +243,8 @@ try {
 
 } catch (Exception $e) {
     error_log("Error al enviar email: {$mail->ErrorInfo}");
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Error al enviar el mensaje']);
+    http_response_code(200);
+    echo json_encode(['success' => false, 'message' => 'Error al enviar el mensaje. Por favor, intenta de nuevo o contacta a info@futbolistainversor.com']);
 }
 
 // ===========================================================================
