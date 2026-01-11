@@ -144,6 +144,12 @@ vendor/
 # CSS - Solo subir versión minificada
 assets/css/one-page-parallax/app.css
 
+# Archivos temporales de CSS
+*.backup
+*.old
+*.temp
+*.bak
+
 # Spyder project settings
 .spyderproject
 .spyproject
