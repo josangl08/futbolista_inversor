@@ -23803,19 +23803,33 @@ p {
     width: 33.33333%;
 }
 
-/* Móviles: cards de precio al 100% del ancho */
+/* Móviles: cards de precio con jerarquía visual */
 @media (max-width: 767px) {
 	.pricing-table {
 		display: block !important;
 	}
 
+	/* Cards laterales (Basic y Deluxe): 85% ancho, centradas */
 	#pricing .pricing-table.pricing-col-3 > li {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: 85% !important;
+		max-width: 85% !important;
 		padding: 10px 0 !important;
-		margin: 0 !important;
+		margin: 10px auto !important;
 		float: none !important;
 		display: block !important;
+	}
+
+	/* Card Premium (del medio): 100% ancho con sombra más fuerte */
+	#pricing .pricing-table.pricing-col-3 > li:nth-child(2) {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 10px 0 !important;
+	}
+
+	/* Eliminar el scale y aumentar la sombra en móvil */
+	#pricing .pricing-table.pricing-col-3 > li:nth-child(2) .pricing-container {
+		transform: none !important;
+		box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 15px 35px rgba(0, 0, 0, 0.5) !important;
 	}
 }
 
