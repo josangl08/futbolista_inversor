@@ -32605,3 +32605,34 @@ p {
 .pricing-icon {
 	color: #1b2c4d;
 }
+
+/* Margen lateral para todas las cards de precios */
+.pricing-table.pricing-col-3 > li {
+	margin: 0 20px;
+}
+
+/* Efecto hover en todas las tarjetas de precios */
+.pricing-table .pricing-container {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-table .pricing-container:hover {
+	transform: scale(1.05);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Resaltar la tarjeta del medio (Premium) */
+.pricing-table.pricing-col-3 > li:nth-child(2) {
+	z-index: 10;
+	position: relative;
+}
+
+.pricing-table.pricing-col-3 > li:nth-child(2) .pricing-container {
+	transform: scale(1.12);
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-table.pricing-col-3 > li:nth-child(2) .pricing-container:hover {
+	transform: scale(1.17);
+	box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 15px 25px rgba(0, 0, 0, 0.4);
+}
