@@ -32596,3 +32596,12 @@ p {
 	background-color: rgb(40, 200, 140);
 	border-color: rgb(40, 200, 140);
 }
+
+/* Pricing cards - Left align features text and icon color */
+.pricing-table .features {
+	text-align: left;
+}
+
+.pricing-icon {
+	color: #1b2c4d;
+}
