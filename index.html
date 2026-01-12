@@ -737,7 +737,7 @@
 								<li>&nbsp;</li>
 							</ul>
 							<div class="footer">
-								<a href="jorge-alonso-s-school.teachable.com/purchase?product_id=6597569" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597569" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -759,7 +759,7 @@
 								<li>Certificado</li>
 							</ul>
 							<div class="footer">
-								<a href="" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597571" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -811,6 +811,16 @@
 									<textarea name="mensaje" class="form-control" rows="5" required></textarea>
 								</div>
 							</div>
+
+							<!-- Honeypot anti-spam (campo invisible) -->
+							<div style="position: absolute; left: -5000px;" aria-hidden="true">
+								<label for="website">Sitio web (no rellenar)</label>
+								<input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+							</div>
+
+							<!-- Timestamp para validación de tiempo -->
+							<input type="hidden" name="form_timestamp" id="form_timestamp" value="" />
+
 							<div class="row mb-3">
 								<label class="col-form-label col-lg-3 text-lg-right"></label>
 								<div class="col-lg-9">
@@ -1303,6 +1313,12 @@
 			const modalMensaje = document.getElementById('modalMensaje');
 			const modalHeader = document.getElementById('modalFormularioHeader');
 			const modalIcon = document.getElementById('modalIcon');
+
+			// Establecer timestamp cuando se carga el formulario (anti-spam)
+			const timestampField = document.getElementById('form_timestamp');
+			if (timestampField) {
+				timestampField.value = Date.now();
+			}
 
 			form.addEventListener('submit', function(e) {
 				e.preventDefault(); // Prevenir envío tradicional

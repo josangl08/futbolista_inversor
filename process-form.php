@@ -113,6 +113,101 @@ function checkRateLimit($ip) {
     return true;
 }
 
+/**
+ * Verificar honeypot (campo que debe estar vacío)
+ */
+function checkHoneypot($value) {
+    return empty($value);
+}
+
+/**
+ * Verificar tiempo mínimo desde que se cargó el formulario
+ * Bots envían muy rápido (< 3 segundos)
+ */
+function checkTimestamp($timestamp) {
+    if (empty($timestamp) || !is_numeric($timestamp)) {
+        return false; // Timestamp inválido o faltante
+    }
+
+    $currentTime = round(microtime(true) * 1000); // Timestamp en milisegundos
+    $timeDiff = ($currentTime - $timestamp) / 1000; // Diferencia en segundos
+
+    // Mínimo 3 segundos, máximo 1 hora (3600 segundos)
+    return $timeDiff >= 3 && $timeDiff <= 3600;
+}
+
+/**
+ * Detectar palabras spam comunes
+ */
+function containsSpamWords($text) {
+    $spamWords = [
+        'seo', 'rank', 'ranking', 'google 1st', 'first page', 'backlink', 'link building',
+        'increase traffic', 'boost sales', 'make money', 'work from home', 'bitcoin',
+        'cryptocurrency', 'investment opportunity', 'limited offer', 'act now',
+        'click here', 'buy now', 'discount', 'viagra', 'cialis', 'pharmacy',
+        'casino', 'lottery', 'prize', 'winner', 'congratulations you won',
+        'debt relief', 'weight loss', 'million dollars', 'nigerian prince',
+        'western union', 'wire transfer', 'bank account', 'credit card'
+    ];
+
+    $lowerText = strtolower($text);
+
+    foreach ($spamWords as $word) {
+        if (strpos($lowerText, $word) !== false) {
+            error_log("Spam detectado - Palabra: {$word} en texto: " . substr($text, 0, 100));
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Contar URLs en el texto
+ * Spam suele incluir múltiples enlaces
+ */
+function countUrls($text) {
+    $pattern = '/https?:\/\/[^\s]+/i';
+    preg_match_all($pattern, $text, $matches);
+    return count($matches[0]);
+}
+
+/**
+ * Validación anti-spam completa
+ */
+function isSpam($nombre, $email, $mensaje, $honeypot, $timestamp) {
+    // 1. Honeypot rellenado = bot
+    if (!checkHoneypot($honeypot)) {
+        error_log("Spam detectado - Honeypot rellenado");
+        return true;
+    }
+
+    // 2. Envío muy rápido = bot
+    if (!checkTimestamp($timestamp)) {
+        error_log("Spam detectado - Timestamp inválido o envío muy rápido");
+        return true;
+    }
+
+    // 3. Palabras spam en el mensaje o nombre
+    if (containsSpamWords($mensaje) || containsSpamWords($nombre)) {
+        return true;
+    }
+
+    // 4. Múltiples URLs en el mensaje (> 2)
+    if (countUrls($mensaje) > 2) {
+        error_log("Spam detectado - Demasiadas URLs: " . countUrls($mensaje));
+        return true;
+    }
+
+    // 5. Mensaje muy largo (> 2000 caracteres) = probable spam
+    if (strlen($mensaje) > 2000) {
+        error_log("Spam detectado - Mensaje muy largo: " . strlen($mensaje) . " caracteres");
+        return true;
+    }
+
+    return false;
+}
+
 // Verificar que sea POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -142,6 +237,21 @@ if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_tok
 $nombre = isset($_POST['nombre']) ? sanitizeInput($_POST['nombre']) : '';
 $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
 $mensaje = isset($_POST['mensaje']) ? sanitizeInput($_POST['mensaje']) : '';
+
+// Obtener campos anti-spam
+$honeypot = isset($_POST['website']) ? $_POST['website'] : '';
+$timestamp = isset($_POST['form_timestamp']) ? $_POST['form_timestamp'] : '';
+
+// VALIDACIÓN ANTI-SPAM (antes de otras validaciones)
+if (isSpam($nombre, $email, $mensaje, $honeypot, $timestamp)) {
+    http_response_code(200);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Tu mensaje parece spam. Si eres un usuario legítimo, por favor contacta con info@futbolistainversor.com',
+        'spam_detected' => true
+    ]);
+    exit;
+}
 
 // Validaciones
 $errors = [];

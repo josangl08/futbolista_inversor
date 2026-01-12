@@ -218,6 +218,7 @@ LOGOS/
 PROJECT_CONTEXT.md
 visual_identity.json
 INSTRUCCIONES_DESPLIEGUE.md
+ANTI_SPAM_README.md
 
 # Large video files (use CDN or external hosting)
 *.mp4
