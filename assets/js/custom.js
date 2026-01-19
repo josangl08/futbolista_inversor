@@ -174,12 +174,32 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
 	const stickyBar = document.getElementById('stickyBar');
 
-	if (!stickyBar) return;
-
-	// Check if user has closed the bar (cookie check)
-	if (getCookie('stickyBarClosed') === 'true') {
-		return; // Don't show if closed within 7 days
+	if (!stickyBar) {
+		console.error('Sticky bar element not found!');
+		return;
 	}
+
+	console.log('Sticky bar element found:', stickyBar);
+
+	// Check if user has closed the bar (using localStorage)
+	const closedData = localStorage.getItem('stickyBarClosed');
+
+	if (closedData) {
+		const closedTime = parseInt(closedData);
+		const now = new Date().getTime();
+		const oneDay = 24 * 60 * 60 * 1000; // 1 día en milisegundos
+
+		if (now - closedTime < oneDay) {
+			console.log('Sticky bar hidden - closed less than 1 day ago');
+			return; // Don't show if closed within 1 day
+		} else {
+			// Ha pasado más de 1 día, eliminar el registro
+			localStorage.removeItem('stickyBarClosed');
+			console.log('Sticky bar 1-day period expired, showing again');
+		}
+	}
+
+	console.log('Setting up scroll listener for sticky bar');
 
 	// Show sticky bar after 3 seconds of scroll
 	let hasScrolled = false;
@@ -190,7 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		clearTimeout(scrollTimer);
 		scrollTimer = setTimeout(function() {
+			console.log('Current scroll position:', window.scrollY);
 			if (window.scrollY > 300) { // Show after scrolling 300px
+				console.log('Showing sticky bar');
 				stickyBar.style.display = 'block';
 				hasScrolled = true;
 			}
@@ -198,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
-// Close sticky bar and set cookie
+// Close sticky bar and save to localStorage
 function closeStickyBar() {
 	const stickyBar = document.getElementById('stickyBar');
 	if (stickyBar) {
@@ -207,8 +229,10 @@ function closeStickyBar() {
 			stickyBar.style.display = 'none';
 		}, 300);
 
-		// Set cookie for 7 days
-		setCookie('stickyBarClosed', 'true', 7);
+		// Save current timestamp to localStorage (for 1 day duration)
+		const now = new Date().getTime();
+		localStorage.setItem('stickyBarClosed', now.toString());
+		console.log('Sticky bar closed, will reappear in 1 day');
 	}
 }
 
