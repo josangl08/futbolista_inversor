@@ -34,7 +34,7 @@
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
 	<link href="assets/css/one-page-parallax/vendor.min.css?v=3" rel="stylesheet" />
-	<link href="assets/css/one-page-parallax/app.min.css?v=24" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.min.css?v=25" rel="stylesheet" />
 </head>
 <body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51' class="theme-corporate-green">
 
@@ -90,6 +90,7 @@
 						<li class="nav-item"><a class="nav-link active" href="#home" data-click="scroll-to-target">INICIO</a></li>
 						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">ENTRENADOR</a></li>
 						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">TEMARIO</a></li>
+						<li class="nav-item"><a class="nav-link" href="#lead-magnet" data-click="scroll-to-target">CLASE GRATIS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRECIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACTO</a></li>
 					</ul>
@@ -686,15 +687,160 @@
 			<!-- end containter -->
 		</div>
 		<!-- end #client -->
-		
+
+		<!-- begin #lead-magnet -->
+		<div id="lead-magnet" class="content" data-scrollview="true">
+			<!-- begin container -->
+			<div class="container">
+				<h2 class="content-title">Accede a la Clase Cero</h2>
+				<p class="content-desc">
+					Descubre los fundamentos de inversión que todo futbolista debe conocer.<br>
+					20 minutos que pueden cambiar tu relación con el dinero.
+				</p>
+
+				<!-- begin row -->
+				<div class="row align-items-center">
+					<!-- begin col-6 (Benefits) -->
+					<div class="col-lg-6" data-animation="true" data-animation-type="animate__fadeInLeft">
+						<div class="lead-magnet-benefits">
+							<h4 class="mb-4">En esta clase aprenderás:</h4>
+							<ul class="fa-ul mb-0">
+								<li class="mb-3">
+									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
+									Por qué el 78% de futbolistas quiebran 5 años después de retirarse
+								</li>
+								<li class="mb-3">
+									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
+									Los 3 pilares de una cartera de inversión sólida
+								</li>
+								<li class="mb-3">
+									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
+									Cómo proteger tu patrimonio de "inversiones milagro"
+								</li>
+								<li class="mb-3">
+									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
+									El método para calcular tu libertad financiera
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- end col-6 -->
+
+					<!-- begin col-6 (Form Card) -->
+					<div class="col-lg-6" data-animation="true" data-animation-type="animate__fadeInRight">
+						<div class="lead-magnet-form-card">
+							<div class="text-center mb-4">
+								<i class="fa fa-video fa-3x text-theme mb-3"></i>
+								<h5 class="mb-2">Recibe acceso instantáneo</h5>
+								<p class="text-muted small mb-0">Sin spam. Solo contenido de valor.</p>
+							</div>
+
+							<form id="leadMagnetForm" class="lead-form">
+								<div class="mb-3">
+									<input
+										type="text"
+										name="nombre"
+										class="form-control form-control-lg"
+										placeholder="Tu nombre"
+										required
+									>
+								</div>
+
+								<div class="mb-3">
+									<input
+										type="email"
+										name="email"
+										class="form-control form-control-lg"
+										placeholder="Tu email"
+										required
+									>
+								</div>
+
+								<button type="submit" class="btn btn-theme btn-lg w-100 mb-3">
+									<i class="fa fa-play-circle me-2"></i>
+									Acceder a la Clase Ahora
+								</button>
+
+								<p class="text-muted small text-center mb-0">
+									Al registrarte, entras automáticamente en la <strong>lista prioritaria</strong> para la próxima cohorte (Septiembre 2026).
+								</p>
+							</form>
+						</div>
+					</div>
+					<!-- end col-6 -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end #lead-magnet -->
+
 		<!-- begin #pricing -->
 		<div id="pricing" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Accede a tu Futuro</h2>
 				<p class="content-desc">
-					
+
 				</p>
+
+				<!-- begin enrollment-banner (CLOSED) -->
+				<div class="enrollment-banner closed" id="enrollmentBanner">
+					<div class="enrollment-content">
+						<i class="fa fa-lock fa-2x mb-3"></i>
+						<h3>Inscripciones Cerradas</h3>
+						<p class="mb-4">
+							La próxima cohorte comienza en <strong>Septiembre 2026</strong>.<br>
+							Las inscripciones abrirán del 1 al 14 de Septiembre.
+						</p>
+						<p class="mb-4">
+							Mientras tanto, accede GRATIS a la <strong>Clase Cero</strong> y entra en la lista prioritaria:
+						</p>
+
+						<form class="waitlist-form" id="waitlistForm">
+							<div class="row justify-content-center">
+								<div class="col-lg-8">
+									<div class="row g-2">
+										<div class="col-md-5">
+											<input
+												type="text"
+												name="nombre"
+												class="form-control"
+												placeholder="Tu nombre"
+												required
+											>
+										</div>
+										<div class="col-md-5">
+											<input
+												type="email"
+												name="email"
+												class="form-control"
+												placeholder="Tu email"
+												required
+											>
+										</div>
+										<div class="col-md-2">
+											<button type="submit" class="btn btn-theme w-100">
+												<i class="fa fa-arrow-right"></i>
+											</button>
+										</div>
+									</div>
+									<p class="text-muted small text-center mt-3 mb-0">
+										Recibirás acceso inmediato a la Clase Cero
+									</p>
+								</div>
+							</div>
+						</form>
+
+						<div class="mt-4">
+							<a href="#lead-magnet" class="btn btn-outline-theme btn-lg">
+								Ver Detalles de la Clase Cero
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- end enrollment-banner -->
+
 				<!-- begin pricing-table -->
 				<ul class="pricing-table pricing-col-3">
 					<li data-animation="true" data-animation-type="animate__fadeInUp">
@@ -1209,6 +1355,28 @@
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js?v=4"></script>
 	<script src="assets/js/custom.js?v=1"></script>
+
+	<!-- begin sticky-bar -->
+	<div class="sticky-bar" id="stickyBar" style="display: none;">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-md-8 col-sm-12">
+					<i class="fa fa-gift me-2"></i>
+					<strong>Próxima apertura en Septiembre.</strong>
+					<span class="d-none d-sm-inline">Únete a la lista prioritaria y llévate la Clase Cero de regalo.</span>
+				</div>
+				<div class="col-md-4 col-sm-12 text-end">
+					<a href="#lead-magnet" class="btn btn-sm btn-theme me-2">
+						Quiero mi Clase Gratis
+					</a>
+					<button class="btn-close-sticky" onclick="closeStickyBar()" aria-label="Cerrar">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end sticky-bar -->
 
 </body>
 </html>

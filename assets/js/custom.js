@@ -166,3 +166,163 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 });
+
+// ============================================================================
+// STICKY BAR FUNCTIONALITY
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+	const stickyBar = document.getElementById('stickyBar');
+
+	if (!stickyBar) return;
+
+	// Check if user has closed the bar (cookie check)
+	if (getCookie('stickyBarClosed') === 'true') {
+		return; // Don't show if closed within 7 days
+	}
+
+	// Show sticky bar after 3 seconds of scroll
+	let hasScrolled = false;
+	let scrollTimer;
+
+	window.addEventListener('scroll', function() {
+		if (hasScrolled) return;
+
+		clearTimeout(scrollTimer);
+		scrollTimer = setTimeout(function() {
+			if (window.scrollY > 300) { // Show after scrolling 300px
+				stickyBar.style.display = 'block';
+				hasScrolled = true;
+			}
+		}, 3000); // Wait 3 seconds after scroll stops
+	});
+});
+
+// Close sticky bar and set cookie
+function closeStickyBar() {
+	const stickyBar = document.getElementById('stickyBar');
+	if (stickyBar) {
+		stickyBar.style.animation = 'slideDown 0.3s ease-out';
+		setTimeout(function() {
+			stickyBar.style.display = 'none';
+		}, 300);
+
+		// Set cookie for 7 days
+		setCookie('stickyBarClosed', 'true', 7);
+	}
+}
+
+// Cookie helper functions
+function setCookie(name, value, days) {
+	const date = new Date();
+	date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+	const expires = "expires=" + date.toUTCString();
+	document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+	const nameEQ = name + "=";
+	const ca = document.cookie.split(';');
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+	}
+	return null;
+}
+
+// ============================================================================
+// COUNTDOWN TIMER (Enrollment Open State)
+// ============================================================================
+
+// Configuration: Set enrollment end date
+const ENROLLMENT_END_DATE = new Date('2026-09-14T23:59:59').getTime();
+
+function updateCountdown() {
+	const now = new Date().getTime();
+	const distance = ENROLLMENT_END_DATE - now;
+
+	// If countdown is over, switch to CLOSED state
+	if (distance < 0) {
+		const banner = document.getElementById('enrollmentBanner');
+		if (banner) {
+			banner.classList.remove('open');
+			banner.classList.add('closed');
+		}
+		return;
+	}
+
+	// Calculate time units
+	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+	// Update DOM
+	const daysEl = document.getElementById('days');
+	const hoursEl = document.getElementById('hours');
+	const minutesEl = document.getElementById('minutes');
+
+	if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+	if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+	if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+}
+
+// Run countdown if banner is in OPEN state
+document.addEventListener('DOMContentLoaded', function() {
+	const banner = document.getElementById('enrollmentBanner');
+	if (banner && banner.classList.contains('open')) {
+		updateCountdown();
+		setInterval(updateCountdown, 60000); // Update every minute
+	}
+});
+
+// ============================================================================
+// FORM SUBMISSION HANDLERS - Lead Magnet & Waitlist
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+	// Lead Magnet Form (Main section)
+	const leadMagnetForm = document.getElementById('leadMagnetForm');
+	if (leadMagnetForm) {
+		handleLeadForm(leadMagnetForm, '#lead-magnet');
+	}
+
+	// Waitlist Form (Pricing banner)
+	const waitlistForm = document.getElementById('waitlistForm');
+	if (waitlistForm) {
+		handleLeadForm(waitlistForm, '#pricing');
+	}
+});
+
+function handleLeadForm(form, source) {
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+
+		const formData = new FormData(form);
+		const nombre = formData.get('nombre');
+		const email = formData.get('email');
+
+		// Disable button
+		const submitBtn = form.querySelector('button[type="submit"]');
+		const originalHTML = submitBtn.innerHTML;
+		submitBtn.disabled = true;
+		submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Procesando...';
+
+		// TODO: Send to Hostinger Reach API
+		// For now, simulate success and redirect to Teachable
+		setTimeout(function() {
+			// Construct Teachable URL with auto-enrollment coupon
+			const teachableURL = 'https://jorge-alonso-s-school.teachable.com/p/clase-cero?coupon=CLASE-CERO-2026';
+
+			// Show success message
+			alert('¡Perfecto! Redirigiendo a tu Clase Cero...');
+
+			// Redirect to Teachable
+			window.location.href = teachableURL;
+
+			// Reset button (in case redirect fails)
+			submitBtn.disabled = false;
+			submitBtn.innerHTML = originalHTML;
+		}, 1000);
+	});
+}
