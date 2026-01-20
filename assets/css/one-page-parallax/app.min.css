@@ -32283,16 +32283,9 @@ p {
     color: rgb(54, 227, 160) !important;
 }
 
-.theme-corporate-green .btn-theme {
-    background-color: rgb(54, 227, 160) !important;
-    border-color: rgb(54, 227, 160) !important;
-    color: #fff !important;
-}
-
-.theme-corporate-green .btn-theme:hover {
-    background-color: rgb(40, 198, 124) !important;
-    border-color: rgb(40, 198, 124) !important;
-}
+/* Los estilos de .btn-theme están definidos en reglas específicas más abajo
+   (#home .btn-outline-white, #contact .btn-outline-white, #pricing .btn-inverse,
+   .lead-magnet-form-card .btn-theme, .sticky-bar .btn-theme, #modalFormulario .btn-theme) */
 
 .theme-corporate-green .header.navbar-transparent .navbar-nav .nav-item .nav-link.active,
 .theme-corporate-green .header.navbar-transparent .navbar-nav .nav-item .nav-link:hover,
@@ -32349,27 +32342,52 @@ p {
 	border-left-color: rgb(54, 227, 160) !important;
 }
 #home .btn-primary,
-#pricing .btn-inverse,
-#contact .btn-primary {
+#pricing .btn-inverse {
 	color: #22282d !important;
 }
+/* ========================================
+   ESTILOS UNIFICADOS PARA TODOS LOS BOTONES
+   ======================================== */
+
+/* Estado normal: Fondo verde + texto oscuro + borde transparente */
 #home .btn-outline-white,
 #action-box .btn-outline-white,
 #contact .btn-outline-white,
-#pricing .btn-inverse {
+#pricing .btn-inverse,
+.lead-magnet-form-card .btn-theme,
+.sticky-bar .btn-theme {
+	background-color: rgb(54, 227, 160) !important;
+	background-image: none !important;
 	color: #22282d !important;
-	border: none !important;
+	border: 2px solid transparent !important;
+	border-image: none !important;
+	box-shadow: none !important;
+	outline: none !important;
+	transform: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
 }
+
+/* Hover unificado: Fondo oscuro + texto blanco + borde verde */
 #home .btn-outline-white:hover,
 #action-box .btn-outline-white:hover,
 #contact .btn-outline-white:hover,
-#pricing .btn-inverse:hover {
+#pricing .btn-inverse:hover,
+.lead-magnet-form-card .btn-theme:hover,
+.sticky-bar .btn-theme:hover,
+.enrollment-banner .btn-outline-theme:hover {
 	background: #22282d !important;
+	background-image: none !important;
 	color: #fff !important;
-}
-#contact .btn-primary:hover {
-	background: #22282d !important;
-	color: #fff !important;
+	border: 2px solid rgb(54, 227, 160) !important;
+	border-image: none !important;
+	box-shadow: none !important;
+	outline: none !important;
+	transform: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
 }
 .theme-panel {
 	display: none !important;
@@ -32694,10 +32712,10 @@ p {
 
 /* Form Card */
 .lead-magnet-form-card {
-	background: #ffffff;
+	background: linear-gradient(180deg, #1b2c4d 0%, #2d353c 100%);
 	border-radius: 0.6rem;
 	padding: 40px 30px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .lead-magnet-form-card .fa-video {
@@ -32705,34 +32723,36 @@ p {
 }
 
 .lead-magnet-form-card h5 {
-	color: #20252a;
+	color: #ffffff;
 	font-weight: 600;
 	margin-bottom: 0.5rem;
 }
 
+.lead-magnet-form-card .text-muted {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .lead-magnet-form-card .form-control {
 	border-width: 2px;
+	border-color: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff;
 	padding: 0.75rem 1rem;
 	font-size: 1rem;
 }
 
+.lead-magnet-form-card .form-control::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}
+
 .lead-magnet-form-card .form-control:focus {
 	border-color: rgb(54, 227, 160);
+	background: rgba(255, 255, 255, 0.15);
 	box-shadow: 0 0 0 0.25rem rgba(54, 227, 160, 0.25);
+	color: #ffffff;
 }
 
-.lead-magnet-form-card .btn-theme {
-	background-color: rgb(54, 227, 160);
-	border-color: rgb(54, 227, 160);
-	color: #fff;
-	font-weight: 600;
-	padding: 14px 30px;
-}
-
-.lead-magnet-form-card .btn-theme:hover {
-	background-color: rgb(40, 200, 140);
-	border-color: rgb(40, 200, 140);
-}
+/* Los estilos de .btn-theme están definidos en la sección unificada arriba */
 
 /* ========================================
    STICKY BAR (Bottom Fixed)
@@ -32786,18 +32806,11 @@ p {
 }
 
 .sticky-bar .btn-theme {
-	background-color: rgb(54, 227, 160);
-	border-color: rgb(54, 227, 160);
-	color: #fff;
 	padding: 8px 20px;
 	font-size: 0.875rem;
-	font-weight: 600;
 }
 
-.sticky-bar .btn-theme:hover {
-	background-color: rgb(40, 200, 140);
-	border-color: rgb(40, 200, 140);
-}
+/* Color, borde y hover están definidos en la sección unificada arriba */
 
 .btn-close-sticky {
 	background: transparent;
@@ -32829,7 +32842,7 @@ p {
    ======================================== */
 
 .enrollment-banner {
-	background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+	background: linear-gradient(180deg, #1b2c4d 0%, #2d353c 100%);
 	border-radius: 0.6rem;
 	padding: 50px 40px;
 	margin-bottom: 60px;
@@ -32884,18 +32897,6 @@ p {
 	color: #ffffff;
 }
 
-.waitlist-form .btn-theme {
-	background-color: rgb(54, 227, 160);
-	border-color: rgb(54, 227, 160);
-	height: 50px;
-	padding: 0;
-}
-
-.waitlist-form .btn-theme:hover {
-	background-color: rgb(40, 200, 140);
-	border-color: rgb(40, 200, 140);
-}
-
 /* Outline button for "Ver Detalles" */
 .enrollment-banner .btn-outline-theme {
 	border: 2px solid rgb(54, 227, 160);
@@ -32906,11 +32907,7 @@ p {
 	border-radius: 0.6rem;
 }
 
-.enrollment-banner .btn-outline-theme:hover {
-	background: rgb(54, 227, 160);
-	color: #ffffff;
-	border-color: rgb(54, 227, 160);
-}
+/* El hover está definido en la sección unificada arriba */
 
 /* Countdown Timer (OPEN state) */
 .countdown-timer {
@@ -32944,13 +32941,32 @@ p {
 	letter-spacing: 0.5px;
 }
 
+.countdown-separator {
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: rgb(54, 227, 160);
+	line-height: 1;
+	align-self: center;
+	animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+	0%, 49% {
+		opacity: 1;
+	}
+	50%, 100% {
+		opacity: 0;
+	}
+}
+
 /* State-specific styling */
 .enrollment-banner.closed {
-	background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+	background: linear-gradient(180deg, #1b2c4d 0%, #2d353c 100%);
 }
 
 .enrollment-banner.open {
-	background: linear-gradient(135deg, #1b7a4d 0%, #2d6e3c 100%);
+	background: linear-gradient(180deg, #1b2c4d 0%, #2d353c 100%);
+	border: 8px solid rgb(54, 227, 160);
 }
 
 /* ========================================

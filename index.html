@@ -34,7 +34,7 @@
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
 	<link href="assets/css/one-page-parallax/vendor.min.css?v=3" rel="stylesheet" />
-	<link href="assets/css/one-page-parallax/app.min.css?v=26" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.min.css?v=43" rel="stylesheet" />
 </head>
 <body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51' class="theme-corporate-green">
 
@@ -90,7 +90,7 @@
 						<li class="nav-item"><a class="nav-link active" href="#home" data-click="scroll-to-target">INICIO</a></li>
 						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">ENTRENADOR</a></li>
 						<li class="nav-item"><a class="nav-link" href="#work" data-click="scroll-to-target">TEMARIO</a></li>
-						<li class="nav-item"><a class="nav-link" href="#lead-magnet" data-click="scroll-to-target">CLASE GRATIS</a></li>
+						<li class="nav-item"><a class="nav-link" href="#lead-magnet" data-click="scroll-to-target">CALENTAMIENTO</a></li>
 						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRECIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACTO</a></li>
 					</ul>
@@ -692,7 +692,7 @@
 		<div id="lead-magnet" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
-				<h2 class="content-title">Accede a la Clase Cero</h2>
+				<h2 class="content-title">Accede Gratis al Tema 1: Calentamiento</h2>
 				<p class="content-desc">
 					Descubre los fundamentos de inversión que todo futbolista debe conocer.<br>
 					20 minutos que pueden cambiar tu relación con el dinero.
@@ -758,7 +758,7 @@
 
 								<button type="submit" class="btn btn-theme btn-lg w-100 mb-3">
 									<i class="fa fa-play-circle me-2"></i>
-									Acceder a la Clase Ahora
+									Acceder a la clase Gratis
 								</button>
 
 								<p class="text-muted small text-center mb-0">
@@ -784,61 +784,61 @@
 
 				</p>
 
-				<!-- begin enrollment-banner (CLOSED) -->
+				<!-- begin enrollment-banner -->
+				<!-- ESTADO CLOSED: Mostrar cuando las inscripciones están cerradas (mayoría del año) -->
+				<!--
 				<div class="enrollment-banner closed" id="enrollmentBanner">
 					<div class="enrollment-content">
 						<i class="fa fa-lock fa-2x mb-3"></i>
 						<h3>Inscripciones Cerradas</h3>
-						<p class="mb-4">
-							La próxima cohorte comienza en <strong>Septiembre 2026</strong>.<br>
-							Las inscripciones abrirán del 1 al 14 de Septiembre.
+						<p class="mb-3">
+							El curso comienza el <strong>16 de Septiembre de 2026</strong>
 						</p>
-						<p class="mb-4">
-							Mientras tanto, accede GRATIS a la <strong>Clase Cero</strong> y entra en la lista prioritaria:
+						<p class="mb-0">
+							Las inscripciones abrirán del <strong>1 al 14 de Septiembre de 2026</strong>
 						</p>
-
-						<form class="waitlist-form" id="waitlistForm">
-							<div class="row justify-content-center">
-								<div class="col-lg-8">
-									<div class="row g-2">
-										<div class="col-md-5">
-											<input
-												type="text"
-												name="nombre"
-												class="form-control"
-												placeholder="Tu nombre"
-												required
-											>
-										</div>
-										<div class="col-md-5">
-											<input
-												type="email"
-												name="email"
-												class="form-control"
-												placeholder="Tu email"
-												required
-											>
-										</div>
-										<div class="col-md-2">
-											<button type="submit" class="btn btn-theme w-100">
-												<i class="fa fa-arrow-right"></i>
-											</button>
-										</div>
+					</div>
+				</div>
+				-->
+				<!-- ESTADO OPEN: Descomentar cuando las inscripciones estén abiertas (1-14 Septiembre) -->
+				
+				<div class="enrollment-banner open" id="enrollmentBanner">
+					<div class="enrollment-content">
+						<div class="row align-items-center justify-content-center">
+							<!-- Columna izquierda: Icono, título y fecha -->
+							<div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+								<i class="fa fa-unlock-alt fa-2x mb-3"></i>
+								<h3>¡Inscripciones Abiertas!</h3>
+								<p class="mb-0">
+									El curso comienza el <strong>16 de Septiembre de 2026</strong>
+								</p>
+							</div>
+							<!-- Columna derecha: Texto + Countdown -->
+							<div class="col-md-6 text-center">
+								<p class="mb-3">
+									Esta oportunidad se cierra en:
+								</p>
+								<div class="countdown-timer">
+									<div class="countdown-item">
+										<span class="countdown-number" id="days">13</span>
+										<span class="countdown-label">días</span>
 									</div>
-									<p class="text-muted small text-center mt-3 mb-0">
-										Recibirás acceso inmediato a la Clase Cero
-									</p>
+									<span class="countdown-separator invisible">:</span>
+									<div class="countdown-item">
+										<span class="countdown-number" id="hours">05</span>
+										<span class="countdown-label">horas</span>
+									</div>
+									<span class="countdown-separator">:</span>
+									<div class="countdown-item">
+										<span class="countdown-number" id="minutes">23</span>
+										<span class="countdown-label">min</span>
+									</div>
 								</div>
 							</div>
-						</form>
-
-						<div class="mt-4">
-							<a href="#lead-magnet" class="btn btn-outline-theme btn-lg">
-								Ver Detalles de la Clase Cero
-							</a>
 						</div>
 					</div>
 				</div>
+				
 				<!-- end enrollment-banner -->
 
 				<!-- begin pricing-table -->
@@ -1354,7 +1354,7 @@
 <!-- ================== BEGIN BASE JS ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js?v=4"></script>
-	<script src="assets/js/custom.js?v=3"></script>
+	<script src="assets/js/custom.js?v=6"></script>
 
 	<!-- begin sticky-bar -->
 	<div class="sticky-bar" id="stickyBar" style="display: none;">
@@ -1363,11 +1363,11 @@
 				<div class="col-md-8 col-sm-12">
 					<i class="fa fa-gift me-2"></i>
 					<strong>Próxima apertura en Septiembre.</strong>
-					<span class="d-none d-sm-inline">Únete a la lista prioritaria y llévate la Clase Cero de regalo.</span>
+					<span class="d-none d-sm-inline">Únete a la lista prioritaria y llévate la primera clase de regalo.</span>
 				</div>
 				<div class="col-md-4 col-sm-12 text-end">
 					<a href="#lead-magnet" class="btn btn-sm btn-theme me-2">
-						Quiero mi Clase Gratis
+						Clase Gratuita
 					</a>
 					<button class="btn-close-sticky" onclick="closeStickyBar()" aria-label="Cerrar">
 						<i class="fa fa-times"></i>

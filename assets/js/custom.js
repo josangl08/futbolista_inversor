@@ -205,7 +205,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	let hasScrolled = false;
 	let scrollTimer;
 
+	// Function to adjust sticky bar position relative to footer
+	function adjustStickyBarPosition() {
+		if (stickyBar.style.display !== 'block') return;
+
+		const footer = document.getElementById('footer');
+		if (!footer) return;
+
+		const footerRect = footer.getBoundingClientRect();
+		const windowHeight = window.innerHeight;
+
+		// If footer is visible in viewport
+		if (footerRect.top < windowHeight) {
+			// Calculate how much to push up the sticky bar
+			const overlap = windowHeight - footerRect.top;
+			stickyBar.style.bottom = overlap + 'px';
+		} else {
+			// Footer not visible, keep sticky bar at bottom
+			stickyBar.style.bottom = '0px';
+		}
+	}
+
 	window.addEventListener('scroll', function() {
+		// Adjust sticky bar position on scroll
+		adjustStickyBarPosition();
+
 		if (hasScrolled) return;
 
 		clearTimeout(scrollTimer);
@@ -215,9 +239,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.log('Showing sticky bar');
 				stickyBar.style.display = 'block';
 				hasScrolled = true;
+				adjustStickyBarPosition(); // Adjust position when first shown
 			}
 		}, 3000); // Wait 3 seconds after scroll stops
 	});
+
+	// Also adjust on window resize
+	window.addEventListener('resize', adjustStickyBarPosition);
 });
 
 // Close sticky bar and save to localStorage
@@ -301,24 +329,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================================================
-// FORM SUBMISSION HANDLERS - Lead Magnet & Waitlist
+// FORM SUBMISSION HANDLER - Lead Magnet
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
 	// Lead Magnet Form (Main section)
 	const leadMagnetForm = document.getElementById('leadMagnetForm');
 	if (leadMagnetForm) {
-		handleLeadForm(leadMagnetForm, '#lead-magnet');
-	}
-
-	// Waitlist Form (Pricing banner)
-	const waitlistForm = document.getElementById('waitlistForm');
-	if (waitlistForm) {
-		handleLeadForm(waitlistForm, '#pricing');
+		handleLeadForm(leadMagnetForm);
 	}
 });
 
-function handleLeadForm(form, source) {
+function handleLeadForm(form) {
 	form.addEventListener('submit', function(e) {
 		e.preventDefault();
 
