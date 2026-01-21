@@ -34,7 +34,7 @@
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
 	<link href="assets/css/one-page-parallax/vendor.min.css?v=3" rel="stylesheet" />
-	<link href="assets/css/one-page-parallax/app.min.css?v=43" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.min.css?v=44" rel="stylesheet" />
 </head>
 <body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51' class="theme-corporate-green">
 
@@ -705,21 +705,25 @@
 						<div class="lead-magnet-benefits">
 							<h4 class="mb-4">En esta clase aprenderás:</h4>
 							<ul class="fa-ul mb-0">
-								<li class="mb-3">
+								<li class="mb-3 ps-3">
 									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
-									Por qué el 78% de futbolistas quiebran 5 años después de retirarse
+									<strong style="color: #1b2c4d">Adiós al estereotipo:</strong> No todo son fiestas, coches y tatuajes
 								</li>
-								<li class="mb-3">
+								<li class="mb-3 ps-3">
 									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
-									Los 3 pilares de una cartera de inversión sólida
+									<strong style="color: #1b2c4d">El error nº 1</strong> que lleva a la ruina al deportista
 								</li>
-								<li class="mb-3">
+								<li class="mb-3 ps-3">
 									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
-									Cómo proteger tu patrimonio de "inversiones milagro"
+									<strong style="color: #1b2c4d">Tu futuro:</strong> Por qué las finanzas son tu mejor defensa
 								</li>
-								<li class="mb-3">
+								<li class="mb-3 ps-3">
 									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
-									El método para calcular tu libertad financiera
+									<strong style="color: #1b2c4d">Caso real:</strong> Mi transformación de atleta a inversor
+								</li>
+								<li class="mb-3 ps-3">
+									<span class="fa-li"><i class="fa fa-check-circle text-theme"></i></span>
+									<strong style="color: #1b2c4d">El "Plan de Juego":</strong> Hoja de ruta completa del curso
 								</li>
 							</ul>
 						</div>
@@ -758,7 +762,7 @@
 
 								<button type="submit" class="btn btn-theme btn-lg w-100 mb-3">
 									<i class="fa fa-play-circle me-2"></i>
-									Acceder a la clase Gratis
+									Acceder a la Clase Gratis
 								</button>
 
 								<p class="text-muted small text-center mb-0">
@@ -785,9 +789,8 @@
 				</p>
 
 				<!-- begin enrollment-banner -->
-				<!-- ESTADO CLOSED: Mostrar cuando las inscripciones están cerradas (mayoría del año) -->
-				<!--
-				<div class="enrollment-banner closed" id="enrollmentBanner">
+				<!-- ESTADO CLOSED: Controlado por JavaScript según COURSE_CONFIG.enrollmentStatus -->
+				<div class="enrollment-banner closed" id="enrollmentBannerClosed" style="display: none;">
 					<div class="enrollment-content">
 						<i class="fa fa-lock fa-2x mb-3"></i>
 						<h3>Inscripciones Cerradas</h3>
@@ -795,14 +798,12 @@
 							El curso comienza el <strong class="course-start-date"></strong>
 						</p>
 						<p class="mb-0">
-							Las inscripciones abrirán del <strong class="enrollment-period"></strong>
+							Las inscripciones abrirán del <strong class="enrollment-open-date"></strong> al <strong class="enrollment-close-date"></strong>
 						</p>
 					</div>
 				</div>
-				-->
-				<!-- ESTADO OPEN: Descomentar cuando las inscripciones estén abiertas (1-14 Septiembre) -->
-				
-				<div class="enrollment-banner open" id="enrollmentBanner">
+				<!-- ESTADO OPEN: Controlado por JavaScript según COURSE_CONFIG.enrollmentStatus -->
+				<div class="enrollment-banner open" id="enrollmentBannerOpen" style="display: none;">
 					<div class="enrollment-content">
 						<div class="row align-items-center justify-content-center">
 							<!-- Columna izquierda: Icono, título y fecha -->
@@ -1349,21 +1350,67 @@
 		</div>
 	</div>
 
+	<!-- begin modal inscripciones cerradas -->
+	<div class="modal fade" id="modalInscripcionesCerradas">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<i class="fa fa-lock me-2 text-theme"></i>
+						Inscripciones Cerradas
+					</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body text-center py-4">
+					<p class="lead mb-3">
+						Las inscripciones para este curso están actualmente cerradas.
+					</p>
+					<p class="mb-3">
+						<strong>Próxima apertura:</strong><br>
+						<span class="text-theme fs-5 enrollment-open-date"></span>
+					</p>
+					<p class="mb-4">
+						Mientras tanto, puedes unirte a la <strong>lista prioritaria</strong> y recibir:
+					</p>
+					<ul class="list-unstyled mb-4">
+						<li class="mb-2">
+							<i class="fa fa-check-circle text-theme me-2"></i>
+							Acceso inmediato a la <strong>Clase Uno</strong> del curso 
+						</li>
+						<li class="mb-2">
+							<i class="fa fa-check-circle text-theme me-2"></i>
+							<strong>Bonus extra:</strong> Errores comunes y herramienta online
+						</li>
+						<li class="mb-2">
+							<i class="fa fa-check-circle text-theme me-2"></i>
+							Notificación <strong>prioritaria</strong> cuando abran inscripciones
+						</li>
+					</ul>
+					<button type="button" class="btn btn-theme btn-lg" id="btnModalGetClass">
+						<i class="fa fa-gift me-2"></i>
+						Obtener mi Clase Gratis Ahora
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal inscripciones cerradas -->
+
 	<!-- END LEGAL MODALS -->
 
 <!-- ================== BEGIN BASE JS ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js?v=4"></script>
-	<script src="assets/js/custom.js?v=10"></script>
+	<script src="assets/js/custom.js?v=15"></script>
 
 	<!-- begin sticky-bar -->
 	<div class="sticky-bar" id="stickyBar" style="display: none;">
 		<div class="container-fluid">
 			<div class="row align-items-center">
 				<div class="col-md-8 col-sm-12">
-					<i class="fa fa-gift me-2"></i>
-					<strong>Próxima apertura en <span class="next-opening-month"></span>.</strong>
-					<span class="d-none d-sm-inline">Únete a la lista prioritaria y llévate la primera clase de regalo.</span>
+					<i class="fa fa-gift me-2" id="stickyBarIcon"></i>
+					<strong id="stickyBarMainText"></strong>
+					<span class="d-none d-sm-inline" id="stickyBarSubText"></span>
 				</div>
 				<div class="col-md-4 col-sm-12 text-end">
 					<a href="#lead-magnet" class="btn btn-sm btn-theme me-2">

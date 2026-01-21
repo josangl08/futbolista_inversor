@@ -13,12 +13,17 @@
 // ============================================================================
 
 const COURSE_CONFIG = {
+	// ==========================================
+	// CONTROL PRINCIPAL - Cambiar solo esta línea cuando abras/cierres inscripciones
+	// ==========================================
+	enrollmentStatus: 'closed', // 'open' o 'closed'
+
 	// Fecha de inicio del curso
 	courseStartDate: '1 de Marzo de 2026',
 
 	// Periodo de inscripciones
-	enrollmentOpenDate: '15 de Febrero de 2026',
-	enrollmentCloseDate: '26 de Febrero de 2026',
+	enrollmentOpenDate: '13 de Febrero de 2026',
+	enrollmentCloseDate: '28 de Febrero de 2026',
 
 	// Fecha y hora exacta de cierre (para countdown)
 	enrollmentEndDateTime: new Date('2026-02-28T23:59:59').getTime(),
@@ -312,7 +317,7 @@ function updateCourseDates() {
 	console.log('🔄 Actualizando fechas del curso...', COURSE_CONFIG);
 
 	// Actualizar fecha de inicio del curso en banner OPEN
-	const courseStartOpen = document.querySelector('#enrollmentBanner.open .course-start-date');
+	const courseStartOpen = document.querySelector('#enrollmentBannerOpen .course-start-date');
 	if (courseStartOpen) {
 		courseStartOpen.textContent = COURSE_CONFIG.courseStartDate;
 		console.log('✅ Fecha actualizada en banner OPEN:', COURSE_CONFIG.courseStartDate);
@@ -321,7 +326,7 @@ function updateCourseDates() {
 	}
 
 	// Actualizar fecha de inicio del curso en banner CLOSED
-	const courseStartClosed = document.querySelector('#enrollmentBanner.closed .course-start-date');
+	const courseStartClosed = document.querySelector('#enrollmentBannerClosed .course-start-date');
 	if (courseStartClosed) {
 		courseStartClosed.textContent = COURSE_CONFIG.courseStartDate;
 		console.log('✅ Fecha actualizada en banner CLOSED:', COURSE_CONFIG.courseStartDate);
@@ -329,20 +334,22 @@ function updateCourseDates() {
 		console.log('⚠️ No se encontró banner CLOSED');
 	}
 
-	// Actualizar periodo de inscripciones en banner CLOSED
-	const enrollmentPeriod = document.querySelector('#enrollmentBanner.closed .enrollment-period');
-	if (enrollmentPeriod) {
-		enrollmentPeriod.textContent = `${COURSE_CONFIG.enrollmentOpenDate} al ${COURSE_CONFIG.enrollmentCloseDate}`;
-		console.log('✅ Periodo actualizado en banner CLOSED');
+	// Actualizar fechas de inscripciones en banner CLOSED (por separado para mejor legibilidad)
+	const enrollmentOpenDate = document.querySelector('#enrollmentBannerClosed .enrollment-open-date');
+	const enrollmentCloseDate = document.querySelector('#enrollmentBannerClosed .enrollment-close-date');
+
+	if (enrollmentOpenDate) {
+		enrollmentOpenDate.textContent = COURSE_CONFIG.enrollmentOpenDate;
+		console.log('✅ Fecha de apertura actualizada en banner CLOSED:', COURSE_CONFIG.enrollmentOpenDate);
+	} else {
+		console.log('⚠️ No se encontró fecha de apertura');
 	}
 
-	// Actualizar mes de próxima apertura en sticky bar
-	const stickyBarMonth = document.querySelector('.sticky-bar .next-opening-month');
-	if (stickyBarMonth) {
-		stickyBarMonth.textContent = COURSE_CONFIG.nextOpeningMonth;
-		console.log('✅ Mes actualizado en sticky bar:', COURSE_CONFIG.nextOpeningMonth);
+	if (enrollmentCloseDate) {
+		enrollmentCloseDate.textContent = COURSE_CONFIG.enrollmentCloseDate;
+		console.log('✅ Fecha de cierre actualizada en banner CLOSED:', COURSE_CONFIG.enrollmentCloseDate);
 	} else {
-		console.log('⚠️ No se encontró sticky bar');
+		console.log('⚠️ No se encontró fecha de cierre');
 	}
 
 	// Actualizar fecha de próxima cohorte en lead-magnet
@@ -358,11 +365,48 @@ function updateCourseDates() {
 		console.log('⚠️ No se encontró next-cohort-date');
 	}
 
+	// Actualizar fecha de apertura en modal de inscripciones cerradas
+	const modalEnrollmentDate = document.querySelector('#modalInscripcionesCerradas .enrollment-open-date');
+	if (modalEnrollmentDate) {
+		modalEnrollmentDate.textContent = COURSE_CONFIG.enrollmentOpenDate;
+		console.log('✅ Fecha de apertura actualizada en modal');
+	} else {
+		console.log('⚠️ No se encontró modal enrollment-open-date');
+	}
+
 	console.log('✅ Actualización de fechas completada');
 }
 
 // Ejecutar al cargar la página
-document.addEventListener('DOMContentLoaded', updateCourseDates);
+document.addEventListener('DOMContentLoaded', function() {
+	updateCourseDates();
+	initEnrollmentState();
+
+	// Configurar botón del modal de inscripciones cerradas
+	const btnModalGetClass = document.getElementById('btnModalGetClass');
+	if (btnModalGetClass) {
+		btnModalGetClass.addEventListener('click', function() {
+			// Obtener instancia del modal
+			const modalElement = document.getElementById('modalInscripcionesCerradas');
+			const modal = bootstrap.Modal.getInstance(modalElement);
+
+			if (modal) {
+				// Cerrar el modal
+				modal.hide();
+
+				// Esperar a que el modal termine de cerrarse, luego hacer scroll
+				modalElement.addEventListener('hidden.bs.modal', function() {
+					const leadMagnetSection = document.getElementById('lead-magnet');
+					if (leadMagnetSection) {
+						leadMagnetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						console.log('✅ Redirigiendo a #lead-magnet desde botón del modal');
+					}
+				}, { once: true });
+			}
+		});
+		console.log('✅ Botón del modal configurado');
+	}
+});
 
 // ============================================================================
 // COUNTDOWN TIMER (Enrollment Open State)
@@ -372,39 +416,141 @@ function updateCountdown() {
 	const now = new Date().getTime();
 	const distance = COURSE_CONFIG.enrollmentEndDateTime - now;
 
-	// If countdown is over, switch to CLOSED state
-	if (distance < 0) {
-		const banner = document.getElementById('enrollmentBanner');
-		if (banner) {
-			banner.classList.remove('open');
-			banner.classList.add('closed');
-		}
+	const banner = document.getElementById('enrollmentBannerOpen');
+
+	if (!banner || distance < 0) {
+		// Countdown expirado - cambiar a CLOSED automáticamente
+		console.log('⏰ Countdown expirado - Cambiando a estado CLOSED');
+
+		// Cambiar estado en la configuración
+		COURSE_CONFIG.enrollmentStatus = 'closed';
+
+		// Reiniciar el sistema de inscripciones
+		initEnrollmentState();
+
 		return;
 	}
 
-	// Calculate time units
+	// Calcular tiempo restante
 	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-	// Update DOM
+	// Actualizar DOM
 	const daysEl = document.getElementById('days');
 	const hoursEl = document.getElementById('hours');
 	const minutesEl = document.getElementById('minutes');
 
-	if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
-	if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
-	if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+	if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+	if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+	if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
 }
 
-// Run countdown if banner is in OPEN state
-document.addEventListener('DOMContentLoaded', function() {
-	const banner = document.getElementById('enrollmentBanner');
-	if (banner && banner.classList.contains('open')) {
+function initCountdown() {
+	// Solo iniciar countdown si inscripciones están abiertas
+	if (COURSE_CONFIG.enrollmentStatus === 'open') {
 		updateCountdown();
-		setInterval(updateCountdown, 60000); // Update every minute
+		setInterval(updateCountdown, 60000); // Actualizar cada minuto
+		console.log('⏰ Countdown iniciado');
 	}
-});
+}
+
+// ============================================================================
+// SISTEMA DE GESTIÓN DE ESTADO DE INSCRIPCIONES
+// ============================================================================
+
+function initEnrollmentState() {
+	console.log('🎯 Iniciando sistema de inscripciones...', COURSE_CONFIG.enrollmentStatus);
+
+	const status = COURSE_CONFIG.enrollmentStatus;
+	const bannerClosed = document.getElementById('enrollmentBannerClosed');
+	const bannerOpen = document.getElementById('enrollmentBannerOpen');
+
+	// Mostrar banner apropiado
+	if (status === 'open') {
+		if (bannerOpen) {
+			bannerOpen.style.display = 'block';
+			console.log('✅ Banner OPEN mostrado');
+			// Iniciar countdown si está abierto
+			initCountdown();
+		}
+		if (bannerClosed) {
+			bannerClosed.style.display = 'none';
+		}
+	} else {
+		if (bannerClosed) {
+			bannerClosed.style.display = 'block';
+			console.log('✅ Banner CLOSED mostrado');
+		}
+		if (bannerOpen) {
+			bannerOpen.style.display = 'none';
+		}
+	}
+
+	// Configurar comportamiento de botones de compra
+	configurePurchaseButtons(status);
+
+	// Actualizar texto del sticky bar según estado
+	updateStickyBarText(status);
+}
+
+function configurePurchaseButtons(status) {
+	// Seleccionar los 3 botones de compra en pricing section
+	const purchaseButtons = document.querySelectorAll('#pricing .btn-inverse');
+
+	console.log(`🔘 Configurando ${purchaseButtons.length} botones de compra para estado: ${status}`);
+
+	if (status === 'closed') {
+		purchaseButtons.forEach((button, index) => {
+			button.addEventListener('click', function(e) {
+				e.preventDefault(); // Prevenir navegación a Teachable
+				console.log(`🚫 Botón ${index + 1} bloqueado - Inscripciones cerradas`);
+
+				// Mostrar modal
+				const modal = new bootstrap.Modal(document.getElementById('modalInscripcionesCerradas'));
+				modal.show();
+
+				// Cuando el modal se cierre, scroll a #lead-magnet
+				const modalElement = document.getElementById('modalInscripcionesCerradas');
+				modalElement.addEventListener('hidden.bs.modal', function() {
+					// Scroll suave a lead-magnet
+					const leadMagnetSection = document.getElementById('lead-magnet');
+					if (leadMagnetSection) {
+						leadMagnetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}, { once: true }); // Solo ejecutar una vez
+			});
+		});
+	} else {
+		// Si está OPEN, asegurar que los botones funcionen normalmente
+		purchaseButtons.forEach((button, index) => {
+			console.log(`✅ Botón ${index + 1} habilitado - Inscripciones abiertas`);
+			// No necesitamos hacer nada, los hrefs funcionarán por defecto
+		});
+	}
+}
+
+function updateStickyBarText(status) {
+	const stickyBarMainText = document.getElementById('stickyBarMainText');
+	const stickyBarSubText = document.getElementById('stickyBarSubText');
+
+	if (!stickyBarMainText || !stickyBarSubText) {
+		console.log('⚠️ No se encontraron elementos del sticky bar');
+		return;
+	}
+
+	if (status === 'open') {
+		// Estado ABIERTO: Solo cambiar texto (mantener icono de regalo)
+		stickyBarMainText.textContent = 'Inscripciones abiertas.';
+		stickyBarSubText.textContent = 'Accede a la primera Clase de manera Gratuita';
+		console.log('✅ Sticky bar actualizado para estado OPEN');
+	} else {
+		// Estado CERRADO: Texto de próxima apertura (mantener icono de regalo)
+		stickyBarMainText.innerHTML = `Próxima apertura en ${COURSE_CONFIG.nextOpeningMonth}.`;
+		stickyBarSubText.textContent = 'Únete a la lista prioritaria y llévate la primera Clase de Regalo.';
+		console.log('✅ Sticky bar actualizado para estado CLOSED');
+	}
+}
 
 // ============================================================================
 // FORM SUBMISSION HANDLER - Lead Magnet
