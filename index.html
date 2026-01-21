@@ -762,7 +762,7 @@
 								</button>
 
 								<p class="text-muted small text-center mb-0">
-									Al registrarte, entras automáticamente en la <strong>lista prioritaria</strong> para la próxima cohorte (Septiembre 2026).
+									Al registrarte, entras automáticamente en la <strong>lista prioritaria</strong> para la próxima cohorte (<span class="next-cohort-date"></span>).
 								</p>
 							</form>
 						</div>
@@ -792,10 +792,10 @@
 						<i class="fa fa-lock fa-2x mb-3"></i>
 						<h3>Inscripciones Cerradas</h3>
 						<p class="mb-3">
-							El curso comienza el <strong>16 de Septiembre de 2026</strong>
+							El curso comienza el <strong class="course-start-date"></strong>
 						</p>
 						<p class="mb-0">
-							Las inscripciones abrirán del <strong>1 al 14 de Septiembre de 2026</strong>
+							Las inscripciones abrirán del <strong class="enrollment-period"></strong>
 						</p>
 					</div>
 				</div>
@@ -806,11 +806,11 @@
 					<div class="enrollment-content">
 						<div class="row align-items-center justify-content-center">
 							<!-- Columna izquierda: Icono, título y fecha -->
-							<div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+							<div class="col-md-6 text-center mb-4 mb-md-0">
 								<i class="fa fa-unlock-alt fa-2x mb-3"></i>
 								<h3>¡Inscripciones Abiertas!</h3>
 								<p class="mb-0">
-									El curso comienza el <strong>16 de Septiembre de 2026</strong>
+									El curso comienza el <strong class="course-start-date"></strong>
 								</p>
 							</div>
 							<!-- Columna derecha: Texto + Countdown -->
@@ -1354,7 +1354,7 @@
 <!-- ================== BEGIN BASE JS ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js?v=4"></script>
-	<script src="assets/js/custom.js?v=6"></script>
+	<script src="assets/js/custom.js?v=10"></script>
 
 	<!-- begin sticky-bar -->
 	<div class="sticky-bar" id="stickyBar" style="display: none;">
@@ -1362,7 +1362,7 @@
 			<div class="row align-items-center">
 				<div class="col-md-8 col-sm-12">
 					<i class="fa fa-gift me-2"></i>
-					<strong>Próxima apertura en Septiembre.</strong>
+					<strong>Próxima apertura en <span class="next-opening-month"></span>.</strong>
 					<span class="d-none d-sm-inline">Únete a la lista prioritaria y llévate la primera clase de regalo.</span>
 				</div>
 				<div class="col-md-4 col-sm-12 text-end">

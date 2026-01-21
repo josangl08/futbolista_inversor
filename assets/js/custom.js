@@ -2,12 +2,33 @@
  * Custom JavaScript para Futbolista Inversor
  *
  * Contiene:
- * 1. Click handler para mostrar título de temas en móviles
- * 2. AJAX handler para formulario de contacto
+ * 1. Configuración de fechas del curso
+ * 2. Click handler para mostrar título de temas en móviles
+ * 3. AJAX handler para formulario de contacto
+ * 4. Countdown timer y actualización de fechas
  */
 
 // ============================================================================
-// 1. CLICK HANDLER PARA MOSTRAR TÍTULO DE TEMAS (MÓVILES)
+// 1. CONFIGURACIÓN DE FECHAS DEL CURSO (CAMBIAR SOLO AQUÍ)
+// ============================================================================
+
+const COURSE_CONFIG = {
+	// Fecha de inicio del curso
+	courseStartDate: '1 de Marzo de 2026',
+
+	// Periodo de inscripciones
+	enrollmentOpenDate: '15 de Febrero de 2026',
+	enrollmentCloseDate: '26 de Febrero de 2026',
+
+	// Fecha y hora exacta de cierre (para countdown)
+	enrollmentEndDateTime: new Date('2026-02-28T23:59:59').getTime(),
+
+	// Mes de próxima apertura (para sticky bar cuando está cerrado)
+	nextOpeningMonth: 'Marzo'
+};
+
+// ============================================================================
+// 2. CLICK HANDLER PARA MOSTRAR TÍTULO DE TEMAS (MÓVILES)
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -284,15 +305,72 @@ function getCookie(name) {
 }
 
 // ============================================================================
+// ACTUALIZAR FECHAS EN EL DOM
+// ============================================================================
+
+function updateCourseDates() {
+	console.log('🔄 Actualizando fechas del curso...', COURSE_CONFIG);
+
+	// Actualizar fecha de inicio del curso en banner OPEN
+	const courseStartOpen = document.querySelector('#enrollmentBanner.open .course-start-date');
+	if (courseStartOpen) {
+		courseStartOpen.textContent = COURSE_CONFIG.courseStartDate;
+		console.log('✅ Fecha actualizada en banner OPEN:', COURSE_CONFIG.courseStartDate);
+	} else {
+		console.log('⚠️ No se encontró banner OPEN');
+	}
+
+	// Actualizar fecha de inicio del curso en banner CLOSED
+	const courseStartClosed = document.querySelector('#enrollmentBanner.closed .course-start-date');
+	if (courseStartClosed) {
+		courseStartClosed.textContent = COURSE_CONFIG.courseStartDate;
+		console.log('✅ Fecha actualizada en banner CLOSED:', COURSE_CONFIG.courseStartDate);
+	} else {
+		console.log('⚠️ No se encontró banner CLOSED');
+	}
+
+	// Actualizar periodo de inscripciones en banner CLOSED
+	const enrollmentPeriod = document.querySelector('#enrollmentBanner.closed .enrollment-period');
+	if (enrollmentPeriod) {
+		enrollmentPeriod.textContent = `${COURSE_CONFIG.enrollmentOpenDate} al ${COURSE_CONFIG.enrollmentCloseDate}`;
+		console.log('✅ Periodo actualizado en banner CLOSED');
+	}
+
+	// Actualizar mes de próxima apertura en sticky bar
+	const stickyBarMonth = document.querySelector('.sticky-bar .next-opening-month');
+	if (stickyBarMonth) {
+		stickyBarMonth.textContent = COURSE_CONFIG.nextOpeningMonth;
+		console.log('✅ Mes actualizado en sticky bar:', COURSE_CONFIG.nextOpeningMonth);
+	} else {
+		console.log('⚠️ No se encontró sticky bar');
+	}
+
+	// Actualizar fecha de próxima cohorte en lead-magnet
+	const nextCohortDate = document.querySelector('.next-cohort-date');
+	if (nextCohortDate) {
+		// Extraer mes y año de la fecha de inicio del curso (ej: "1 de Marzo de 2026" -> "Marzo 2026")
+		const dateMatch = COURSE_CONFIG.courseStartDate.match(/de\s+(\w+)\s+de\s+(\d{4})/);
+		if (dateMatch) {
+			nextCohortDate.textContent = `${dateMatch[1]} ${dateMatch[2]}`;
+			console.log('✅ Fecha de cohorte actualizada:', `${dateMatch[1]} ${dateMatch[2]}`);
+		}
+	} else {
+		console.log('⚠️ No se encontró next-cohort-date');
+	}
+
+	console.log('✅ Actualización de fechas completada');
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', updateCourseDates);
+
+// ============================================================================
 // COUNTDOWN TIMER (Enrollment Open State)
 // ============================================================================
 
-// Configuration: Set enrollment end date
-const ENROLLMENT_END_DATE = new Date('2026-09-14T23:59:59').getTime();
-
 function updateCountdown() {
 	const now = new Date().getTime();
-	const distance = ENROLLMENT_END_DATE - now;
+	const distance = COURSE_CONFIG.enrollmentEndDateTime - now;
 
 	// If countdown is over, switch to CLOSED state
 	if (distance < 0) {
