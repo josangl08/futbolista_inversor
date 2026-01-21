@@ -33056,3 +33056,66 @@ p {
 		text-align: center !important;
 	}
 }
+
+/* ========================================
+   MODAL INSCRIPCIONES CERRADAS
+   ======================================== */
+
+#modalInscripcionesCerradas .modal-content {
+	border-radius: 0.6rem;
+	border: none;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#modalInscripcionesCerradas .modal-header {
+	background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+	color: #ffffff;
+	border-bottom: 3px solid rgb(54, 227, 160);
+	border-radius: 0.6rem 0.6rem 0 0;
+}
+
+#modalInscripcionesCerradas .modal-title {
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+#modalInscripcionesCerradas .modal-title .text-theme {
+	color: rgb(54, 227, 160);
+}
+
+#modalInscripcionesCerradas .btn-close {
+	filter: brightness(0) invert(1);
+	opacity: 0.8;
+}
+
+#modalInscripcionesCerradas .btn-close:hover {
+	opacity: 1;
+}
+
+#modalInscripcionesCerradas .modal-body {
+	padding: 30px;
+}
+
+#modalInscripcionesCerradas .text-theme {
+	color: rgb(54, 227, 160);
+	font-weight: 600;
+}
+
+#modalInscripcionesCerradas .fa-check-circle {
+	color: rgb(54, 227, 160);
+	font-size: 1.1rem;
+}
+
+#modalInscripcionesCerradas .btn-theme {
+	background-color: rgb(54, 227, 160);
+	border: 2px solid transparent;
+	color: #22282d;
+	font-weight: 600;
+	padding: 14px 30px;
+}
+
+#modalInscripcionesCerradas .btn-theme:hover {
+	background: #22282d;
+	color: #fff;
+	border: 2px solid rgb(54, 227, 160);
+}
