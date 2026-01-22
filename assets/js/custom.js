@@ -406,6 +406,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 		console.log('✅ Botón del modal configurado');
 	}
+
+	// Configurar botón del modal de confirmación de lead
+	const btnAccederClase = document.getElementById('btnAccederClase');
+	if (btnAccederClase) {
+		btnAccederClase.addEventListener('click', function() {
+			// Obtener URL guardada
+			const redirectUrl = window.teachableRedirectUrl;
+
+			if (redirectUrl) {
+				console.log('✅ Redirigiendo a Teachable:', redirectUrl);
+				window.location.href = redirectUrl;
+			} else {
+				console.error('❌ No se encontró URL de redirección');
+				alert('Error al redirigir. Por favor, revisa tu email para acceder al enlace.');
+			}
+		});
+		console.log('✅ Botón de acceso a clase configurado');
+	}
 });
 
 // ============================================================================
@@ -565,12 +583,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function handleLeadForm(form) {
-	form.addEventListener('submit', function(e) {
+	// Inicializar timestamp cuando se carga el formulario
+	const timestampField = form.querySelector('#leadFormTimestamp');
+	if (timestampField) {
+		timestampField.value = Date.now();
+		console.log('✅ Timestamp del formulario inicializado');
+	}
+
+	form.addEventListener('submit', async function(e) {
 		e.preventDefault();
 
 		const formData = new FormData(form);
 		const nombre = formData.get('nombre');
 		const email = formData.get('email');
+		const honeypot = formData.get('website');
+		const timestamp = formData.get('form_timestamp');
 
 		// Disable button
 		const submitBtn = form.querySelector('button[type="submit"]');
@@ -578,21 +605,66 @@ function handleLeadForm(form) {
 		submitBtn.disabled = true;
 		submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Procesando...';
 
-		// TODO: Send to Hostinger Reach API
-		// For now, simulate success and redirect to Teachable
-		setTimeout(function() {
-			// Construct Teachable URL with auto-enrollment coupon
-			const teachableURL = 'https://jorge-alonso-s-school.teachable.com/p/clase-cero?coupon=CLASE-CERO-2026';
+		try {
+			// Enviar a backend PHP
+			const response = await fetch('/api/lead-capture.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					nombre: nombre,
+					email: email,
+					website: honeypot,
+					form_timestamp: timestamp
+				})
+			});
 
-			// Show success message
-			alert('¡Perfecto! Redirigiendo a tu Clase Cero...');
+			const result = await response.json();
 
-			// Redirect to Teachable
-			window.location.href = teachableURL;
+			if (result.success) {
+				console.log('✅ Lead capturado correctamente:', email);
 
-			// Reset button (in case redirect fails)
+				// Cambiar estado del botón
+				submitBtn.innerHTML = '<i class="fa fa-check me-2"></i> ¡Registrado!';
+
+				// Guardar URL de redirección para el modal
+				window.teachableRedirectUrl = result.redirectUrl;
+
+				// Mostrar modal de confirmación
+				const modalElement = document.getElementById('modalLeadConfirmation');
+				const modal = new bootstrap.Modal(modalElement);
+				modal.show();
+
+				console.log('✅ Modal de confirmación mostrado');
+			} else {
+				// Error de validación o spam
+				console.error('❌ Error al capturar lead:', result.message);
+
+				if (result.rateLimit) {
+					alert('Has intentado registrarte demasiadas veces. Por favor, espera unos minutos.');
+				} else if (result.errors) {
+					// Mostrar errores de validación
+					let errorMsg = 'Por favor, corrige los siguientes errores:\n';
+					for (const field in result.errors) {
+						errorMsg += '- ' + result.errors[field] + '\n';
+					}
+					alert(errorMsg);
+				} else {
+					alert(result.message || 'Hubo un problema. Por favor, intenta de nuevo.');
+				}
+
+				// Restaurar botón
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = originalHTML;
+			}
+		} catch (error) {
+			console.error('❌ Error de conexión:', error);
+			alert('Error de conexión. Por favor, verifica tu internet e intenta de nuevo.');
+
+			// Restaurar botón
 			submitBtn.disabled = false;
 			submitBtn.innerHTML = originalHTML;
-		}, 1000);
+		}
 	});
 }

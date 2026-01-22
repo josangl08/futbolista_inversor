@@ -219,6 +219,9 @@ PROJECT_CONTEXT.md
 visual_identity.json
 INSTRUCCIONES_DESPLIEGUE.md
 ANTI_SPAM_README.md
+GUIA_DESPLIEGUE.MD
+INSTRUCCIONES_HOSTINGER_REACH.MD
+api-1.yaml
 
 # Large video files (use CDN or external hosting)
 *.mp4
