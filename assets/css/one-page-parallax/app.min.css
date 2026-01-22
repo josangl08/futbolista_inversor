@@ -32601,31 +32601,68 @@ p {
 
 /* Modal de confirmación del formulario */
 #modalFormulario .modal-content {
-	background-color: var(--bs-body-color);
-	color: #fff;
+	border-radius: 0.6rem;
+	border: none;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 #modalFormulario .modal-header {
-	border-bottom: 1px solid #fff;
+	background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+	color: #ffffff;
+	border-radius: 0.6rem 0.6rem 0 0;
 }
 
-#modalFormulario .modal-footer {
-	border-top: 1px solid #fff;
+#modalFormulario .modal-header.border-success {
+	border-bottom: 3px solid rgb(54, 227, 160);
+}
+
+#modalFormulario .modal-header.border-error {
+	border-bottom: 3px solid #ff6b6b;
+}
+
+#modalFormulario .modal-title {
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+#modalFormulario .icon-success {
+	color: rgb(54, 227, 160);
+}
+
+#modalFormulario .icon-error {
+	color: #ff6b6b;
 }
 
 #modalFormulario .btn-close {
-	filter: invert(1);
+	filter: brightness(0) invert(1);
+	opacity: 0.8;
+}
+
+#modalFormulario .btn-close:hover {
+	opacity: 1;
+}
+
+#modalFormulario .modal-body {
+	padding: 30px;
+}
+
+#modalFormulario .modal-footer {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 20px 30px;
 }
 
 #modalFormulario .btn-theme {
 	background-color: rgb(54, 227, 160);
-	border-color: rgb(54, 227, 160);
-	color: #fff;
+	border: 2px solid transparent;
+	color: #22282d;
+	font-weight: 600;
+	padding: 14px 30px;
 }
 
 #modalFormulario .btn-theme:hover {
-	background-color: rgb(40, 200, 140);
-	border-color: rgb(40, 200, 140);
+	background: #22282d;
+	color: #fff;
+	border: 2px solid rgb(54, 227, 160);
 }
 
 /* Pricing cards - Left align features text and icon color */

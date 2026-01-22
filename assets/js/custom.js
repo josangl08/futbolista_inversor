@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			dataType: 'json',
 			success: function(response) {
 				if (response.success) {
-					// ÉXITO - Mostrar modal verde
-					modalHeader.classList.remove('bg-danger');
-					modalHeader.classList.add('bg-success', 'text-white');
-					modalIcon.className = 'fas fa-check-circle me-2';
+					// ÉXITO - Mostrar modal con borde verde
+					modalHeader.classList.remove('border-error');
+					modalHeader.classList.add('border-success');
+					modalIcon.className = 'fas fa-check-circle me-2 icon-success';
 					modalTitulo.textContent = '¡Mensaje Enviado!';
 					modalMensaje.textContent = response.message || 'Tu mensaje ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.';
 
@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
 					modal.show();
 				} else {
 					// ERROR DE VALIDACIÓN
-					modalHeader.classList.remove('bg-success');
-					modalHeader.classList.add('bg-danger', 'text-white');
-					modalIcon.className = 'fas fa-exclamation-triangle me-2';
+					modalHeader.classList.remove('border-success');
+					modalHeader.classList.add('border-error');
+					modalIcon.className = 'fas fa-exclamation-triangle me-2 icon-error';
 					modalTitulo.textContent = 'Error en el Formulario';
 
 					// Mostrar errores
@@ -169,9 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.error('Response:', xhr.responseText);
 				console.error('Status Code:', xhr.status);
 
-				modalHeader.classList.remove('bg-success');
-				modalHeader.classList.add('bg-danger', 'text-white');
-				modalIcon.className = 'fas fa-exclamation-triangle me-2';
+				modalHeader.classList.remove('border-success');
+				modalHeader.classList.add('border-error');
+				modalIcon.className = 'fas fa-exclamation-triangle me-2 icon-error';
 				modalTitulo.textContent = 'Error de Conexión';
 
 				if (xhr.status === 429) {
