@@ -33119,3 +33119,62 @@ p {
 	color: #fff;
 	border: 2px solid rgb(54, 227, 160);
 }
+
+#modalLeadConfirmation .modal-content {
+	border-radius: 0.6rem;
+	border: none;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#modalLeadConfirmation .modal-header {
+	background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+	color: #ffffff;
+	border-bottom: 3px solid rgb(54, 227, 160);
+	border-radius: 0.6rem 0.6rem 0 0;
+}
+
+#modalLeadConfirmation .modal-title {
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+#modalLeadConfirmation .modal-title .text-theme {
+	color: rgb(54, 227, 160);
+}
+
+#modalLeadConfirmation .btn-close {
+	filter: brightness(0) invert(1);
+	opacity: 0.8;
+}
+
+#modalLeadConfirmation .btn-close:hover {
+	opacity: 1;
+}
+
+#modalLeadConfirmation .modal-body {
+	padding: 30px;
+}
+
+#modalLeadConfirmation .text-theme {
+	color: rgb(54, 227, 160);
+	font-weight: 600;
+}
+
+#modalLeadConfirmation .fa-check-circle {
+	color: rgb(54, 227, 160);
+	font-size: 1.1rem;
+}
+
+#modalLeadConfirmation .btn-theme {
+	background-color: rgb(54, 227, 160);
+	border: 2px solid transparent;
+	color: #22282d;
+	font-weight: 600;
+	padding: 14px 30px;
+}
+
+#modalLeadConfirmation .btn-theme:hover {
+	background: #22282d;
+	color: #fff;
+	border: 2px solid rgb(54, 227, 160);
+}
