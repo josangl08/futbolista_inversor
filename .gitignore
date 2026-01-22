@@ -141,6 +141,10 @@ form_errors.log
 rate_limit.json
 vendor/
 
+# Sistema de Lead Magnet - Logs y archivos generados
+api/lead_capture.log
+api/lead_rate_limit.json
+
 # CSS - Solo subir versión minificada
 assets/css/one-page-parallax/app.css
 

@@ -12,12 +12,52 @@ if (!defined('LEAD_CAPTURE_LOADED')) {
     die('Acceso denegado');
 }
 
+// Cargar variables de entorno desde .env
+function loadEnvIfNotLoaded() {
+    // Si ya está cargada, no hacer nada
+    if (defined('HOSTINGER_API_KEY')) {
+        return;
+    }
+
+    $envPath = __DIR__ . '/../.env';
+    if (!file_exists($envPath)) {
+        error_log("ERROR: Archivo .env no encontrado en: " . $envPath);
+        return;
+    }
+
+    $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        // Ignorar comentarios
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+
+        // Parsear KEY=VALUE
+        if (strpos($line, '=') !== false) {
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+            $_ENV[$key] = $value;
+            if (!defined($key)) {
+                define($key, $value);
+            }
+        }
+    }
+}
+
+// Cargar .env
+loadEnvIfNotLoaded();
+
 // ===========================================================================
 // HOSTINGER REACH API
 // ===========================================================================
 
-// API Key de Hostinger (obtenida desde Settings > General)
-define('HOSTINGER_API_KEY', 'zNHESktyjzikWcRiN9S9Aqo0a6dQj7UeClGutj3Cecd291a1');
+// API Key de Hostinger (cargada desde .env)
+if (!defined('HOSTINGER_API_KEY')) {
+    error_log("ERROR: HOSTINGER_API_KEY no está definida en .env");
+    http_response_code(500);
+    die('Error de configuración del servidor');
+}
 
 // Base URL de la API de Hostinger
 define('HOSTINGER_API_BASE_URL', 'https://developers.hostinger.com');
