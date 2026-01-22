@@ -82,16 +82,6 @@ define('TEACHABLE_COUPON_CODE', 'CLASE1CALENTAMIENTO');
 define('TEACHABLE_CHECKOUT_URL', TEACHABLE_SCHOOL_URL . '/purchase?product_id=' . TEACHABLE_PRODUCT_ID . '&coupon_code=' . TEACHABLE_COUPON_CODE);
 
 // ===========================================================================
-// CONFIGURACIÓN DE TAGS Y METADATOS
-// ===========================================================================
-
-// Tags para añadir a contactos en Hostinger Reach
-define('REACH_TAGS', ['lead-magnet', 'clase-uno', 'website-form']);
-
-// Nombre de la lista o segmento (para logging)
-define('REACH_LIST_NAME', 'Lead Magnet - Clase Uno');
-
-// ===========================================================================
 // CONFIGURACIÓN DE SEGURIDAD
 // ===========================================================================
 

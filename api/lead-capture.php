@@ -115,18 +115,12 @@ function checkTimestamp($timestamp) {
 function sendToHostingerReach($nombre, $email) {
     $url = HOSTINGER_API_BASE_URL . HOSTINGER_REACH_CONTACTS_ENDPOINT;
 
-    // Preparar payload según documentación de Hostinger API
+    // Preparar payload según documentación oficial de Hostinger API
+    // Solo campos soportados: email, name, surname, note
     $payload = [
         'email' => $email,
         'name' => $nombre,
-        // Tags y custom fields opcionales
-        'tags' => REACH_TAGS,
-        'custom_fields' => [
-            'source' => 'website-lead-magnet',
-            'form_type' => 'clase-uno',
-            'date_captured' => date('Y-m-d H:i:s'),
-            'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'unknown'
-        ]
+        'note' => 'Lead Magnet Web - ' . date('Y-m-d H:i') // Máx 75 caracteres
     ];
 
     // Configurar cURL
