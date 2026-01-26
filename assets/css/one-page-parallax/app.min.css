@@ -32471,6 +32471,18 @@ p {
 #contact .form-check-label a:hover {
 	text-decoration: underline;
 }
+#contact .form-control:focus,
+#contact .form-control:focus-visible {
+	border-color: #1b2c4d;
+	box-shadow: 0 0 0 0.25rem rgba(27, 44, 77, 0.25);
+	outline: 0;
+}
+#contact textarea.form-control:focus,
+#contact textarea.form-control:focus-visible {
+	border-color: #1b2c4d;
+	box-shadow: 0 0 0 0.25rem rgba(27, 44, 77, 0.25);
+	outline: 0;
+}
 #action-box {
 	position: relative;
 	z-index: 10;
@@ -32787,6 +32799,53 @@ p {
 	background: rgba(255, 255, 255, 0.15);
 	box-shadow: 0 0 0 0.25rem rgba(54, 227, 160, 0.25);
 	color: #ffffff;
+}
+.lead-magnet-form-card .form-select {
+	border-width: 2px;
+	border-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.1);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 0.75rem center;
+	background-size: 16px 12px;
+	color: rgba(255, 255, 255, 0.5);
+	padding: 0.75rem 1rem;
+	padding-right: 2.5rem;
+	font-size: 1rem;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.lead-magnet-form-card .form-select option {
+	background-color: #1b2c4d;
+	color: #ffffff;
+}
+
+.lead-magnet-form-card .form-select option:not(:first-child) {
+	color: #ffffff;
+}
+
+.lead-magnet-form-card .form-select:not([value=""]):valid {
+	color: #ffffff;
+}
+
+.lead-magnet-form-card .form-select:focus {
+	border-color: rgb(54, 227, 160);
+	background-color: rgba(255, 255, 255, 0.15);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 0.75rem center;
+	background-size: 16px 12px;
+	box-shadow: 0 0 0 0.25rem rgba(54, 227, 160, 0.25);
+	color: #ffffff;
+	outline: 0;
+}
+
+.lead-magnet-form-card .form-label {
+	color: #ffffff;
+	font-size: 0.95rem;
+	margin-bottom: 0.5rem;
 }
 
 /* Los estilos de .btn-theme están definidos en la sección unificada arriba */

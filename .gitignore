@@ -217,6 +217,7 @@ cython_debug/
 # Carpetas de diseño y marketing (no necesarias en producción)
 Instagram Templates/
 LOGOS/
+email-templates/
 
 # Documentación interna y archivos de diseño (no necesarios en producción)
 PROJECT_CONTEXT.md
@@ -233,6 +234,8 @@ custom.js.bak5
 custom.js.bak6
 custom.js.bak7
 custom.js.bak8
+app.min.css.bak4
+index.html.bak1
 
 # Large video files (use CDN or external hosting)
 *.mp4

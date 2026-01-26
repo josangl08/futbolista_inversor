@@ -112,15 +112,28 @@ function checkTimestamp($timestamp) {
 /**
  * Enviar contacto a Hostinger Reach API
  */
-function sendToHostingerReach($nombre, $email) {
+function sendToHostingerReach($nombre, $email, $tipoUsuario, $otraProfesion = '') {
     $url = HOSTINGER_API_BASE_URL . HOSTINGER_REACH_CONTACTS_ENDPOINT;
+
+    // Determinar segmento basado en tipo de usuario
+    $segmento = '';
+    if ($tipoUsuario === 'futbolista' || $tipoUsuario === 'deportista') {
+        $segmento = 'Deportista Pro';
+    } else {
+        // Es "otro" - profesional no deportista
+        $segmento = 'Profesional';
+    }
+
+    // Construir note (máximo 75 caracteres)
+    // Formato: "Lead: [Segmento] - [Fecha]" (ej: "Lead: Deportista Pro - 2026-01-23 10:30")
+    $noteContent = 'Lead: ' . $segmento . ' - ' . date('Y-m-d H:i');
 
     // Preparar payload según documentación oficial de Hostinger API
     // Solo campos soportados: email, name, surname, note
     $payload = [
         'email' => $email,
         'name' => $nombre,
-        'note' => 'Lead Magnet Web - ' . date('Y-m-d H:i') // Máx 75 caracteres
+        'note' => $noteContent
     ];
 
     // Configurar cURL
@@ -199,6 +212,8 @@ $data = json_decode($rawInput, true);
 // Soportar tanto JSON como form-data
 $nombre = isset($data['nombre']) ? sanitizeInput($data['nombre']) : (isset($_POST['nombre']) ? sanitizeInput($_POST['nombre']) : '');
 $email = isset($data['email']) ? sanitizeInput($data['email']) : (isset($_POST['email']) ? sanitizeInput($_POST['email']) : '');
+$tipoUsuario = isset($data['tipo_usuario']) ? sanitizeInput($data['tipo_usuario']) : (isset($_POST['tipo_usuario']) ? sanitizeInput($_POST['tipo_usuario']) : '');
+$otraProfesion = isset($data['otra_profesion']) ? sanitizeInput($data['otra_profesion']) : (isset($_POST['otra_profesion']) ? sanitizeInput($_POST['otra_profesion']) : '');
 $honeypot = isset($data['website']) ? $data['website'] : (isset($_POST['website']) ? $_POST['website'] : '');
 $timestamp = isset($data['form_timestamp']) ? $data['form_timestamp'] : (isset($_POST['form_timestamp']) ? $_POST['form_timestamp'] : '');
 
@@ -240,6 +255,21 @@ if (empty($email) || !validateEmail($email)) {
     $errors['email'] = 'Email inválido';
 }
 
+// Validar tipo de usuario
+if (empty($tipoUsuario) || !in_array($tipoUsuario, ['futbolista', 'deportista', 'otro'])) {
+    $errors['tipo_usuario'] = 'Debes seleccionar un perfil válido';
+}
+
+// Si seleccionó "otro", validar que especificó la profesión
+if ($tipoUsuario === 'otro') {
+    if (empty($otraProfesion) || strlen($otraProfesion) < 5) {
+        $errors['otra_profesion'] = 'Por favor, especifica tu profesión (mínimo 5 caracteres)';
+    }
+    if (strlen($otraProfesion) > 50) {
+        $errors['otra_profesion'] = 'La profesión es demasiado larga (máximo 50 caracteres)';
+    }
+}
+
 if (!empty($errors)) {
     http_response_code(200);
     echo json_encode([
@@ -255,7 +285,7 @@ if (!empty($errors)) {
 // ENVIAR A HOSTINGER REACH
 // ===========================================================================
 
-$apiResult = sendToHostingerReach($nombre, $email);
+$apiResult = sendToHostingerReach($nombre, $email, $tipoUsuario, $otraProfesion);
 
 if (!$apiResult['success']) {
     // Error al enviar a Hostinger, pero no bloquear al usuario
@@ -287,6 +317,8 @@ logEvent('SUCCESS', [
     'ip' => $clientIP,
     'nombre' => $nombre,
     'email' => $email,
+    'tipo_usuario' => $tipoUsuario,
+    'otra_profesion' => $otraProfesion,
     'hostinger_success' => true
 ]);
 

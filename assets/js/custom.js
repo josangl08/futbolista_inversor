@@ -570,6 +570,24 @@ function updateStickyBarText(status) {
 	}
 }
 
+
+// ============================================================================
+// FUNCIÓN: Toggle campo "Otra profesión"
+// ============================================================================
+
+function toggleOtroProfesionField(select) {
+	const otroContainer = document.getElementById("otroProfesionContainer");
+	const otroProfesionInput = document.getElementById("otraProfesion");
+
+	if (select.value === "otro") {
+		otroContainer.style.display = "block";
+		otroProfesionInput.required = true;
+	} else {
+		otroContainer.style.display = "none";
+		otroProfesionInput.required = false;
+		otroProfesionInput.value = "";
+	}
+}
 // ============================================================================
 // FORM SUBMISSION HANDLER - Lead Magnet
 // ============================================================================
