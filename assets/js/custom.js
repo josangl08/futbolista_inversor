@@ -614,6 +614,8 @@ function handleLeadForm(form) {
 		const formData = new FormData(form);
 		const nombre = formData.get('nombre');
 		const email = formData.get('email');
+		const tipoUsuario = formData.get('tipo_usuario');
+		const otraProfesion = formData.get('otra_profesion');
 		const honeypot = formData.get('website');
 		const timestamp = formData.get('form_timestamp');
 
@@ -633,6 +635,8 @@ function handleLeadForm(form) {
 				body: JSON.stringify({
 					nombre: nombre,
 					email: email,
+					tipo_usuario: tipoUsuario,
+					otra_profesion: otraProfesion,
 					website: honeypot,
 					form_timestamp: timestamp
 				})

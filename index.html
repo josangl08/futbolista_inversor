@@ -747,6 +747,8 @@
 										class="form-control form-control-lg"
 										placeholder="Tu nombre"
 										required
+										oninvalid="this.setCustomValidity('Por favor, introduce tu nombre')"
+										oninput="this.setCustomValidity('')"
 									>
 								</div>
 
@@ -757,6 +759,8 @@
 										class="form-control form-control-lg"
 										placeholder="Tu email"
 										required
+										oninvalid="this.setCustomValidity('Por favor, introduce un email válido')"
+										oninput="this.setCustomValidity('')"
 									>
 								</div>
 
@@ -771,6 +775,8 @@
 									class="form-select form-select-lg"
 									required
 									onchange="toggleOtroProfesionField(this)"
+									oninvalid="this.setCustomValidity('Por favor, selecciona tu perfil profesional')"
+									oninput="this.setCustomValidity('')"
 								>
 									<option value="">Selecciona tu perfil</option>
 									<option value="futbolista">Jugador de Fútbol</option>
@@ -789,6 +795,8 @@
 									placeholder="Ejemplo: Médico, Abogado, Empresario..."
 									minlength="5"
 									maxlength="50"
+									oninvalid="this.setCustomValidity('Por favor, especifica tu profesión (mínimo 5 caracteres)')"
+									oninput="this.setCustomValidity('')"
 								>
 							</div>
 
@@ -1493,7 +1501,7 @@
 <!-- ================== BEGIN BASE JS ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js?v=4"></script>
-	<script src="assets/js/custom.js?v=21"></script>
+	<script src="assets/js/custom.js?v=22"></script>
 
 	<!-- begin sticky-bar -->
 	<div class="sticky-bar" id="stickyBar" style="display: none;">
