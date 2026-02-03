@@ -126,7 +126,7 @@ function sendToHostingerReach($nombre, $email, $tipoUsuario, $otraProfesion = ''
 
     // Construir note (máximo 75 caracteres)
     // Formato: "Lead: [Segmento] - [Fecha]" (ej: "Lead: Deportista Pro - 2026-01-23 10:30")
-    $noteContent = 'Lead: ' . $segmento . ' - ' . date('Y-m-d H:i');
+    $noteContent = 'Lead: ' . $segmento;
 
     // Preparar payload según documentación oficial de Hostinger API
     // Solo campos soportados: email, name, surname, note
@@ -282,6 +282,14 @@ if (!empty($errors)) {
 }
 
 // ===========================================================================
+// DETERMINAR CURSO SEGÚN SEGMENTO
+// ===========================================================================
+
+$redirectUrl = ($tipoUsuario === 'futbolista' || $tipoUsuario === 'deportista')
+    ? TEACHABLE_CHECKOUT_URL_DEPORTISTAS
+    : TEACHABLE_CHECKOUT_URL_PROFESIONALES;
+
+// ===========================================================================
 // ENVIAR A HOSTINGER REACH
 // ===========================================================================
 
@@ -303,7 +311,7 @@ if (!$apiResult['success']) {
     echo json_encode([
         'success' => true,
         'message' => 'Redirigiendo a tu clase gratuita...',
-        'redirectUrl' => TEACHABLE_CHECKOUT_URL,
+        'redirectUrl' => $redirectUrl,
         'warning' => 'partial_success' // Para logging interno
     ]);
     exit;

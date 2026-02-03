@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<title>Recordatorio Activado - Futbolista Inversor</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<link rel="icon" type="image/x-icon" href="assets/img/LOGO/favicon.ico?v=1" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
+	<link href="assets/css/one-page-parallax/vendor.min.css?v=3" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.min.css?v=51" rel="stylesheet" />
+	<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		.confirmation-wrapper {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 20px;
+		}
+
+		.confirmation-card {
+			max-width: 560px;
+			width: 100%;
+			background: #ffffff;
+			border-radius: 16px;
+			overflow: hidden;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		}
+
+		.card-header {
+			background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+			padding: 35px 40px 30px;
+			text-align: center;
+			border-bottom: 3px solid rgb(54, 227, 160);
+		}
+
+		.card-header img {
+			max-width: 180px;
+			height: auto;
+			margin-bottom: 25px;
+		}
+
+		.icon-circle {
+			width: 80px;
+			height: 80px;
+			background: rgba(54, 227, 160, 0.15);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+		}
+
+		.icon-circle i {
+			font-size: 36px;
+			color: rgb(54, 227, 160);
+		}
+
+		.card-body {
+			padding: 40px;
+			text-align: center;
+		}
+
+		.card-body h2 {
+			color: #1b2c4d;
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin: 0 0 15px;
+			line-height: 1.3;
+		}
+
+		.card-body h2 span {
+			color: rgb(54, 227, 160);
+		}
+
+		.card-body p {
+			color: #555;
+			font-size: 1rem;
+			line-height: 1.7;
+			margin: 0 0 30px;
+		}
+
+		.info-box {
+			background: #f8f9fa;
+			border-left: 4px solid rgb(54, 227, 160);
+			border-radius: 0 8px 8px 0;
+			padding: 20px 22px;
+			text-align: left;
+			margin: 0 0 35px;
+		}
+
+		.info-box p {
+			margin: 0 0 8px;
+			font-size: 0.92rem;
+			color: #444;
+		}
+
+		.info-box p:last-child {
+			margin-bottom: 0;
+		}
+
+		.info-box strong {
+			color: #1b2c4d;
+		}
+
+		.btn-back {
+			display: inline-block;
+			background: linear-gradient(135deg, rgb(54, 227, 160) 0%, #2dd492 100%);
+			color: #1b2c4d;
+			text-decoration: none;
+			padding: 14px 36px;
+			border-radius: 50px;
+			font-size: 1rem;
+			font-weight: 700;
+			box-shadow: 0 4px 15px rgba(54, 227, 160, 0.3);
+			transition: transform 0.2s, box-shadow 0.2s;
+		}
+
+		.btn-back:hover {
+			background: #1b2c4d;
+			color: #fff;
+			box-shadow: 0 4px 20px rgba(27, 44, 77, 0.3);
+		}
+
+		.card-footer {
+			padding: 25px 40px 30px;
+			text-align: center;
+			border-top: 1px solid #eee;
+		}
+
+		.card-footer p {
+			color: #999;
+			font-size: 0.82rem;
+			margin: 0;
+			line-height: 1.6;
+		}
+
+		.card-footer a {
+			color: rgb(54, 227, 160);
+			text-decoration: none;
+		}
+
+		.card-footer a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="confirmation-wrapper">
+		<div class="confirmation-card">
+
+			<!-- Header -->
+			<div class="card-header">
+				<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor">
+				<div class="icon-circle">
+					<i class="fas fa-bell"></i>
+				</div>
+			</div>
+
+			<!-- Body -->
+			<div class="card-body">
+				<h2>¡Recordatorio <span>activado</span>!</h2>
+				<p>
+					Te avisaremos en cuanto abran las inscripciones.<br>
+					No te quedas fuera.
+				</p>
+
+				<div class="info-box">
+					<p><strong>¿Qué pasará a continuación?</strong></p>
+					<p>📧 Cuando abran las inscripciones, recibirás un email avisándote inmediatamente.</p>
+					<p>⏰ Las plazas se agen rápido, así que te recomendamos estar atentos.</p>
+					<p>🎯 Como ya estás en nuestra lista, tendrás acceso prioritario.</p>
+				</div>
+
+				<a href="https://futbolistainversor.com" class="btn-back">
+					Volver a la Página Principal
+				</a>
+			</div>
+
+			<!-- Footer -->
+			<div class="card-footer">
+				<p>
+					Si tienes alguna duda, no dudes en escribirnos a<br>
+					<a href="mailto:info@futbolistainversor.com">info@futbolistainversor.com</a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
