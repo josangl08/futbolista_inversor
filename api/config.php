@@ -70,12 +70,12 @@ define('HOSTINGER_REACH_CONTACTS_ENDPOINT', '/api/reach/v1/contacts');
 // ===========================================================================
 
 // Curso 1: Deportistas (futbolistas + otros deportistas)
-// Curso: pre-curso-educacion-financiera | Cupón: CLASE1CALENTAMIENTO
-define('TEACHABLE_CHECKOUT_URL_DEPORTISTAS', 'https://jorge-alonso-s-school.teachable.com/p/pre-curso-educacion-financiera?coupon_code=CLASE1CALENTAMIENTO&product_id=6607492');
+// Curso: pre-curso-educacion-financiera | Gratuito, no listado en catálogo
+define('TEACHABLE_CHECKOUT_URL_DEPORTISTAS', 'https://jorge-alonso-s-school.teachable.com/purchase?product_id=6607492');
 
 // Curso 2: Profesionales (resto de personas)
-// Curso: clase-0-educacion-financiera | Cupón: CLASE0CALENTAMIENTO
-define('TEACHABLE_CHECKOUT_URL_PROFESIONALES', 'https://jorge-alonso-s-school.teachable.com/p/clase-0-educacion-financiera?coupon_code=CLASE0CALENTAMIENTO&product_id=6616736');
+// Curso: clase-0-educacion-financiera | Gratuito, no listado en catálogo
+define('TEACHABLE_CHECKOUT_URL_PROFESIONALES', 'https://jorge-alonso-s-school.teachable.com/purchase?product_id=6616736');
 
 // ===========================================================================
 // CONFIGURACIÓN DE SEGURIDAD
