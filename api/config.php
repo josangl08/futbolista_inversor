@@ -69,21 +69,13 @@ define('HOSTINGER_REACH_CONTACTS_ENDPOINT', '/api/reach/v1/contacts');
 // TEACHABLE — Dos cursos según segmento
 // ===========================================================================
 
-// URL base de la escuela en Teachable
-define('TEACHABLE_SCHOOL_URL', 'https://jorge-alonso-s-school.teachable.com');
-
-// Código del cupón 100% descuento (aplica a ambos cursos)
-define('TEACHABLE_COUPON_CODE', 'CLASE1CALENTAMIENTO');
-
 // Curso 1: Deportistas (futbolistas + otros deportistas)
-// Curso: pre-curso-educacion-financiera | ID curso: 2932779
-define('TEACHABLE_DEPORTISTAS_PRODUCT_ID', '2932779');
-define('TEACHABLE_CHECKOUT_URL_DEPORTISTAS', TEACHABLE_SCHOOL_URL . '/purchase?product_id=' . TEACHABLE_DEPORTISTAS_PRODUCT_ID . '&coupon_code=' . TEACHABLE_COUPON_CODE);
+// Curso: pre-curso-educacion-financiera | Cupón: CLASE1CALENTAMIENTO
+define('TEACHABLE_CHECKOUT_URL_DEPORTISTAS', 'https://jorge-alonso-s-school.teachable.com/p/pre-curso-educacion-financiera?coupon_code=CLASE1CALENTAMIENTO&product_id=6607492');
 
 // Curso 2: Profesionales (resto de personas)
-// Curso: clase-0-educacion-financiera | ID curso: 2936467
-define('TEACHABLE_PROFESIONALES_PRODUCT_ID', '2936467');
-define('TEACHABLE_CHECKOUT_URL_PROFESIONALES', TEACHABLE_SCHOOL_URL . '/purchase?product_id=' . TEACHABLE_PROFESIONALES_PRODUCT_ID . '&coupon_code=' . TEACHABLE_COUPON_CODE);
+// Curso: clase-0-educacion-financiera | Cupón: CLASE0CALENTAMIENTO
+define('TEACHABLE_CHECKOUT_URL_PROFESIONALES', 'https://jorge-alonso-s-school.teachable.com/p/clase-0-educacion-financiera?coupon_code=CLASE0CALENTAMIENTO&product_id=6616736');
 
 // ===========================================================================
 // CONFIGURACIÓN DE SEGURIDAD
