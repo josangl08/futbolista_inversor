@@ -333,7 +333,7 @@ logEvent('SUCCESS', [
 echo json_encode([
     'success' => true,
     'message' => '¡Perfecto! Redirigiendo a tu clase gratuita...',
-    'redirectUrl' => TEACHABLE_CHECKOUT_URL
+    'redirectUrl' => $redirectUrl
 ]);
 
 ?>
