@@ -7,7 +7,7 @@
  */
 
 // Evitar acceso directo
-if (!defined('LEAD_CAPTURE_LOADED')) {
+if (!defined('LEAD_CAPTURE_LOADED') && !defined('PRE_CHECKOUT_CAPTURE_LOADED')) {
     http_response_code(403);
     die('Acceso denegado');
 }

@@ -783,6 +783,13 @@ document.addEventListener('DOMContentLoaded', function() {
 					body: JSON.stringify(formData)
 				});
 
+				// Verificar que la respuesta sea válida
+				if (!response.ok) {
+					const errorText = await response.text();
+					console.error('Error del servidor:', response.status, errorText);
+					throw new Error(`Error del servidor: ${response.status}`);
+				}
+
 				const result = await response.json();
 
 				if (result.success) {
