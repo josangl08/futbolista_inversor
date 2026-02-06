@@ -16,7 +16,7 @@ const COURSE_CONFIG = {
 	// ==========================================
 	// CONTROL PRINCIPAL - Cambiar solo esta línea cuando abras/cierres inscripciones
 	// ==========================================
-	enrollmentStatus: 'closed', // 'open' o 'closed'
+	enrollmentStatus: 'opened', // 'open' o 'closed'
 
 	// Fecha de inicio del curso
 	courseStartDate: '1 de Marzo de 2026',
