@@ -908,7 +908,11 @@
 								<li>&nbsp;</li>
 							</ul>
 							<div class="footer">
-								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6589884" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="#"
+								   data-tier="basic"
+								   data-product-id="6589884"
+								   data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6589884"
+								   class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -930,7 +934,11 @@
 								<li>&nbsp;</li>
 							</ul>
 							<div class="footer">
-								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597569" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="#"
+								   data-tier="premium"
+								   data-product-id="6597569"
+								   data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597569"
+								   class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -952,7 +960,11 @@
 								<li><i class="fa fa-award me-2 pricing-icon"></i> Certificado</li>
 							</ul>
 							<div class="footer">
-								<a href="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6601525" target="_blank" rel="noopener noreferrer" class="btn btn-inverse btn-theme btn-block">Comprar</a>
+								<a href="#"
+								   data-tier="elite"
+								   data-product-id="6601525"
+								   data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6601525"
+								   class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -1495,6 +1507,76 @@
 		</div>
 	</div>
 	<!-- end modal lead confirmation -->
+
+	<!-- Modal: Pre-Checkout Email Capture -->
+	<div class="modal fade" id="modalPreCheckout" data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">
+						<i class="fa fa-shopping-cart me-2 text-theme"></i>
+						Último Paso para Tu Inscripción
+					</h4>
+				</div>
+				<div class="modal-body text-center py-4">
+					<p class="lead mb-3">
+						Para asegurar tu acceso y enviarte la confirmación, necesitamos tus datos:
+					</p>
+
+					<form id="formPreCheckout">
+						<!-- Hidden fields -->
+						<input type="hidden" id="preCheckoutTier" name="tier">
+						<input type="hidden" id="preCheckoutProductId" name="product_id">
+						<input type="hidden" id="preCheckoutTeachableUrl" name="teachable_url">
+						<input type="hidden" id="preCheckoutTimestamp" name="timestamp">
+
+						<!-- Honeypot field -->
+						<input type="text" name="empresa" style="display:none" tabindex="-1" autocomplete="off">
+
+						<!-- Name field -->
+						<div class="form-group mb-3 text-start">
+							<label for="preCheckoutNombre" class="form-label">Nombre *</label>
+							<input
+								type="text"
+								class="form-control form-control-lg"
+								id="preCheckoutNombre"
+								name="nombre"
+								placeholder="Tu nombre completo"
+								required
+								minlength="2">
+						</div>
+
+						<!-- Email field -->
+						<div class="form-group mb-4 text-start">
+							<label for="preCheckoutEmail" class="form-label">Email *</label>
+							<input
+								type="email"
+								class="form-control form-control-lg"
+								id="preCheckoutEmail"
+								name="email"
+								placeholder="tu@email.com"
+								required>
+						</div>
+
+						<p class="text-muted small mb-4">
+							<i class="fa fa-lock me-1"></i>
+							Tus datos están seguros y nunca serán compartidos
+						</p>
+
+						<button type="submit" class="btn btn-theme btn-lg w-100">
+							<i class="fa fa-arrow-right me-2"></i>
+							Continuar a la Compra
+						</button>
+					</form>
+
+					<p class="text-muted small mt-3 mb-0">
+						Serás redirigido a Teachable para completar tu compra de forma segura
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end modal pre-checkout -->
 
 	<!-- END LEGAL MODALS -->
 

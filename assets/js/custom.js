@@ -690,3 +690,134 @@ function handleLeadForm(form) {
 		}
 	});
 }
+
+// ===========================================================================
+// PRE-CHECKOUT MODAL - CAPTURA DE EMAIL ANTES DE COMPRA
+// ===========================================================================
+
+/**
+ * Interceptar clicks en botones de compra y mostrar modal
+ */
+document.addEventListener('DOMContentLoaded', function() {
+	const comprarButtons = document.querySelectorAll('.comprar-btn[data-tier]');
+
+	comprarButtons.forEach(button => {
+		button.addEventListener('click', function(e) {
+			e.preventDefault();
+
+			// Obtener datos del botón
+			const tier = this.dataset.tier;
+			const productId = this.dataset.productId;
+			const teachableUrl = this.dataset.teachableUrl;
+
+			// Validar que tenemos los datos necesarios
+			if (!tier || !productId || !teachableUrl) {
+				console.error('Error: Faltan datos en el botón de compra');
+				alert('Error al procesar la solicitud. Por favor, recarga la página.');
+				return;
+			}
+
+			// Poblar campos ocultos del modal
+			document.getElementById('preCheckoutTier').value = tier;
+			document.getElementById('preCheckoutProductId').value = productId;
+			document.getElementById('preCheckoutTeachableUrl').value = teachableUrl;
+			document.getElementById('preCheckoutTimestamp').value = Date.now();
+
+			// Mostrar modal
+			const modalElement = document.getElementById('modalPreCheckout');
+			if (modalElement) {
+				const modal = new bootstrap.Modal(modalElement);
+				modal.show();
+			} else {
+				console.error('Error: Modal pre-checkout no encontrado');
+			}
+		});
+	});
+
+	// Manejar envío del formulario pre-checkout
+	const preCheckoutForm = document.getElementById('formPreCheckout');
+	if (preCheckoutForm) {
+		preCheckoutForm.addEventListener('submit', async function(e) {
+			e.preventDefault();
+
+			const submitBtn = this.querySelector('button[type="submit"]');
+			const originalHTML = submitBtn.innerHTML;
+
+			// Validaciones del lado del cliente
+			const nombre = document.getElementById('preCheckoutNombre').value.trim();
+			const email = document.getElementById('preCheckoutEmail').value.trim();
+
+			if (nombre.length < 2) {
+				alert('Por favor, introduce tu nombre completo (mínimo 2 caracteres)');
+				document.getElementById('preCheckoutNombre').focus();
+				return;
+			}
+
+			if (!email || !email.includes('@')) {
+				alert('Por favor, introduce un email válido');
+				document.getElementById('preCheckoutEmail').focus();
+				return;
+			}
+
+			// Deshabilitar botón y mostrar loading
+			submitBtn.disabled = true;
+			submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Procesando...';
+
+			try {
+				// Preparar datos
+				const formData = {
+					email: email,
+					nombre: nombre,
+					tier: document.getElementById('preCheckoutTier').value,
+					product_id: document.getElementById('preCheckoutProductId').value,
+					timestamp: document.getElementById('preCheckoutTimestamp').value,
+					empresa: this.querySelector('[name="empresa"]').value // honeypot
+				};
+
+				// Enviar a PHP endpoint
+				const response = await fetch('api/pre-checkout-capture.php', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(formData)
+				});
+
+				const result = await response.json();
+
+				if (result.success) {
+					// Guardar en localStorage como backup
+					try {
+						localStorage.setItem('preCheckoutEmail', formData.email);
+						localStorage.setItem('preCheckoutNombre', formData.nombre);
+						localStorage.setItem('preCheckoutTier', formData.tier);
+						localStorage.setItem('preCheckoutTimestamp', Date.now());
+					} catch (e) {
+						// localStorage no disponible, no es crítico
+						console.warn('localStorage no disponible:', e);
+					}
+
+					// Redirigir a Teachable
+					const teachableUrl = document.getElementById('preCheckoutTeachableUrl').value;
+					window.location.href = teachableUrl;
+
+				} else {
+					// Error en el servidor
+					alert(result.message || 'Error al procesar. Por favor, inténtalo de nuevo.');
+
+					// Restaurar botón
+					submitBtn.disabled = false;
+					submitBtn.innerHTML = originalHTML;
+				}
+
+			} catch (error) {
+				console.error('Error en pre-checkout:', error);
+				alert('Error de conexión. Por favor, verifica tu internet e intenta de nuevo.');
+
+				// Restaurar botón
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = originalHTML;
+			}
+		});
+	}
+});
