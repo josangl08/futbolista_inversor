@@ -9,8 +9,55 @@
  * 4. Muestra página de agradecimiento personalizada
  */
 
+// ========== MODO DEBUG: Comentar en producción ==========
+$debugMode = true; // Cambiar a false cuando funcione
+if ($debugMode) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    echo "<pre style='background:#f0f0f0; padding:20px; border:2px solid #36E3A0;'>";
+    echo "<h2>🔍 DEBUG MODE - gracias-compra.php</h2>";
+    echo "<strong>Timestamp:</strong> " . date('Y-m-d H:i:s') . "\n";
+    echo "<strong>Request URI:</strong> " . ($_SERVER['REQUEST_URI'] ?? 'N/A') . "\n";
+    echo "<strong>Query String:</strong> " . ($_SERVER['QUERY_STRING'] ?? 'N/A') . "\n";
+    echo "<strong>GET Parameters:</strong>\n";
+    print_r($_GET);
+    echo "<strong>__DIR__:</strong> " . __DIR__ . "\n";
+    echo "<strong>Script:</strong> " . ($_SERVER['SCRIPT_FILENAME'] ?? 'N/A') . "\n\n";
+}
+
+// Logging de diagnóstico
+$logFile = __DIR__ . '/data/gracias-compra-debug.log';
+$logEntry = date('Y-m-d H:i:s') . " | INICIO GRACIAS-COMPRA.PHP\n";
+$logEntry .= "URL: " . ($_SERVER['REQUEST_URI'] ?? 'N/A') . "\n";
+$logEntry .= "Query String: " . ($_SERVER['QUERY_STRING'] ?? 'N/A') . "\n";
+$logEntry .= "GET params: " . json_encode($_GET) . "\n";
+$logEntry .= "__DIR__: " . __DIR__ . "\n";
+$logEntry .= "Script: " . ($_SERVER['SCRIPT_FILENAME'] ?? 'N/A') . "\n";
+@file_put_contents($logFile, $logEntry, FILE_APPEND);
+
+if ($debugMode) {
+    echo "<strong>✓ Log escrito a:</strong> " . $logFile . "\n";
+}
+
+// Marcar que el archivo puede cargar config.php
+define('PRE_CHECKOUT_CAPTURE_LOADED', true);
+if ($debugMode) echo "✓ Constante PRE_CHECKOUT_CAPTURE_LOADED definida\n";
+
 // Cargar configuración
-require_once __DIR__ . '/api/config.php';
+try {
+    if ($debugMode) echo "Intentando cargar config.php...\n";
+    require_once __DIR__ . '/api/config.php';
+    @file_put_contents($logFile, date('Y-m-d H:i:s') . " | Config.php cargado OK\n", FILE_APPEND);
+    if ($debugMode) echo "✓ Config.php cargado correctamente\n";
+} catch (Exception $e) {
+    @file_put_contents($logFile, date('Y-m-d H:i:s') . " | ERROR cargando config: " . $e->getMessage() . "\n", FILE_APPEND);
+    if ($debugMode) {
+        echo "❌ ERROR cargando config: " . $e->getMessage() . "\n";
+        echo "</pre>";
+    }
+    die("Error al cargar configuración");
+}
 
 // Cargar PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
