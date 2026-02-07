@@ -9,55 +9,11 @@
  * 4. Muestra página de agradecimiento personalizada
  */
 
-// ========== MODO DEBUG: Comentar en producción ==========
-$debugMode = true; // Cambiar a false cuando funcione
-if ($debugMode) {
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
-    echo "<pre style='background:#f0f0f0; padding:20px; border:2px solid #36E3A0;'>";
-    echo "<h2>🔍 DEBUG MODE - gracias-compra.php</h2>";
-    echo "<strong>Timestamp:</strong> " . date('Y-m-d H:i:s') . "\n";
-    echo "<strong>Request URI:</strong> " . ($_SERVER['REQUEST_URI'] ?? 'N/A') . "\n";
-    echo "<strong>Query String:</strong> " . ($_SERVER['QUERY_STRING'] ?? 'N/A') . "\n";
-    echo "<strong>GET Parameters:</strong>\n";
-    print_r($_GET);
-    echo "<strong>__DIR__:</strong> " . __DIR__ . "\n";
-    echo "<strong>Script:</strong> " . ($_SERVER['SCRIPT_FILENAME'] ?? 'N/A') . "\n\n";
-}
-
-// Logging de diagnóstico
-$logFile = __DIR__ . '/data/gracias-compra-debug.log';
-$logEntry = date('Y-m-d H:i:s') . " | INICIO GRACIAS-COMPRA.PHP\n";
-$logEntry .= "URL: " . ($_SERVER['REQUEST_URI'] ?? 'N/A') . "\n";
-$logEntry .= "Query String: " . ($_SERVER['QUERY_STRING'] ?? 'N/A') . "\n";
-$logEntry .= "GET params: " . json_encode($_GET) . "\n";
-$logEntry .= "__DIR__: " . __DIR__ . "\n";
-$logEntry .= "Script: " . ($_SERVER['SCRIPT_FILENAME'] ?? 'N/A') . "\n";
-@file_put_contents($logFile, $logEntry, FILE_APPEND);
-
-if ($debugMode) {
-    echo "<strong>✓ Log escrito a:</strong> " . $logFile . "\n";
-}
-
 // Marcar que el archivo puede cargar config.php
 define('PRE_CHECKOUT_CAPTURE_LOADED', true);
-if ($debugMode) echo "✓ Constante PRE_CHECKOUT_CAPTURE_LOADED definida\n";
 
 // Cargar configuración
-try {
-    if ($debugMode) echo "Intentando cargar config.php...\n";
-    require_once __DIR__ . '/api/config.php';
-    @file_put_contents($logFile, date('Y-m-d H:i:s') . " | Config.php cargado OK\n", FILE_APPEND);
-    if ($debugMode) echo "✓ Config.php cargado correctamente\n";
-} catch (Exception $e) {
-    @file_put_contents($logFile, date('Y-m-d H:i:s') . " | ERROR cargando config: " . $e->getMessage() . "\n", FILE_APPEND);
-    if ($debugMode) {
-        echo "❌ ERROR cargando config: " . $e->getMessage() . "\n";
-        echo "</pre>";
-    }
-    die("Error al cargar configuración");
-}
+require_once __DIR__ . '/api/config.php';
 
 // Cargar PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
@@ -78,17 +34,8 @@ $user_id = $_GET['user_id'] ?? '';
 $sale_id = $_GET['sale_id'] ?? '';
 $final_price = $_GET['final_price'] ?? '';
 
-if ($debugMode) {
-    echo "\n<strong>📥 Parámetros procesados:</strong>\n";
-    echo "product_id (de 'purchased'): {$product_id}\n";
-    echo "sale_id: {$sale_id}\n";
-    echo "user_id: {$user_id}\n";
-    echo "final_price: {$final_price}\n";
-}
-
 // Log de los parámetros recibidos
 error_log("Teachable Redirect - product_id: {$product_id}, sale_id: {$sale_id}, user_id: {$user_id}");
-@file_put_contents($logFile, date('Y-m-d H:i:s') . " | Params - product_id: {$product_id}, sale: {$sale_id}, user: {$user_id}\n", FILE_APPEND);
 
 // ===========================================================================
 // 2. MAPEAR PRODUCT_ID A TIER
@@ -101,15 +48,6 @@ $tierMap = [
 ];
 
 $tier = $tierMap[$product_id] ?? null;
-
-if ($debugMode) {
-    echo "\n<strong>🎯 Mapeo de tier:</strong>\n";
-    echo "product_id '{$product_id}' → tier: " . ($tier ? "'{$tier}'" : "NULL (no encontrado)") . "\n";
-    if (!$tier) {
-        echo "❌ PROBLEMA: product_id no está en el mapa de tiers\n";
-        echo "Mapa disponible: " . json_encode($tierMap) . "\n";
-    }
-}
 
 // Datos de tier para mostrar
 $tierNames = [
@@ -127,11 +65,6 @@ $tierPrices = [
 $tierName = $tierNames[$tier] ?? 'Programa';
 $tierPrice = $tierPrices[$tier] ?? '';
 
-if ($debugMode) {
-    echo "Tier Name: {$tierName}\n";
-    echo "Tier Price: {$tierPrice}\n";
-}
-
 // ===========================================================================
 // 3. RECUPERAR EMAIL DEL ALMACENAMIENTO
 // ===========================================================================
@@ -146,16 +79,8 @@ if (!$tier) {
     // Producto no válido
     error_log("ERROR: product_id inválido - {$product_id}");
     $errorMessage = 'Producto no encontrado';
-    if ($debugMode) echo "\n❌ No se pudo mapear el tier\n";
 } elseif (file_exists($dataFile)) {
-    if ($debugMode) echo "\n<strong>📂 Buscando email almacenado...</strong>\n";
-    if ($debugMode) echo "Archivo: {$dataFile}\n";
-
     $data = json_decode(file_get_contents($dataFile), true);
-
-    if ($debugMode) {
-        echo "Total de registros en archivo: " . (isset($data['emails']) ? count($data['emails']) : 0) . "\n";
-    }
 
     if (is_array($data) && isset($data['emails'])) {
         // Filtrar entradas del tier correcto que no se hayan completado
@@ -164,10 +89,6 @@ if (!$tier) {
                 && $entry['tier'] === $tier
                 && (!isset($entry['purchase_completed']) || $entry['purchase_completed'] === false);
         });
-
-        if ($debugMode) {
-            echo "Registros del tier '{$tier}' no completados: " . count($entries) . "\n";
-        }
 
         // Ordenar por timestamp descendente (más reciente primero)
         usort($entries, function($a, $b) {
@@ -182,31 +103,17 @@ if (!$tier) {
             $email = $entry['email'] ?? null;
             $nombre = $entry['nombre'] ?? 'Estudiante';
 
-            if ($debugMode) {
-                echo "✓ Email encontrado: {$email}\n";
-                echo "✓ Nombre: {$nombre}\n";
-            }
-
             error_log("Email recuperado para {$tier}: {$email}");
-            @file_put_contents($logFile, date('Y-m-d H:i:s') . " | Email recuperado: {$email} para tier {$tier}\n", FILE_APPEND);
 
             // ===========================================================================
             // 4. ENVIAR EMAIL DE CONFIRMACIÓN
             // ===========================================================================
 
             if ($email) {
-                if ($debugMode) echo "\n<strong>📧 Preparando envío de email...</strong>\n";
-
                 $templateFile = __DIR__ . "/email-templates/06-confirmacion-compra-{$tier}.html";
-
-                if ($debugMode) {
-                    echo "Template: {$templateFile}\n";
-                    echo "Template existe: " . (file_exists($templateFile) ? "SÍ" : "NO") . "\n";
-                }
 
                 if (file_exists($templateFile)) {
                     $emailBody = file_get_contents($templateFile);
-                    if ($debugMode) echo "✓ Template cargado (" . strlen($emailBody) . " bytes)\n";
 
                     // Reemplazar variables en la plantilla
                     $emailBody = str_replace('{{nombre}}', htmlspecialchars($nombre), $emailBody);
@@ -238,32 +145,23 @@ if (!$tier) {
                         $mail->Body = $emailBody;
 
                         // Enviar
-                        if ($debugMode) echo "Enviando email a {$email}...\n";
                         $mail->send();
                         $emailSent = true;
-
-                        if ($debugMode) echo "✅ EMAIL ENVIADO EXITOSAMENTE\n";
 
                         // Log de éxito
                         $purchaseLogFile = __DIR__ . '/data/purchase-confirmations.log';
                         $logEntry = date('Y-m-d H:i:s') . " | SUCCESS | {$email} | {$tier} | sale_id:{$sale_id}\n";
-                        @file_put_contents($purchaseLogFile, $logEntry, FILE_APPEND);
+                        file_put_contents($purchaseLogFile, $logEntry, FILE_APPEND);
 
                         error_log("Email enviado exitosamente a {$email} para tier {$tier}");
 
                     } catch (Exception $e) {
                         // Error al enviar email
-                        if ($debugMode) {
-                            echo "❌ ERROR AL ENVIAR EMAIL\n";
-                            echo "Error: " . $mail->ErrorInfo . "\n";
-                            echo "Exception: " . $e->getMessage() . "\n";
-                        }
-
                         error_log("ERROR al enviar email: " . $mail->ErrorInfo);
 
                         $errorLogFile = __DIR__ . '/data/failed-emails.log';
                         $errorEntry = date('Y-m-d H:i:s') . " | {$email} | {$tier} | sale_id:{$sale_id} | Error: {$mail->ErrorInfo}\n";
-                        @file_put_contents($errorLogFile, $errorEntry, FILE_APPEND);
+                        file_put_contents($errorLogFile, $errorEntry, FILE_APPEND);
                     }
 
                     // ===========================================================================
@@ -311,15 +209,6 @@ if (!$tier) {
 // ===========================================================================
 // 6. RENDERIZAR PÁGINA HTML
 // ===========================================================================
-
-if ($debugMode) {
-    echo "\n<strong>🎨 Renderizando página HTML...</strong>\n";
-    echo "Email encontrado: " . ($email ? "SÍ ({$email})" : "NO") . "\n";
-    echo "Tier identificado: " . ($tier ? "SÍ ({$tier})" : "NO") . "\n";
-    echo "Email enviado: " . ($emailSent ? "SÍ ✅" : "NO ❌") . "\n";
-    echo "</pre>\n";
-    echo "<hr style='border:2px solid #36E3A0; margin:20px 0;'>\n";
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
