@@ -51,9 +51,9 @@ $tier = $tierMap[$product_id] ?? null;
 
 // Datos de tier para mostrar
 $tierNames = [
-    'basic' => 'Programa Básico',
-    'premium' => 'Programa Premium',
-    'elite' => 'Programa Elite'
+    'basic' => 'Curso Básico',
+    'premium' => 'Curso Premium',
+    'elite' => 'Curso Elite'
 ];
 
 $tierPrices = [
