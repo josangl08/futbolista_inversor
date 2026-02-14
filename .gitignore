@@ -226,16 +226,7 @@ INSTRUCCIONES_DESPLIEGUE.md
 ANTI_SPAM_README.md
 GUIA_DESPLIEGUE.MD
 INSTRUCCIONES_HOSTINGER_REACH.MD
-api-1.yaml
-custom.js.bak2
-custom.js.bak3
-custom.js.bak4
-custom.js.bak5
-custom.js.bak6
-custom.js.bak7
-custom.js.bak8
-app.min.css.bak4
-index.html.bak1
+CONFIGURACION_DNS.md
 
 # Large video files (use CDN or external hosting)
 *.mp4
