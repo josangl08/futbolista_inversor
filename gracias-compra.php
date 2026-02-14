@@ -139,10 +139,23 @@ if (!$tier) {
                         $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
                         $mail->addAddress($email, $nombre);
 
+                        // Headers adicionales para mejor deliverability
+                        $mail->addReplyTo(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
+                        $mail->Sender = SMTP_FROM_EMAIL; // Return-Path
+                        $mail->XMailer = 'Futbolista Inversor v1.0';
+
                         // Contenido
                         $mail->isHTML(true);
                         $mail->Subject = "¡Bienvenido al {$tierName}!";
                         $mail->Body = $emailBody;
+
+                        // Adjuntar logo como imagen inline para evitar imágenes rotas
+                        $logoPath = __DIR__ . '/assets/img/LOGO/logo_1.png';
+                        if (file_exists($logoPath)) {
+                            $mail->addEmbeddedImage($logoPath, 'logo_futbolista', 'logo_1.png');
+                        } else {
+                            error_log("WARNING: Logo no encontrado en {$logoPath}");
+                        }
 
                         // Enviar
                         $mail->send();

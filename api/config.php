@@ -14,8 +14,11 @@ if (!defined('LEAD_CAPTURE_LOADED') && !defined('PRE_CHECKOUT_CAPTURE_LOADED')) 
 
 // Cargar variables de entorno desde .env
 function loadEnvIfNotLoaded() {
-    // Si ya está cargada, no hacer nada
-    if (defined('HOSTINGER_API_KEY')) {
+    // Verificar si todas las variables críticas ya están cargadas
+    if (defined('SMTP_FROM_NAME') &&
+        defined('SMTP_FROM_EMAIL') &&
+        defined('SMTP_HOST') &&
+        defined('HOSTINGER_API_KEY')) {
         return;
     }
 
