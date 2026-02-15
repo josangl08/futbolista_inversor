@@ -265,7 +265,7 @@ if (!$tier) {
 			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-			background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%);
+			background: #ffffff;
 			font-family: 'Open Sans', sans-serif;
 		}
 
@@ -283,7 +283,8 @@ if (!$tier) {
 			background: #ffffff;
 			border-radius: 16px;
 			overflow: hidden;
-			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+			border: 1px solid rgba(0, 0, 0, 0.05);
 		}
 
 		.card-header {
