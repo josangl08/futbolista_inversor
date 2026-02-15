@@ -15,6 +15,28 @@ define('PRE_CHECKOUT_CAPTURE_LOADED', true);
 // Cargar configuración
 require_once __DIR__ . '/api/config.php';
 
+// Verificación crítica: Asegurar que las constantes SMTP estén definidas
+if (!defined('SMTP_FROM_NAME') || !defined('SMTP_FROM_EMAIL') || !defined('SMTP_HOST')) {
+    error_log("ERROR CRÍTICO: Constantes SMTP no definidas. Recargando .env manualmente.");
+
+    // Cargar .env manualmente como fallback
+    $envPath = __DIR__ . '/.env';
+    if (file_exists($envPath)) {
+        $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            if (strpos(trim($line), '#') === 0) continue;
+            if (strpos($line, '=') !== false) {
+                list($key, $value) = explode('=', $line, 2);
+                $key = trim($key);
+                $value = trim($value);
+                if (!defined($key)) {
+                    define($key, $value);
+                }
+            }
+        }
+    }
+}
+
 // Cargar PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -134,6 +156,10 @@ if (!$tier) {
                         $mail->SMTPSecure = (SMTP_ENCRYPTION === 'ssl') ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
                         $mail->Port = SMTP_PORT;
                         $mail->CharSet = 'UTF-8';
+
+                        // Debug: Verificar valores de constantes
+                        error_log("DEBUG - SMTP_FROM_EMAIL: " . (defined('SMTP_FROM_EMAIL') ? SMTP_FROM_EMAIL : 'NO DEFINIDA'));
+                        error_log("DEBUG - SMTP_FROM_NAME: " . (defined('SMTP_FROM_NAME') ? SMTP_FROM_NAME : 'NO DEFINIDA'));
 
                         // Remitente y destinatario
                         $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
