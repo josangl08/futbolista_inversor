@@ -3,25 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light">
     <title>¡Bienvenido al Programa Elite!</title>
+    <style>
+        /* Prevenir dark mode */
+        :root {
+            color-scheme: light only;
+            supported-color-schemes: light;
+        }
+        body {
+            background-color: #f4f4f4 !important;
+        }
+        .header-bg {
+            background-color: #1b2c4d !important;
+        }
+        .hero-bg {
+            background-color: #36E3A0 !important;
+        }
+        .content-bg {
+            background-color: #ffffff !important;
+        }
+        /* Forzar tamaño de logo */
+        .logo-email {
+            width: 150px !important;
+            height: 37px !important;
+            max-width: 150px !important;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4;">
-    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4 !important;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4 !important;" bgcolor="#f4f4f4">
         <tr>
             <td style="padding: 40px 20px;">
                 <!-- Container Principal -->
-                <table role="presentation" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <table role="presentation" class="content-bg" style="max-width: 600px; margin: 0 auto; background-color: #ffffff !important; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" bgcolor="#ffffff">
 
                     <!-- Header con Logo -->
                     <tr>
-                        <td style="background: linear-gradient(135deg, #1b2c4d 0%, #2d353c 100%); padding: 30px 40px; text-align: center;">
-                            <img src="cid:logo_futbolista" alt="Futbolista Inversor" width="200" height="49" style="display: block; max-width: 200px; height: auto;">
+                        <td class="header-bg" style="background-color: #1b2c4d !important; padding: 30px 40px; text-align: center;" bgcolor="#1b2c4d">
+                            <img src="cid:logo_futbolista" alt="Futbolista Inversor" class="logo-email" width="150" height="37" style="display: block; width: 150px !important; height: 37px !important; max-width: 150px !important; margin: 0 auto;" border="0">
                         </td>
                     </tr>
 
                     <!-- Hero Section -->
                     <tr>
-                        <td style="background: linear-gradient(135deg, #36E3A0 0%, #2dd492 100%); padding: 50px 40px; text-align: center;">
+                        <td class="hero-bg" style="background-color: #36E3A0 !important; padding: 50px 40px; text-align: center;" bgcolor="#36E3A0">
                             <h1 style="margin: 0 0 15px; color: #1b2c4d; font-size: 32px; font-weight: 700; line-height: 1.2;">
                                 👑 ¡Bienvenido al curso {{tier_name}}!
                             </h1>
