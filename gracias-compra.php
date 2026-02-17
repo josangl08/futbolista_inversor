@@ -73,9 +73,9 @@ $tier = $tierMap[$product_id] ?? null;
 
 // Datos de tier para mostrar
 $tierNames = [
-    'basic' => 'Curso Básico',
-    'premium' => 'Curso Premium',
-    'elite' => 'Curso Elite'
+    'basic' => 'Básico',
+    'premium' => 'Premium',
+    'elite' => 'Elite'
 ];
 
 $tierPrices = [
@@ -172,7 +172,7 @@ if (!$tier) {
 
                         // Contenido
                         $mail->isHTML(true);
-                        $mail->Subject = "¡Bienvenido al {$tierName}!";
+                        $mail->Subject = "Bienvenido al curso Educación Financiera";
                         $mail->Body = $emailBody;
 
                         // Adjuntar logo como imagen inline para evitar imágenes rotas
