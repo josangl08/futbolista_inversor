@@ -128,12 +128,23 @@ function sendToHostingerReach($nombre, $email, $tipoUsuario, $otraProfesion = ''
     // Formato: "Lead: [Segmento] - [Fecha]" (ej: "Lead: Deportista Pro - 2026-01-23 10:30")
     $noteContent = 'Lead: ' . $segmento;
 
+    // Construir surname con el tipo de usuario (acorde al dropdown del formulario)
+    // para almacenarlo como dato CRM en Hostinger Reach
+    if ($tipoUsuario === 'futbolista') {
+        $surnameValue = 'Jugador de Fútbol';
+    } elseif ($tipoUsuario === 'deportista') {
+        $surnameValue = 'Otro Deportista';
+    } else {
+        $surnameValue = !empty($otraProfesion) ? $otraProfesion : 'Otro';
+    }
+
     // Preparar payload según documentación oficial de Hostinger API
-    // Solo campos soportados: email, name, surname, note
+    // Campos soportados: email, name, surname, note
     $payload = [
-        'email' => $email,
-        'name' => $nombre,
-        'note' => $noteContent
+        'email'   => $email,
+        'name'    => $nombre,
+        'surname' => $surnameValue,
+        'note'    => $noteContent
     ];
 
     // Configurar cURL
