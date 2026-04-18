@@ -4,9 +4,16 @@
 	<meta charset="utf-8" />
 	<title>Futbolista Inversor - Curso de Inversión para Futbolistas</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="Aprende a invertir y gestionar tus finanzas como futbolista profesional. Curso especializado en inversión, gestión patrimonial y planificación financiera para deportistas." name="description" />
+	<meta content="Aprende a invertir y gestionar tus finanzas como futbolista profesional. Curso especializado en inversión y gestión patrimonial para deportistas." name="description" />
 	<meta content="Futbolista Inversor" name="author" />
 	<meta name="keywords" content="futbolista, inversor, inversión, finanzas, deportistas, gestión patrimonial, curso inversión, futbolistas profesionales, educación financiera" />
+
+	<!-- Performance: Preconnect to Font domains -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- Performance: Preload LCP Background -->
+	<link rel="preload" href="assets/img/bg/grada3_optimized.jpg" as="image" fetchpriority="high">
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/x-icon" href="assets/img/LOGO/favicon.ico?v=1" />
@@ -18,7 +25,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://futbolistainversor.com/" />
 	<meta property="og:title" content="Futbolista Inversor - Curso de Inversión para Futbolistas" />
-	<meta property="og:description" content="Aprende a invertir y gestionar tus finanzas como futbolista profesional. Curso especializado en inversión, gestión patrimonial y planificación financiera." />
+	<meta property="og:description" content="Aprende a invertir y gestionar tus finanzas como futbolista profesional. Curso especializado en inversión y gestión patrimonial." />
 	<meta property="og:image" content="https://futbolistainversor.com/assets/img/LOGO/logo_1.png" />
 
 	<!-- Twitter -->
@@ -32,9 +39,9 @@
 	<link rel="canonical" href="https://futbolistainversor.com/" />
 
 	<!-- ================== BEGIN core-css ================== -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet" crossorigin="anonymous" />
 	<link href="assets/css/one-page-parallax/vendor.min.css?v=3" rel="stylesheet" />
-	<link href="assets/css/one-page-parallax/app.min.css?v=52" rel="stylesheet" />
+	<link href="assets/css/one-page-parallax/app.css?v=53" rel="stylesheet" />
 </head>
 <body data-bs-spy='scroll' data-bs-target='#header' data-bs-offset='51' class="theme-corporate-green">
 
@@ -69,12 +76,12 @@
 	<!-- begin #page-container -->
 	<div id="page-container" class="fade">
 		<!-- begin #header -->
-		<div id="header" class="header navbar navbar-transparent navbar-fixed-top navbar-expand-lg">
+		<header id="header" class="header navbar navbar-fixed-top navbar-expand-lg">
 			<!-- begin container -->
 			<div class="container">
 				<!-- begin navbar-brand -->
 				<a href="index.html" class="navbar-brand">
-					<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" />
+					<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" width="180" height="70" />
 				</a>
 				<!-- end navbar-brand -->
 				<!-- begin navbar-toggle -->
@@ -85,7 +92,7 @@
 				</button>
 				<!-- end navbar-header -->
 				<!-- begin navbar-collapse -->
-				<div class="collapse navbar-collapse" id="header-navbar">
+				<nav class="collapse navbar-collapse" id="header-navbar">
 					<ul class="nav navbar-nav navbar-end">
 						<li class="nav-item"><a class="nav-link active" href="#home" data-click="scroll-to-target">INICIO</a></li>
 						<li class="nav-item"><a class="nav-link" href="#team" data-click="scroll-to-target">ENTRENADOR</a></li>
@@ -94,37 +101,34 @@
 						<li class="nav-item"><a class="nav-link" href="#pricing" data-click="scroll-to-target">PRECIOS</a></li>
 						<li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACTO</a></li>
 					</ul>
-				</div>
+				</nav>
 				<!-- end navbar-collapse -->
 			</div>
 			<!-- end container -->
-		</div>
+		</header>
 		<!-- end #header -->
 		
 		<!-- begin #home -->
-		<div id="home" class="content has-bg home">
+		<section id="home" class="content has-bg home">
 			<!-- begin content-bg -->
-			<div class="content-bg" style="background-image: url(assets/img/bg/grada3.jpeg);" 
-				data-paroller="true" 
-				data-paroller-type="foreground" 
-				data-paroller-factor="-0.25">
+			<div class="content-bg" style="background-image: url(assets/img/bg/grada3_optimized.jpg); background-attachment: scroll;">
 			</div>
 			<!-- end content-bg -->
 			<!-- begin container -->
 			<div class="container home-content">
-				<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" style="height: 70px; width: auto; display: block; margin: 0 auto 20px;" />
-				<h3 class="mt-5">Tu Puerta de Entrada al Mundo de las Inversiones</h3>
+				<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" style="height: 70px; width: auto; display: block; margin: 0 auto 20px;" width="180" height="70" />
+				<h1 class="mt-5 h3 fw-bold mb-5">Tu Puerta de Entrada al Mundo de las Inversiones</h1>
 				
 				<a href="#team" class="btn btn-theme btn-outline-white">Presentación</a> <a href="#pricing" class="btn btn-theme btn-outline-white">Únete Ahora</a><br />
 				<br />
 				
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #home -->
 		
 		<!-- begin #about -->
-		<div id="about" class="content" data-scrollview="true">
+		<section id="about" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
 				<h2 class="content-title">La Estrategia Ganadora</h2>
@@ -160,7 +164,7 @@
 							</div>
 							<div class="author">
 								<div class="image">
-									<img src="assets/img/user/jorge_profile_small.png" alt="Jorge Alonso" />
+									<img src="assets/img/user/jorge_profile_small.png" alt="Jorge Alonso" loading="lazy" width="60" height="60" />
 								</div>
 								<div class="info">
 									Jorge Alonso
@@ -175,11 +179,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #about -->
 		
 		<!-- begin #milestone -->
-		<div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
+		<section id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
 			<div class="content-bg" style="background-image: url(assets/img/bg/bg-botas.jpg)"></div>
 			<!-- end content-bg -->
@@ -187,55 +191,15 @@
 			<div class="container">
 				<!-- begin row -->
 				<div class="row">
-					<!-- begin col-3 -->
-					 <!--
-					<div class="col-lg-3 milestone-col">
-						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="500">500</div>
-							<div class="title">Jugadores Formados</div>
-						</div>
-					</div>
-					-->
-					<!-- end col-3 -->
-					<!-- begin col-3 -->
-					 <!--
-					<div class="col-lg-3 milestone-col">
-						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="100">100%</div>
-							<div class="title">Patrimonio Protegido</div>
-						</div>
-					</div>
-					-->
-					<!-- end col-3 -->
-					<!-- begin col-3 -->
-					 <!--
-					<div class="col-lg-3 milestone-col">
-						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="95">95%</div>
-							<div class="title">Inversiones Exitosas</div>
-						</div>
-					</div>
-					-->
-					<!-- end col-3 -->
-					<!-- begin col-3 -->
-					 <!--
-					<div class="col-lg-3 milestone-col">
-						<div class="milestone">
-							<div class="number" data-animation="true" data-animation-type="number" data-final-number="10">10</div>
-							<div class="title">Años de Experiencia</div>
-						</div>
-					</div>
-					-->
-					<!-- end col-3 -->
 				</div>
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #milestone -->
 		
 		<!-- begin #team -->
-		<div id="team" class="content" data-scrollview="true">
+		<section id="team" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Tu Entrenador Financiero</h2>
@@ -249,17 +213,15 @@
 						<!-- begin team -->
 						<div class="team">
 							<div class="image" data-animation="true" data-animation-type="animate__flipInX">
-								<img src="assets/img/user/jorge_profile_medium.png" alt="Jorge Alonso" />
+								<img src="assets/img/user/jorge_profile_medium.png" alt="Jorge Alonso" loading="lazy" width="250" height="250" />
 							</div>
 							<div class="info">
 								<h3 class="name">Jorge Alonso</h3>
 								<div class="title text-theme">Exfutbolista e Inversor</div>
 								<p>Exfutbolista profesional que ha transformado su experiencia en el campo en éxito financiero, y ahora comparte sus estrategias para que tú también ganes el partido de tu vida.</p>
 								<div class="social">
-									<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+									<a href="https://www.facebook.com/profile.php?id=61585739112135" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
 									<a href="https://www.instagram.com/futbolistainversor/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-									<!-- <a href="#"><i class="fab fa-x-twitter fa-lg fa-fw"></i></a> -->
-									<!-- <a href="#"><i class="fab fa-linkedin fa-lg fa-fw"></i></a> -->
 								</div>
 							</div>
 						</div>
@@ -269,25 +231,18 @@
 					<!-- begin col-8 -->
 					
 					<div class="col-lg-8">
-						<iframe src="https://player.vimeo.com/video/1152850871?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width=100% height="500" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="presentacion"></iframe>
-						<!-- <video controls poster= "assets/img/educacion_financiera.jpg"
-						style="width: 100%;">
-							<source src="assets/img/presentacion.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						</video> -->
+						<iframe src="https://player.vimeo.com/video/1152850871?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="100%" height="500" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="presentacion" loading="lazy"></iframe>
 					</div>
-					
-					
 					<!-- end col-8 -->
 				</div>
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #team -->
 		
 		<!-- begin #quote -->
-		<div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
+		<section id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
 			<div class="content-bg" style="background-image: url(assets/img/bg/bg-linea2.jpg); background-position: center 30%;"
 				data-paroller-factor="0.5"
@@ -310,11 +265,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #quote -->
 		
 		<!-- beign #service -->
-		<div id="service" class="content" data-scrollview="true">
+		<section id="service" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Qué conseguirás con este curso</h2>
@@ -381,11 +336,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #service -->
 		
 		<!-- beign #action-box -->
-		<div id="action-box" class="content has-bg" data-scrollview="true">
+		<section id="action-box" class="content has-bg" data-scrollview="true">
 			<!-- begin content-bg -->
 			<div class="content-bg" style="background-image: url(assets/img/bg/bg-balon.jpg)"
 				data-paroller-factor="0.5"
@@ -417,11 +372,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #action-box -->
 		
 		<!-- begin #work -->
-		<div id="work" class="content" data-scrollview="true">
+		<section id="work" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container" data-animation="true" data-animation-type="animate__fadeInDown">
 				<h2 class="content-title">Temario del Curso</h2>
@@ -434,7 +389,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-1.jpg" alt="Tema 1" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-1.jpg" alt="Tema 1" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 1: Calentamiento</span>
@@ -449,7 +404,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-2.jpg" alt="Tema 2" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-2.jpg" alt="Tema 2" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 2: Pretemporada</span>
@@ -464,7 +419,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-3.jpg" alt="Tema 3" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-3.jpg" alt="Tema 3" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 3: Entrenamiento Invisible</span>
@@ -479,7 +434,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-4.jpg" alt="Tema 4" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-4.jpg" alt="Tema 4" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 4: "El Fútbol es así"</span>
@@ -498,7 +453,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-5.jpg" alt="Tema 5" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-5.jpg" alt="Tema 5" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 5: Xavi Hernández</span>
@@ -513,7 +468,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-6.jpg" alt="Tema 6" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-6.jpg" alt="Tema 6" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 6: Mercado de Fichajes</span>
@@ -528,7 +483,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-7.jpg" alt="Tema 7" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-7.jpg" alt="Tema 7" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 7: Sistema de Juego</span>
@@ -543,7 +498,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-8.jpg" alt="Tema 8" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-8.jpg" alt="Tema 8" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 8: Dirección Deportiva</span>
@@ -562,7 +517,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-9.jpg" alt="Tema 9" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-9.jpg" alt="Tema 9" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 9: La Liga</span>
@@ -577,7 +532,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-10.jpg" alt="Tema 10" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-10.jpg" alt="Tema 10" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 10: Penaltis</span>
@@ -592,7 +547,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-11.jpg" alt="Tema 11" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-11.jpg" alt="Tema 11" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 11: Alineación</span>
@@ -607,7 +562,7 @@
 						<!-- begin work -->
 						<div class="work">
 							<div class="image">
-								<a href="javascript:void(0)"><img src="assets/img/work/tema-12.jpg" alt="Tema 12" class="img-fluid" /></a>
+								<a href="javascript:void(0)"><img src="assets/img/work/tema-12.jpg" alt="Tema 12" class="img-fluid" loading="lazy" width="300" height="200" /></a>
 							</div>
 							<div class="desc">
 								<span class="desc-title">Tema 12: Rueda de Prensa</span>
@@ -621,11 +576,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #work -->
 		
 		<!-- begin #client -->
-		<div id="client" class="content has-bg bg-green" data-scrollview="true">
+		<section id="client" class="content has-bg bg-green" data-scrollview="true">
 			<!-- begin content-bg -->
 			<div class="content-bg" style="background-image: url(assets/img/bg/bg-campo_pano.jpeg)"
 				data-paroller-factor="0.5"
@@ -685,11 +640,11 @@
 				<!-- end carousel -->
 			</div>
 			<!-- end containter -->
-		</div>
+		</section>
 		<!-- end #client -->
 
 		<!-- begin #lead-magnet -->
-		<div id="lead-magnet" class="content" data-scrollview="true">
+		<section id="lead-magnet" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Accede Gratis al Tema 1: Calentamiento</h2>
@@ -822,11 +777,11 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #lead-magnet -->
 
 		<!-- begin #pricing -->
-		<div id="pricing" class="content" data-scrollview="true">
+		<section id="pricing" class="content" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Accede a tu Futuro</h2>
@@ -909,10 +864,10 @@
 							</ul>
 							<div class="footer">
 								<a href="#"
-								   data-tier="basic"
-								   data-product-id="6589884"
-								   data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6589884"
-								   class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
+									data-tier="basic"
+									data-product-id="6589884"
+									data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6589884"
+									class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -935,10 +890,10 @@
 							</ul>
 							<div class="footer">
 								<a href="#"
-								   data-tier="premium"
-								   data-product-id="6597569"
-								   data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597569"
-								   class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
+									data-tier="premium"
+									data-product-id="6597569"
+									data-teachable-url="https://jorge-alonso-s-school.teachable.com/purchase?product_id=6597569"
+									class="btn btn-inverse btn-theme btn-block comprar-btn">Comprar</a>
 							</div>
 						</div>
 					</li>
@@ -971,11 +926,11 @@
 				</ul>
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #pricing -->
 		
 		<!-- begin #contact -->
-		<div id="contact" class="content bg-light" data-scrollview="true">
+		<section id="contact" class="content bg-light" data-scrollview="true">
 			<!-- begin container -->
 			<div class="container">
 				<h2 class="content-title">Contacto</h2>
@@ -1053,19 +1008,19 @@
 				<!-- end row -->
 			</div>
 			<!-- end container -->
-		</div>
+		</section>
 		<!-- end #contact -->
 		
 		<!-- begin #footer -->
-		<div id="footer" class="footer">
+		<footer id="footer" class="footer">
 			<div class="container">
 			<!-- Nivel 1: Logo + Redes Sociales -->
 			<div class="footer-top">
 				<div class="footer-brand">
-					<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" />
+					<img src="assets/img/LOGO/logo_1.png" alt="Futbolista Inversor Logo" loading="lazy" width="180" height="70" />
 				</div>
 				<div class="footer-social">
-					<a href="https://www.facebook.com/profile.php?id=61585739112135&notif_id=1767718458356144&notif_t=follower_invite&ref=notif" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+					<a href="https://www.facebook.com/profile.php?id=61585739112135" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
 						<i class="fab fa-facebook-f"></i>
 					</a>
 					<a href="https://www.instagram.com/futbolistainversor/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -1076,7 +1031,7 @@
 
 			<!-- Nivel 2: Enlaces Legales -->
 			<div class="footer-middle">
-				<div class="footer-links">
+				<nav class="footer-links">
 					<a href="#" data-bs-toggle="modal" data-bs-target="#modalAvisoLegal">Aviso Legal</a>
 					<span class="footer-separator">·</span>
 					<a href="#" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">Política de Privacidad</a>
@@ -1084,7 +1039,7 @@
 					<a href="#" data-bs-toggle="modal" data-bs-target="#modalCookies">Política de Cookies</a>
 					<span class="footer-separator">·</span>
 					<a href="#" data-bs-toggle="modal" data-bs-target="#modalTerminos">Términos y Condiciones</a>
-				</div>
+				</nav>
 			</div>
 
 			<!-- Nivel 3: Copyright + Teachable -->
@@ -1093,21 +1048,20 @@
 					&copy; 2025 Futbolista Inversor. Todos los derechos reservados.
 				</p>
 
-				<!-- Subvención Gobierno de Cantabria -->
-				<!-- 
-				<div class="footer-grant" style="margin: 25px 0 20px; text-align: center;">
+				<!-- Bloque Institucional -->
+				<div class="f-sub-box" style="margin: 15px auto; text-align: center; display: block !important;">
 					<img src="assets/img/about/subvencion.png"
 						alt="Subvención Gobierno de Cantabria y SEPE"
-						style="max-width: 250px; width: 100%; height: auto; opacity: 0.9; display: block; margin: 0 auto;" />
+						style="max-width: 180px; width: 100%; height: auto; opacity: 1 !important; display: inline-block !important;" />
 				</div>
-				-->
+
 				<p class="footer-teachable">
 					Cursos gestionados por <a href="https://teachable.com" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Teachable</a>
 				</p>
 			</div>
 
 			</div>
-		</div>
+		</footer>
 		<!-- end #footer -->
 	</div>
 	<!-- end #page-container -->
@@ -1215,7 +1169,7 @@
 					<p><strong>¿Cómo ejercer estos derechos?</strong></p>
 					<p>Puede ejercer sus derechos mediante comunicación escrita dirigida a <strong>info@futbolistainversor.com</strong>, adjuntando copia de su DNI o documento identificativo equivalente.</p>
 
-					<h6>7. DERECHO A RECLAMACIÓN</h6>
+					<h6>7. DERECHOS DE LA RECLAMACIÓN</h6>
 					<p>Si considera que el tratamiento de sus datos personales vulnera la normativa, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD):</p>
 					<ul>
 						<li><strong>Sede electrónica:</strong> www.aepd.es</li>

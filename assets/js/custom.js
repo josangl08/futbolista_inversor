@@ -16,20 +16,20 @@ const COURSE_CONFIG = {
 	// ==========================================
 	// CONTROL PRINCIPAL - Cambiar solo esta línea cuando abras/cierres inscripciones
 	// ==========================================
-	enrollmentStatus: 'open', // 'open' o 'closed'
+	enrollmentStatus: 'closed', // 'open' o 'closed'
 
 	// Fecha de inicio del curso
-	courseStartDate: '1 de Marzo de 2026',
+	courseStartDate: '1 de Septiembre de 2026',
 
 	// Periodo de inscripciones
-	enrollmentOpenDate: '13 de Febrero de 2026',
-	enrollmentCloseDate: '28 de Febrero de 2026',
+	enrollmentOpenDate: '7 de Agosto de 2026',
+	enrollmentCloseDate: '30 de Agosto de 2026',
 
 	// Fecha y hora exacta de cierre (para countdown)
-	enrollmentEndDateTime: new Date('2026-02-28T23:59:59').getTime(),
+	enrollmentEndDateTime: new Date('2026-08-30T23:59:59').getTime(),
 
 	// Mes de próxima apertura (para sticky bar cuando está cerrado)
-	nextOpeningMonth: 'Marzo'
+	nextOpeningMonth: 'Septiembre'
 };
 
 // ============================================================================
@@ -828,3 +828,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 });
+
+/* Fallback para Navbar en navegadores que no soportan animation-timeline (Safari/Firefox) */
+(function() {
+    if (!CSS.supports('animation-timeline', 'scroll()')) {
+        const header = document.querySelector('#header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 450) {
+                header.classList.add('is-visible');
+            } else {
+                header.classList.remove('is-visible');
+            }
+        }, { passive: true });
+    }
+})();
