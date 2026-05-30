@@ -55,7 +55,7 @@ Options -Indexes
 # ---------------------------
 # 4. PROTEGER ARCHIVOS SENSIBLES
 # ---------------------------
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|json)$">
 Order Allow,Deny
 Deny from all
 </FilesMatch>
