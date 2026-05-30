@@ -46,15 +46,72 @@ require __DIR__ . '/vendor/phpmailer/PHPMailer-master/src/PHPMailer.php';
 require __DIR__ . '/vendor/phpmailer/PHPMailer-master/src/SMTP.php';
 
 // ===========================================================================
-// 1. OBTENER PARÁMETROS DE TEACHABLE
+// 0. RATE LIMITING
 // ===========================================================================
 
-// IMPORTANTE: Teachable envía 'purchased' con el product_id, NO 'product_id' directamente
+function checkGraciasRateLimit($ip) {
+    $limitFile = __DIR__ . '/data/gracias-rate-limit.json';
+    $maxAttempts = 10;
+    $timeWindow = 900;
+
+    $fp = fopen($limitFile, 'c+');
+    if (!$fp) return true;
+
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return true;
+    }
+
+    $content = stream_get_contents($fp);
+    $limits = json_decode($content, true) ?: [];
+
+    $currentTime = time();
+    foreach ($limits as $key => $data) {
+        if ($currentTime - $data['time'] > $timeWindow) {
+            unset($limits[$key]);
+        }
+    }
+
+    $allowed = true;
+    if (isset($limits[$ip])) {
+        if ($limits[$ip]['count'] >= $maxAttempts) {
+            $allowed = false;
+        } else {
+            $limits[$ip]['count']++;
+        }
+    } else {
+        $limits[$ip] = ['count' => 1, 'time' => $currentTime];
+    }
+
+    if ($allowed) {
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($limits));
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return $allowed;
+}
+
+$clientIP = $_SERVER['REMOTE_ADDR'];
+if (!checkGraciasRateLimit($clientIP)) {
+    http_response_code(429);
+    exit('Demasiadas solicitudes. Por favor, espera unos minutos.');
+}
+
+// ===========================================================================
+// 1. OBTENER Y VALIDAR PARÁMETROS DE TEACHABLE
+// ===========================================================================
+
+$validProductIds = ['6589884', '6597569', '6601525'];
 $purchased = $_GET['purchased'] ?? '';
-$product_id = $purchased; // El product_id es el valor de 'purchased'
-$user_id = $_GET['user_id'] ?? '';
-$sale_id = $_GET['sale_id'] ?? '';
-$final_price = $_GET['final_price'] ?? '';
+$product_id = in_array($purchased, $validProductIds) ? $purchased : '';
+
+// Sanitizar parámetros de texto libre con formato conocido
+$user_id    = preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['user_id'] ?? '');
+$sale_id    = preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['sale_id'] ?? '');
+$final_price = preg_replace('/[^0-9.]/', '', $_GET['final_price'] ?? '');
 
 // Log de los parámetros recibidos
 error_log("Teachable Redirect - product_id: {$product_id}, sale_id: {$sale_id}, user_id: {$user_id}");
@@ -137,11 +194,17 @@ if (!$tier) {
                 if (file_exists($templateFile)) {
                     $emailBody = file_get_contents($templateFile);
 
-                    // Reemplazar variables en la plantilla
-                    $emailBody = str_replace('{{nombre}}', htmlspecialchars($nombre), $emailBody);
-                    $emailBody = str_replace('{{tier_name}}', $tierName, $emailBody);
-                    $emailBody = str_replace('{{price}}', $tierPrice, $emailBody);
-                    $emailBody = str_replace('{{teachable_url}}', 'https://jorge-alonso-s-school.teachable.com/courses/enrolled', $emailBody);
+                    // Reemplazar variables en la plantilla (array simultáneo para evitar doble sustitución)
+                    $emailBody = str_replace(
+                        ['{{nombre}}', '{{tier_name}}', '{{price}}', '{{teachable_url}}'],
+                        [
+                            htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'),
+                            htmlspecialchars($tierName, ENT_QUOTES, 'UTF-8'),
+                            htmlspecialchars($tierPrice, ENT_QUOTES, 'UTF-8'),
+                            'https://jorge-alonso-s-school.teachable.com/courses/enrolled'
+                        ],
+                        $emailBody
+                    );
 
                     // Configurar PHPMailer
                     $mail = new PHPMailer(true);
@@ -559,7 +622,7 @@ if (!$tier) {
 				const storedNombre = localStorage.getItem('preCheckoutNombre');
 				const storedTier = localStorage.getItem('preCheckoutTier');
 
-				if (storedEmail && storedTier === '<?php echo $tier; ?>') {
+				if (storedEmail && storedTier === <?php echo json_encode($tier ?? ''); ?>) {
 					// Intentar enviar por AJAX al servidor como fallback
 					fetch('api/send-purchase-email-fallback.php', {
 						method: 'POST',
@@ -568,8 +631,8 @@ if (!$tier) {
 							email: storedEmail,
 							nombre: storedNombre || 'Estudiante',
 							tier: storedTier,
-							sale_id: '<?php echo $sale_id; ?>',
-							product_id: '<?php echo $product_id; ?>'
+							sale_id: <?php echo json_encode($sale_id); ?>,
+							product_id: <?php echo json_encode($product_id); ?>
 						})
 					}).then(response => response.json())
 					  .then(data => {

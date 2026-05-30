@@ -93,6 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		timestampField.value = Date.now();
 	}
 
+	// Obtener token CSRF del servidor al cargar la página
+	let csrfToken = '';
+	fetch('api/get-csrf-token.php')
+		.then(r => r.json())
+		.then(data => { csrfToken = data.token || ''; })
+		.catch(() => {});
+
 	form.addEventListener('submit', function(e) {
 		e.preventDefault(); // Prevenir envío tradicional
 
@@ -102,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// Recoger datos del formulario
 		const formData = new FormData(form);
+		if (csrfToken) {
+			formData.append('csrf_token', csrfToken);
+		}
 
 		// Deshabilitar botón de envío
 		const submitBtn = form.querySelector('button[type="submit"]');
@@ -140,9 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 					// Mostrar errores
 					if (response.errors && Object.keys(response.errors).length > 0) {
-						let errorHTML = '<ul class="mb-0">';
+						const ul = document.createElement('ul');
+						ul.className = 'mb-0';
 						for (let field in response.errors) {
-							errorHTML += '<li>' + response.errors[field] + '</li>';
+							const li = document.createElement('li');
+							li.textContent = response.errors[field];
+							ul.appendChild(li);
 
 							// Marcar campo con error
 							const input = form.querySelector('[name="' + field + '"]');
@@ -154,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
 								input.parentNode.appendChild(feedback);
 							}
 						}
-						errorHTML += '</ul>';
-						modalMensaje.innerHTML = errorHTML;
+						modalMensaje.innerHTML = '';
+						modalMensaje.appendChild(ul);
 					} else {
 						modalMensaje.textContent = response.message || 'Hubo un error al procesar tu mensaje.';
 					}
@@ -295,7 +308,7 @@ function setCookie(name, value, days) {
 	const date = new Date();
 	date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
 	const expires = "expires=" + date.toUTCString();
-	document.cookie = name + "=" + value + ";" + expires + ";path=/";
+	document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/;SameSite=Strict;Secure";
 }
 
 function getCookie(name) {

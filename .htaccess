@@ -22,8 +22,8 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://player.vimeo.com https://code.jquery.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://futbolistainversor.com; frame-src https://player.vimeo.com; connect-src 'self';"
 
 # HTTP Strict Transport Security (HSTS)
-# Fuerza HTTPS por 6 meses en todos los subdominios
-Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains"
+# Fuerza HTTPS por 1 año en todos los subdominios
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
 # X-Frame-Options
 # Previene clickjacking - solo permite iframes del mismo origen

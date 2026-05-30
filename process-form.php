@@ -44,9 +44,15 @@ function loadEnv($path = '.env') {
 // Cargar configuración desde .env
 loadEnv(__DIR__ . '/.env');
 
-// Configuración de errores (desactivar en producción)
+// Iniciar sesión para CSRF token
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// Configuración de errores
 error_reporting(E_ALL);
-ini_set('display_errors', 0); // Cambiar a 0 en producción
+ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', 'form_errors.log');
 
@@ -54,10 +60,7 @@ ini_set('error_log', 'form_errors.log');
 header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
-header('X-XSS-Protection: 1; mode=block');
-
-// Iniciar sesión para CSRF token (descomentar cuando implementes sesiones)
-// session_start();
+header('X-XSS-Protection: 1; mode=block');;
 
 /**
  * Función para sanitizar inputs
@@ -77,40 +80,52 @@ function validateEmail($email) {
 }
 
 /**
- * Rate limiting básico usando archivo
+ * Rate limiting con flock para evitar race conditions
  * Limita a 5 envíos por IP cada 15 minutos
  */
 function checkRateLimit($ip) {
-    $limitFile = 'rate_limit.json';
+    $limitFile = __DIR__ . '/rate_limit.json';
     $maxAttempts = 5;
-    $timeWindow = 900; // 15 minutos en segundos
+    $timeWindow = 900;
 
-    $limits = [];
-    if (file_exists($limitFile)) {
-        $limits = json_decode(file_get_contents($limitFile), true);
+    $fp = fopen($limitFile, 'c+');
+    if (!$fp) return true;
+
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return true;
     }
 
-    $currentTime = time();
+    $content = stream_get_contents($fp);
+    $limits = json_decode($content, true) ?: [];
 
-    // Limpiar entradas antiguas
+    $currentTime = time();
     foreach ($limits as $key => $data) {
         if ($currentTime - $data['time'] > $timeWindow) {
             unset($limits[$key]);
         }
     }
 
-    // Verificar límite
+    $allowed = true;
     if (isset($limits[$ip])) {
         if ($limits[$ip]['count'] >= $maxAttempts) {
-            return false;
+            $allowed = false;
+        } else {
+            $limits[$ip]['count']++;
         }
-        $limits[$ip]['count']++;
     } else {
         $limits[$ip] = ['count' => 1, 'time' => $currentTime];
     }
 
-    file_put_contents($limitFile, json_encode($limits));
-    return true;
+    if ($allowed) {
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($limits));
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return $allowed;
 }
 
 /**
@@ -225,13 +240,12 @@ if (!checkRateLimit($clientIP)) {
     exit;
 }
 
-// Validar CSRF token (descomentar cuando implementes sesiones)
-/*
-if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+// Validar CSRF token
+if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
     http_response_code(403);
-    die('Token CSRF inválido');
+    echo json_encode(['success' => false, 'message' => 'Token de seguridad inválido. Recarga la página e inténtalo de nuevo.']);
+    exit;
 }
-*/
 
 // Obtener y sanitizar datos del formulario
 $nombre = isset($_POST['nombre']) ? sanitizeInput($_POST['nombre']) : '';

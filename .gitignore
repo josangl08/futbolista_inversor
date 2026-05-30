@@ -145,6 +145,11 @@ vendor/
 api/lead_capture.log
 api/lead_rate_limit.json
 
+# Datos de runtime en data/ (PII y archivos de rate limiting)
+data/*.json
+data/*.log
+!data/.gitkeep
+
 # CSS - Solo subir versión minificada
 assets/css/one-page-parallax/app.css
 

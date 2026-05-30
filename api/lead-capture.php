@@ -52,39 +52,51 @@ function validateEmail($email) {
 }
 
 /**
- * Rate limiting para leads
+ * Rate limiting con flock para evitar race conditions
  */
 function checkLeadRateLimit($ip) {
     $limitFile = LEAD_RATE_LIMIT_FILE;
     $maxAttempts = LEAD_MAX_ATTEMPTS;
     $timeWindow = LEAD_TIME_WINDOW;
 
-    $limits = [];
-    if (file_exists($limitFile)) {
-        $limits = json_decode(file_get_contents($limitFile), true);
+    $fp = fopen($limitFile, 'c+');
+    if (!$fp) return true;
+
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return true;
     }
 
-    $currentTime = time();
+    $content = stream_get_contents($fp);
+    $limits = json_decode($content, true) ?: [];
 
-    // Limpiar entradas antiguas
+    $currentTime = time();
     foreach ($limits as $key => $data) {
         if ($currentTime - $data['time'] > $timeWindow) {
             unset($limits[$key]);
         }
     }
 
-    // Verificar límite
+    $allowed = true;
     if (isset($limits[$ip])) {
         if ($limits[$ip]['count'] >= $maxAttempts) {
-            return false;
+            $allowed = false;
+        } else {
+            $limits[$ip]['count']++;
         }
-        $limits[$ip]['count']++;
     } else {
         $limits[$ip] = ['count' => 1, 'time' => $currentTime];
     }
 
-    file_put_contents($limitFile, json_encode($limits));
-    return true;
+    if ($allowed) {
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($limits));
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return $allowed;
 }
 
 /**
@@ -198,6 +210,14 @@ function logEvent($event, $data) {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+    exit;
+}
+
+// Validar Content-Type: protección CSRF para endpoints JSON
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+if (strpos($contentType, 'application/json') === false) {
+    http_response_code(415);
+    echo json_encode(['success' => false, 'message' => 'Content-Type no válido']);
     exit;
 }
 
